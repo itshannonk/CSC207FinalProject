@@ -8,28 +8,31 @@ public class Invoice {
     private boolean statusOfInvoice;
     private int ID;
 
-    void setStatusOfInvoice(boolean status){
+    void setStatusOfInvoice(boolean status) {
         this.statusOfInvoice = status;
     }
-    boolean getStatusOfInvoice(){
+
+    boolean getStatusOfInvoice() {
         return this.statusOfInvoice;
     }
-    void addItem(Item newItem){
+
+    void addItem(Item newItem) {
         listOfItems.add(newItem);
     }
 
-    List<Item> getListOfOrder(){
+    List<Item> getListOfOrder() {
         return this.listOfItems;
     }
-    double getTotalPrice(){
+
+    double getTotalPrice() {
         return totalPrice;
     }
 
-    void setTotalPrice(double newPrice){
+    void setTotalPrice(double newPrice) {
         this.totalPrice = newPrice;
     }
 
-    int getID(){
+    int getID() {
         return this.ID;
     }
 }
