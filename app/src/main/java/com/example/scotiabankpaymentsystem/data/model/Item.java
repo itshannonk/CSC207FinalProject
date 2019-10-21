@@ -1,6 +1,6 @@
 package com.example.scotiabankpaymentsystem.data.model;
 
-class Item {
+public class Item {
     private int itemID;
     //the first index will be the Item string, the second will be the amount the third will be the price
     private String[] listOfInfo;
