@@ -1,5 +1,8 @@
 package com.example.scotiabankpaymentsystem.data.model;
 
+/**
+ * An abstract class representing the app's user.
+ */
 public abstract class User {
     private String name;
     private String password;
@@ -14,7 +17,10 @@ public abstract class User {
         this.address = address;
     }
 
+    /**
+     * ?
+     */
     public void seeStatus() {
-        
+
     }
 }
