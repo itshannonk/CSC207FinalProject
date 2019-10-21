@@ -1,5 +1,7 @@
 package com.example.scotiabankpaymentsystem.data.model;
 
+import java.util.List;
+
 /**
  * An abstract class representing the app's user.
  */
@@ -8,8 +10,8 @@ public abstract class User {
     private String password;
     private String address;
     private int customerID;
-    // private List<Order> orders;
-    // private Invoice invoice;
+    private List<Item> orders;
+    private Invoice invoice;
 
     public User(String name, String password, String address) {
         this.name = name;
