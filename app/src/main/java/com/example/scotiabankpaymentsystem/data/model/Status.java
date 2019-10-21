@@ -6,29 +6,35 @@ public class Status {
     private boolean delivered;
     private boolean signed;
 
-    boolean getIssued(){
+    boolean getIssued() {
         return this.issued;
     }
-    boolean getPaid(){
+
+    boolean getPaid() {
         return this.paid;
     }
-    boolean getDelivered(){
+
+    boolean getDelivered() {
         return this.delivered;
     }
-    boolean getSigned(){
+
+    boolean getSigned() {
         return this.signed;
     }
 
-    boolean setSigned(boolean signed){
+    boolean setSigned(boolean signed) {
         return this.signed = signed;
     }
-    boolean setIssued(boolean issued){
+
+    boolean setIssued(boolean issued) {
         return this.signed = issued;
     }
-    boolean setPaid(boolean paid){
+
+    boolean setPaid(boolean paid) {
         return this.signed = paid;
     }
-    boolean setDelivered(boolean delivered){
+
+    boolean setDelivered(boolean delivered) {
         return this.signed = delivered;
     }
 }
