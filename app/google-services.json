@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "707734809591",
+    "firebase_url": "https://csc207-tli.firebaseio.com",
+    "project_id": "csc207-tli",
+    "storage_bucket": "csc207-tli.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:707734809591:android:663f4e828fc3a8b9b21cf2",
+        "android_client_info": {
+          "package_name": "com.example.scotiabankpaymentsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "707734809591-qjimnn3mvqdt0b9l6lp34pahr8kjvc1s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.scotiabankpaymentsystem",
+            "certificate_hash": "466bc83ea3d2aa3c58d588ed47d8e585f8fe423a"
+          }
+        },
+        {
+          "client_id": "707734809591-o74f1ba9ar6ch57fagdp4a2hp3vuc899.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCBwyjK0YXlrtnMYHg64PKVr9OKzyoo-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "707734809591-o74f1ba9ar6ch57fagdp4a2hp3vuc899.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
