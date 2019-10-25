@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,12 +24,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.data.model.MainActivity;
 import com.example.scotiabankpaymentsystem.ui.login.LoginViewModel;
 import com.example.scotiabankpaymentsystem.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+
+    private Button button;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -72,7 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-
+                //the id of the button is login
+                button = (Button) findViewById(R.id.login);
+                //opens the next page
+                openActivity2();
                 //Complete and destroy login activity once successful
                 finish();
             }
@@ -127,5 +134,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+    //Opens the next page
+    public void openActivity2() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
