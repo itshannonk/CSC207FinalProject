@@ -24,9 +24,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.data.model.BusinessOwner;
 import com.example.scotiabankpaymentsystem.data.model.MainActivity;
-import com.example.scotiabankpaymentsystem.ui.login.LoginViewModel;
-import com.example.scotiabankpaymentsystem.ui.login.LoginViewModelFactory;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,15 +37,21 @@ public class LoginActivity extends AppCompatActivity {
 
     private Button button;
 
+    private String name;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.username);
+        final EditText usernameEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.password);
+        final EditText firstNameEditText = findViewById(R.id.First_Name);
+        final EditText lastNameEditText = findViewById(R.id.lastName);
+        final EditText addressEditText = findViewById(R.id.Address);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
@@ -122,12 +131,26 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                //updating the firstbase system
+                FirebaseDatabase database = FirebaseDatabase.getInstance();
+                name = firstNameEditText.getText().toString();
+                BusinessOwner User = new BusinessOwner(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString(), passwordEditText.getText().toString(), addressEditText.getText().toString());
+                DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
+                HashMap<String, Object> myMap = new HashMap<String, Object>();
+                myMap.put("Name",firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
+                myMap.put("Address", addressEditText.getText().toString());
+                myMap.put("Password", passwordEditText.getText().toString());
+                myMap.put("Email", usernameEditText.getText().toString());
+                myRef.setValue(addressEditText.getText().toString());
+                myRef.updateChildren(myMap);
+
             }
         });
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
+        //String welcome = getString(R.string.welcome) + model.getDisplayName();
+        String welcome = getString(R.string.welcome);
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }
