@@ -9,7 +9,7 @@ public abstract class User {
     private String name;
     private String password;
     private String address;
-    private int customerID;
+    private int customerID = -1;
     private List<Item> orders;
     private Invoice invoice;
 
@@ -17,6 +17,7 @@ public abstract class User {
         this.name = name;
         this.password = password;
         this.address = address;
+        customerID++;
     }
 
     /**
@@ -24,5 +25,9 @@ public abstract class User {
      */
     public void seeStatus() {
 
+    }
+
+    public int getCustomerID() {
+        return customerID;
     }
 }

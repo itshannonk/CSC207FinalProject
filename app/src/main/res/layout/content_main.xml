@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".data.model.MainActivity"
+<<<<<<< HEAD
     tools:showIn="@layout/activity_main"/>
+=======
+    tools:showIn="@layout/activity_main">
+
+    <ImageView
+        android:id="@+id/CocaCola"
+        android:layout_width="291dp"
+        android:layout_height="464dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="117dp"
+        android:src="@drawable/cocacola"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.787"
+        tools:srcCompat="@drawable/cocacola" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> 853a7b9ab0ffcb353e5368387199db9321f5450a

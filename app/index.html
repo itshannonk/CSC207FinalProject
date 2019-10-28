@@ -1,0 +1,29 @@
+  <body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="/__/firebase/7.2.2/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="/__/firebase/7.2.2/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script src="/__/firebase/init.js"></script>
+      <p>Getting started with Firebase</p>
+      <h1 id="bigOne"></h1>
+      <script>
+            // your firebase JavaScript code here
+        var config = {
+            apiKey: "apiKey",
+            authDomain: "authDomain",
+            databaseURL: "databaseURL",
+            storageBucket: "storageBucket",
+            messagingSenderId: "messagingSenderId"
+      };
+      firebase.initializeApp(config);
+      // getting the text value from the database
+      var bigOne = document.getElementById('bigOne');
+      var dbRef = firebase.database().ref().child('text');
+      dbRef.on('value', snap => bigOne.innerText = snap.val());
+      </script>
+
+  </body>
