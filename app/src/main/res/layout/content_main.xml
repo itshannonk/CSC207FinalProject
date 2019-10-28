@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".data.model.MainActivity"
-<<<<<<< HEAD
-    tools:showIn="@layout/activity_main"/>
-=======
     tools:showIn="@layout/activity_main">
 
     <ImageView
@@ -29,4 +26,3 @@
         app:layout_constraintVertical_bias="0.787"
         tools:srcCompat="@drawable/cocacola" />
 </androidx.constraintlayout.widget.ConstraintLayout>
->>>>>>> 853a7b9ab0ffcb353e5368387199db9321f5450a
