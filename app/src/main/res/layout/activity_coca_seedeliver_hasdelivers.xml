@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
+    <TextView
         android:id="@+id/ChangeStatus"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
@@ -15,17 +15,47 @@
         android:text="Change Status\n(Delivered/Paid)"
         tools:visibility="visible" />
 
-    <Button
+    <EditText
+        android:id="@+id/Status"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="5dp"
+        android:text="Delivered/Paid"
+        tools:visibility="visible" />
+
+    <TextView
         android:id="@+id/SeeAddress"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="1dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:text="See Address"
+        android:text="Address:"
         tools:visibility="visible" />
 
-    <Button
+    <TextView
+        android:id="@+id/Address"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:text="St George Street"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/SeeInvoice"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:text="Invoice"
+        tools:visibility="visible" />
+
+    <ImageView
         android:id="@+id/Invoice"
         android:layout_width="225dp"
         android:layout_height="210dp"
