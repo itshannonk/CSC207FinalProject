@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.ui.login;
+package com.example.scotiabankpaymentsystem.login;
 
 import androidx.annotation.Nullable;
 

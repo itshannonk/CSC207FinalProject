@@ -1,17 +1,16 @@
-package com.example.scotiabankpaymentsystem.ui.login;
+package com.example.scotiabankpaymentsystem.cocacola;
 
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.view.View;
-import android.widget.Button;
-
 import com.example.scotiabankpaymentsystem.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
+
+//TODO: Okay I have no idea what this actually does, idk if it's important but I'll leave it alone
 
 public class MainActivity extends AppCompatActivity {
 

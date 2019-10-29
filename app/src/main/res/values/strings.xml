@@ -7,6 +7,7 @@
     <string name="prompt_password">Password</string>
     <string name="address">Address</string>
     <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_up">Sign up</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">"Welcome !"</string>
     <string name="invalid_username">Not a valid username</string>
@@ -14,4 +15,11 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="placing_order">Place Order</string>
+    <string name="selecting_roles">Role</string>
+    <string-array name="roles">
+        <item>Business Owner</item>
+        <item>Truck Driver</item>
+        <item>CocaCola</item>
+    </string-array>
+    <string name="title_activity_login2">LogIn</string>
 </resources>

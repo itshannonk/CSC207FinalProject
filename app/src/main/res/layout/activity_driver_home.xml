@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/Odder"
+        android:id="@+id/Order"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"

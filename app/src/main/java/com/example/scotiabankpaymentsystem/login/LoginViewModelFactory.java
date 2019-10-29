@@ -1,8 +1,8 @@
-package com.example.scotiabankpaymentsystem.ui.login;
+package com.example.scotiabankpaymentsystem.login;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.annotation.NonNull;
 
 import com.example.scotiabankpaymentsystem.data.LoginDataSource;
 import com.example.scotiabankpaymentsystem.data.LoginRepository;

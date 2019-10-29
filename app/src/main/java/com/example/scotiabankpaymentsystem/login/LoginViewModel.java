@@ -1,15 +1,15 @@
-package com.example.scotiabankpaymentsystem.ui.login;
+package com.example.scotiabankpaymentsystem.login;
+
+import android.util.Patterns;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import android.util.Patterns;
-
+import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.data.LoginRepository;
 import com.example.scotiabankpaymentsystem.data.Result;
 import com.example.scotiabankpaymentsystem.data.model.LoggedInUser;
-import com.example.scotiabankpaymentsystem.R;
 
 public class LoginViewModel extends ViewModel {
 

@@ -9,35 +9,52 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.login.SBOPlacingOrder"
-            android:parentActivityName=".ui.login.sbo" />
         <activity
-            android:name=".ui.login.SBOsetting"
-            android:parentActivityName=".ui.login.sbo" />
+            android:name=".ui.login.LoginActivity2"
+            android:label="@string/title_activity_login2"></activity>
         <activity
-            android:name=".ui.login.sbo_seeStatus_hasOrder"
-            android:parentActivityName=".ui.login.sbo" />
-        <activity android:name=".ui.login.sbo" />
+            android:name=".businessowner.SBOPlaceOrder"
+            android:parentActivityName=".businessowner.SBOActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.login.coca_seeDeliver_hasDelivers"
-            android:parentActivityName=".ui.login.sbo" />
+            android:name=".businessowner.SBOSettings"
+            android:parentActivityName=".businessowner.SBOActivity"
+            android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.login.main_cocaCola"
-            android:parentActivityName=".ui.login.sbo" />
+            android:name=".businessowner.SBOSeeOrder"
+            android:parentActivityName=".businessowner.SBOActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".businessowner.SBOActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".cocacola.CocaColaSeeDeliveries"
+            android:parentActivityName=".businessowner.SBOActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".cocacola.CocaColaActivity"
+            android:parentActivityName=".businessowner.SBOActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.login.MainActivity"
             android:label="@string/title_activity_main"
-            android:parentActivityName=".ui.login.sbo"
+            android:parentActivityName=".businessowner.SBOActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.login.LoginActivity"
-            android:label="@string/app_name">
+            android:name=".login.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".login.RegisterActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
