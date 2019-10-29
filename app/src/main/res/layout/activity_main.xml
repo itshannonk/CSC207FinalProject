@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".data.model.MainActivity">
+    tools:context=".ui.login.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -20,7 +20,10 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main" />
+    <include
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -35,5 +38,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView" />
+
+    <Button
+        android:id="@+id/sbo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SmallBusinessOwner" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

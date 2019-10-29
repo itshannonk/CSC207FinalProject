@@ -25,7 +25,6 @@ import android.widget.Toast;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.data.model.BusinessOwner;
-import com.example.scotiabankpaymentsystem.data.model.MainActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -35,9 +34,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
 
-    private Button button;
+    //private Button button;
 
-    private String name;
+    //private String name;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,9 +85,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 setResult(Activity.RESULT_OK);
                 //the id of the button is login
-                button = (Button) findViewById(R.id.login);
+                //button = (Button) findViewById(R.id.login);
                 //opens the next page
-                openActivity2();
+                openActivity();
                 //Complete and destroy login activity once successful
                 finish();
             }
@@ -132,8 +131,8 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
                 //updating the firstbase system
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                name = firstNameEditText.getText().toString();
+                FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com/");
+                //name = firstNameEditText.getText().toString();
                 BusinessOwner User = new BusinessOwner(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString(), passwordEditText.getText().toString(), addressEditText.getText().toString());
                 DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
                 HashMap<String, Object> myMap = new HashMap<String, Object>();
@@ -159,8 +158,8 @@ public class LoginActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
     //Opens the next page
-    public void openActivity2() {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void openActivity() {
+        Intent intent = new Intent(LoginActivity.this, sbo.class);
         startActivity(intent);
     }
 }
