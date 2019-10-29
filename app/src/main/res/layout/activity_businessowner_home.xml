@@ -6,33 +6,43 @@
     android:orientation="vertical">
 
     <Button
-        android:id="@+id/NoOdder"
-        android:layout_width="225dp"
+        android:id="@+id/PlaceOrder"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="50dp"
-        android:text="You have no active Odders"
+        android:layout_marginTop="100dp"
+        android:text="@string/placing_order"
         tools:visibility="visible" />
 
     <Button
-        android:id="@+id/PlaceOdder"
-        android:layout_width="225dp"
+        android:id="@+id/SeeStatus"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:text="Place Odder"
+        android:layout_marginTop="1dp"
+        android:text="See Status/invoice"
         tools:visibility="visible" />
-
 
     <Button
-        android:id="@+id/GoBack"
-        android:layout_width="225dp"
+        android:id="@+id/Setting"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:text="Go Back"
+        android:layout_marginTop="1dp"
+        android:text="Setting"
         tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/LogOut"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="1dp"
+        android:text="Logout"
+        tools:visibility="visible" />
+
 </LinearLayout>

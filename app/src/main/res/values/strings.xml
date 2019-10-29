@@ -21,4 +21,5 @@
         <item>Truck Driver</item>
         <item>CocaCola</item>
     </string-array>
+    <string name="title_activity_login2">LogIn</string>
 </resources>

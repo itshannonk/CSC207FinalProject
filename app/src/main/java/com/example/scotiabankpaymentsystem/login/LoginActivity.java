@@ -1,18 +1,8 @@
-package com.example.scotiabankpaymentsystem.ui.login;
+package com.example.scotiabankpaymentsystem.login;
 
 import android.app.Activity;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.KeyEvent;
@@ -24,18 +14,21 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.data.model.BusinessOwner;
-//import com.example.scotiabankpaymentsystem.ui.register.RegisterActivity;
+import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.HashMap;
+//import com.example.scotiabankpaymentsystem.ui.register.RegisterActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -160,7 +153,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            startActivity(new Intent(LoginActivity.this, sbo.class));
+                            startActivity(new Intent(LoginActivity.this, SBOActivity.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(LoginActivity.this, task.getException().getMessage(),
@@ -193,7 +186,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     //Opens the next page
     public void openActivity() {
-        Intent intent = new Intent(LoginActivity.this, sbo.class);
+        Intent intent = new Intent(LoginActivity.this, SBOActivity.class);
         startActivity(intent);
     }
 }
