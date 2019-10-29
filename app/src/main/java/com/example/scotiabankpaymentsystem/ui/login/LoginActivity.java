@@ -2,6 +2,7 @@ package com.example.scotiabankpaymentsystem.ui.login;
 
 import android.app.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -25,8 +26,14 @@ import android.widget.Toast;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.data.model.BusinessOwner;
+//import com.example.scotiabankpaymentsystem.ui.register.RegisterActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.HashMap;
 
@@ -37,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
     //private Button button;
 
     //private String name;
-
+    private FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -46,12 +53,14 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
-        final EditText usernameEditText = findViewById(R.id.email);
+        mAuth = FirebaseAuth.getInstance();
+        final EditText emailEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.password);
         final EditText firstNameEditText = findViewById(R.id.First_Name);
         final EditText lastNameEditText = findViewById(R.id.lastName);
         final EditText addressEditText = findViewById(R.id.Address);
         final Button loginButton = findViewById(R.id.login);
+        final Button registerButton = findViewById(R.id.register);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
@@ -62,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 loginButton.setEnabled(loginFormState.isDataValid());
                 if (loginFormState.getUsernameError() != null) {
-                    usernameEditText.setError(getString(loginFormState.getUsernameError()));
+                    emailEditText.setError(getString(loginFormState.getUsernameError()));
                 }
                 if (loginFormState.getPasswordError() != null) {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
@@ -106,18 +115,18 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(usernameEditText.getText().toString(),
+                loginViewModel.loginDataChanged(emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
         };
-        usernameEditText.addTextChangedListener(afterTextChangedListener);
+        emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(usernameEditText.getText().toString(),
+                    loginViewModel.login(emailEditText.getText().toString(),
                             passwordEditText.getText().toString());
                 }
                 return false;
@@ -128,21 +137,46 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-                loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
-                //updating the firstbase system
-                FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com/");
-                //name = firstNameEditText.getText().toString();
-                BusinessOwner User = new BusinessOwner(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString(), passwordEditText.getText().toString(), addressEditText.getText().toString());
-                DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-                HashMap<String, Object> myMap = new HashMap<String, Object>();
-                myMap.put("Name",firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-                myMap.put("Address", addressEditText.getText().toString());
-                myMap.put("Password", passwordEditText.getText().toString());
-                myMap.put("Email", usernameEditText.getText().toString());
-                myRef.setValue(addressEditText.getText().toString());
-                myRef.updateChildren(myMap);
+//            loginViewModel.login(emailEditText.getText().toString(),
+//                    passwordEditText.getText().toString());
+            //updating the firstbase system
+//                FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com/");
+//                //name = firstNameEditText.getText().toString();
+//                BusinessOwner User = new BusinessOwner(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString(), passwordEditText.getText().toString(), addressEditText.getText().toString());
+//                DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
+//                HashMap<String, Object> myMap = new HashMap<String, Object>();
+//                myMap.put("Name",firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
+//                myMap.put("Address", addressEditText.getText().toString());
+//                myMap.put("Password", passwordEditText.getText().toString());
+//                myMap.put("Email", emailEditText.getText().toString());
+//                myRef.setValue(addressEditText.getText().toString());
+//                myRef.updateChildren(myMap);
 
+            // authenticating....
+            mAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
+                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            startActivity(new Intent(LoginActivity.this, sbo.class));
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Toast.makeText(LoginActivity.this, task.getException().getMessage(),
+                                    Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                });
+            }
+        });
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            loadingProgressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
     }

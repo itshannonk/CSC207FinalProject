@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "707734809591-g2jl149tg49f9lnscn87opgicrggkmes.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.scotiabankpaymentsystem",
+            "certificate_hash": "e97d4944bf2cb05b5f1d2a8bd083524e51cb9d12"
+          }
+        },
+        {
           "client_id": "707734809591-d3bveo09jfi44l9g4jun60glgi7oc341.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

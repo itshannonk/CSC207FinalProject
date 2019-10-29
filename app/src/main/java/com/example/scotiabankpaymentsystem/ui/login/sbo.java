@@ -6,11 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class sbo extends AppCompatActivity {
 
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +54,14 @@ public class sbo extends AppCompatActivity {
         Button buttonLogOut = findViewById(R.id.LogOut);
         buttonLogOut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                // clear session between app and firebase database
+                FirebaseAuth.getInstance().signOut();
                 // go back to the original login page
                 openActivityLogOut();
                 //close the page
                 finish();
+                Toast.makeText(getApplicationContext(), "Goodbye :)", Toast.LENGTH_LONG).show();
+
             }
         });
 
@@ -74,6 +83,8 @@ public class sbo extends AppCompatActivity {
 
     private void openActivityLogOut() {
         Intent intent = new Intent(sbo.this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
 }
