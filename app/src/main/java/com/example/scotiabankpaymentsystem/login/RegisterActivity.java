@@ -34,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         //registerViewModel = new RegisterViewModel();
         final EditText emailEditText = findViewById(R.id.email);
-        final EditText passwordEditText = findViewById(R.id.password);
+        final EditText passwordEditText = findViewById(R.id.Change_password);
         final EditText firstNameEditText = findViewById(R.id.First_Name);
         final EditText lastNameEditText = findViewById(R.id.lastName);
         final EditText addressEditText = findViewById(R.id.Address);

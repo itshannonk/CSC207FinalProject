@@ -16,7 +16,7 @@
         tools:visibility="visible" />
 
     <EditText
-        android:id="@+id/oldPassword"
+        android:id="@+id/oldPw"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -36,7 +36,7 @@
         android:text="New Password" />
 
     <EditText
-        android:id="@+id/newPassword"
+        android:id="@+id/newPw"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -46,7 +46,7 @@
         android:text="@string/prompt_password" />
 
     <TextView
-        android:id="@+id/newpasswordAgain"
+        android:id="@+id/newPwAgain"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -56,7 +56,7 @@
         tools:visibility="visible" />
 
     <EditText
-        android:id="@+id/newpasswordAgainInput"
+        android:id="@+id/newPwAgainInput"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
