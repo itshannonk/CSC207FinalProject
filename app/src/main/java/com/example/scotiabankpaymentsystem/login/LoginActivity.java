@@ -28,15 +28,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-//import com.example.scotiabankpaymentsystem.ui.register.RegisterActivity;
-
+/**
+ * The signup page
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
-
-    //private Button button;
-
-    //private String name;
     private FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,9 +46,6 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         final EditText emailEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.Change_password);
-        final EditText firstNameEditText = findViewById(R.id.First_Name);
-        final EditText lastNameEditText = findViewById(R.id.lastName);
-        final EditText addressEditText = findViewById(R.id.Address);
         final Button loginButton = findViewById(R.id.login);
         final Button registerButton = findViewById(R.id.register);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
@@ -86,8 +80,6 @@ public class LoginActivity extends AppCompatActivity {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-                //the id of the button is login
-                //button = (Button) findViewById(R.id.login);
                 //opens the next page
                 openActivity();
                 //Complete and destroy login activity once successful
@@ -130,20 +122,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-//            loginViewModel.login(emailEditText.getText().toString(),
-//                    passwordEditText.getText().toString());
-            //updating the firstbase system
-//                FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com/");
-//                //name = firstNameEditText.getText().toString();
-//                BusinessOwner User = new BusinessOwner(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString(), passwordEditText.getText().toString(), addressEditText.getText().toString());
-//                DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-//                HashMap<String, Object> myMap = new HashMap<String, Object>();
-//                myMap.put("Name",firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-//                myMap.put("Address", addressEditText.getText().toString());
-//                myMap.put("Password", passwordEditText.getText().toString());
-//                myMap.put("Email", emailEditText.getText().toString());
-//                myRef.setValue(addressEditText.getText().toString());
-//                myRef.updateChildren(myMap);
 
             // authenticating....
             mAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
@@ -175,7 +153,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void updateUiWithUser(LoggedInUserView model) {
-        //String welcome = getString(R.string.welcome) + model.getDisplayName();
         String welcome = getString(R.string.welcome);
         // TODO : initiate successful logged in experience
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();

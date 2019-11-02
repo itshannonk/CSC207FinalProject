@@ -23,7 +23,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
-
+/**
+ * Class that registers the users when they sign up and this uses Firebase's authentication
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -32,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        //registerViewModel = new RegisterViewModel();
         final EditText emailEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.Change_password);
         final EditText firstNameEditText = findViewById(R.id.First_Name);
@@ -52,16 +53,10 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-//                registerViewModel.register(emailEditText.getText().toString(),
-//                        passwordEditText.getText().toString(),
-//                        firstNameEditText.getText().toString(),
-//                        lastNameEditText.getText().toString(),
-//                        addressEditText.getText().toString());
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 
-                //updating the firstbase system
+                //updating the firebase system with the user values
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
-                //BusinessOwner User = new BusinessOwner(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString(), passwordEditText.getText().toString(), addressEditText.getText().toString());
                 DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
                 HashMap<String, Object> myMap = new HashMap<String, Object>();
                 myMap.put("Name", firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
