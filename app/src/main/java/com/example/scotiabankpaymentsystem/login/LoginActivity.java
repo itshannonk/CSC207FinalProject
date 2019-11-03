@@ -28,41 +28,37 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-//import com.example.scotiabankpaymentsystem.ui.register.RegisterActivity;
-
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private FirebaseAuth firebaseAuth;
 
-    //private Button button;
-
-    //private String name;
-    private FirebaseAuth mAuth;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        mAuth = FirebaseAuth.getInstance();
         final EditText emailEditText = findViewById(R.id.email);
         final EditText passwordEditText = findViewById(R.id.password);
-        final EditText firstNameEditText = findViewById(R.id.First_Name);
-        final EditText lastNameEditText = findViewById(R.id.lastName);
-        final EditText addressEditText = findViewById(R.id.Address);
         final Button loginButton = findViewById(R.id.login);
         final Button registerButton = findViewById(R.id.register);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
+        //Checks if the information you entered is valid
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
                 if (loginFormState == null) {
                     return;
                 }
+                //Turns the LoginButton on if both fields are entered
                 loginButton.setEnabled(loginFormState.isDataValid());
+                //The little red exclamation mark by the text fields will indicate an error if there is one
                 if (loginFormState.getUsernameError() != null) {
                     emailEditText.setError(getString(loginFormState.getUsernameError()));
                 }
@@ -72,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
@@ -79,15 +76,17 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
                 loadingProgressBar.setVisibility(View.GONE);
+                //If the information you entered is invalid in anyway, an error message will appear
                 if (loginResult.getError() != null) {
                     showLoginFailed(loginResult.getError());
                 }
+                //If the information you entered is good, "Welcome!"
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
                 }
                 setResult(Activity.RESULT_OK);
-                //the id of the button is login
-                //button = (Button) findViewById(R.id.login);
+//                //the id of the button is login
+//                button = (Button) findViewById(R.id.login);
                 //opens the next page
                 openActivity();
                 //Complete and destroy login activity once successful
@@ -95,23 +94,23 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Stores what the user entered
         TextWatcher afterTextChangedListener = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // ignore
             }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 // ignore
             }
-
             @Override
             public void afterTextChanged(Editable s) {
                 loginViewModel.loginDataChanged(emailEditText.getText().toString(),
                         passwordEditText.getText().toString());
             }
         };
+
         emailEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.addTextChangedListener(afterTextChangedListener);
         passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -130,8 +129,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loadingProgressBar.setVisibility(View.VISIBLE);
-//            loginViewModel.login(emailEditText.getText().toString(),
-//                    passwordEditText.getText().toString());
+            loginViewModel.login(emailEditText.getText().toString(),
+                    passwordEditText.getText().toString());
             //updating the firstbase system
 //                FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com/");
 //                //name = firstNameEditText.getText().toString();
@@ -146,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
 //                myRef.updateChildren(myMap);
 
             // authenticating....
-            mAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
+            firebaseAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
                 .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
 
                     @Override
