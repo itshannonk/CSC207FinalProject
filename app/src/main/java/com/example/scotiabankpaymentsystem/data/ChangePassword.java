@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.scotiabankpaymentsystem.R;
 
-public class change_password extends AppCompatActivity {
+public class ChangePassword extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,11 +6,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 
+// TODO: differentiate if SBO has orders or not
+
 /**
  * A page that contains SBO's orders
  */
-
-// TODO: differentiate if SBO has orders or not
 public class SBOSeeOrder extends AppCompatActivity {
 
     @Override

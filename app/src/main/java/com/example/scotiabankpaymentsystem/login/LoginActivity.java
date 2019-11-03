@@ -1,48 +1,41 @@
+/*
+ *
+ *  * Copyright (C) 2018 Antonio Leiva Gordillo.
+ *  *
+ *  * Licensed under the Apache License, Version 2.0 (the "License");
+ *  * you may not use this file except in compliance with the License.
+ *  * You may obtain a copy of the License at
+ *  *
+ *  *      http://www.apache.org/licenses/LICENSE-2.0
+ *  *
+ *  * Unless required by applicable law or agreed to in writing, software
+ *  * distributed under the License is distributed on an "AS IS" BASIS,
+ *  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  * See the License for the specific language governing permissions and
+ *  * limitations under the License.
+ *
+ * We modified the code.
+ */
+
 package com.example.scotiabankpaymentsystem.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-//import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-
-
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity implements LoginView{
+public class LoginActivity extends AppCompatActivity implements LoginView {
     private ProgressBar progressBar;
     private EditText username;
     private EditText password;
     private LoginPresenter presenter;
-    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +45,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         progressBar = findViewById(R.id.loading);
         username = findViewById(R.id.email);
         password = findViewById(R.id.password);
-        firebaseAuth = FirebaseAuth.getInstance();
         findViewById(R.id.login).setOnClickListener(v -> validateCredentials());
         findViewById(R.id.register).setOnClickListener(v -> register());
         presenter = new LoginPresenter(this, new LoginInteractor());
@@ -89,7 +81,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
         startActivity(new Intent(this, SBOActivity.class));
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
-
         finish();
     }
 
@@ -101,6 +92,5 @@ public class LoginActivity extends AppCompatActivity implements LoginView{
     private void register() {
         showProgress();
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-
     }
 }

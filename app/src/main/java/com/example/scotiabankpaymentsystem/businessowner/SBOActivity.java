@@ -2,7 +2,6 @@ package com.example.scotiabankpaymentsystem.businessowner;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -23,49 +22,37 @@ public class SBOActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_home);
 
-//        //Complete and destroy login activity once successful
-//        finish();
-
         //Checking if the seeStatus in SBO page button has been pressed
         Button button = findViewById(R.id.SeeStatus);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //open the next page for the SBO to seeStatus
-                openActivitySeeStatus();
-            }
+        button.setOnClickListener(v -> {
+            //open the next page for the SBO to seeStatus
+            openActivitySeeStatus();
         });
 
         //Checking if the placeOrder in SBO page button has been pressed
         Button buttonPlaceOrder = findViewById(R.id.PlaceOrder);
-        buttonPlaceOrder.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //open the next page for the SBO to placeOrder
-                openActivityPlaceOrder();
-            }
+        buttonPlaceOrder.setOnClickListener(v -> {
+            //open the next page for the SBO to placeOrder
+            openActivityPlaceOrder();
         });
 
         //Checking if the settings in SBO page button has been pressed
         Button buttonSettings = findViewById(R.id.Setting);
-        buttonSettings.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                //open the next page for the SBO to change settings
-                openActivitySetting();
-            }
+        buttonSettings.setOnClickListener(v -> {
+            //open the next page for the SBO to change settings
+            openActivitySetting();
         });
 
         //Checking if the logout in SBO page button has been pressed
         Button buttonLogOut = findViewById(R.id.LogOut);
-        buttonLogOut.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-
-                //clear session between app and FireBase database
-                FirebaseAuth.getInstance().signOut();
-                //go back to the original login page
-                openActivityLogOut();
-                //close the page
-                finish();
-                Toast.makeText(getApplicationContext(), "Goodbye :)", Toast.LENGTH_LONG).show();
-            }
+        buttonLogOut.setOnClickListener(v -> {
+            //clear session between app and FireBase database
+            FirebaseAuth.getInstance().signOut();
+            //go back to the original login page
+            openActivityLogOut();
+            //close the SBO page
+            finish();
+            Toast.makeText(getApplicationContext(), "Goodbye :)", Toast.LENGTH_LONG).show();
         });
     }
 

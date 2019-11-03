@@ -2,7 +2,6 @@ package com.example.scotiabankpaymentsystem.login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-//import com.example.scotiabankpaymentsystem.data.model.BusinessOwner;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,6 +22,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
+
+// TODO: MVP model for Register
+// TODO: Add constraints to data entered by user (ie cannot be empty)
+// TODO: Check if email is already in database! (idk if Firebase already have this feature??)
 /**
  * Class that registers the users when they sign up and this uses Firebase's authentication
  */
@@ -50,40 +52,37 @@ public class RegisterActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+        registerButton.setOnClickListener(v -> {
+            loadingProgressBar.setVisibility(View.VISIBLE);
+            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 
-                //updating the firebase system with the user values
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-                HashMap<String, Object> myMap = new HashMap<String, Object>();
-                myMap.put("Name", firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-                myMap.put("Address", addressEditText.getText().toString());
-                myMap.put("Password", passwordEditText.getText().toString());
-                myMap.put("Email", emailEditText.getText().toString());
-                myMap.put("Role", roleSelectionSpinner.getSelectedItem().toString());
-                myRef.setValue(addressEditText.getText().toString());
-                myRef.updateChildren(myMap);
+            //updating the firebase system with the user values
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
+            HashMap<String, Object> myMap = new HashMap<String, Object>();
+            myMap.put("Name", firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
+            myMap.put("Address", addressEditText.getText().toString());
+            myMap.put("Password", passwordEditText.getText().toString());
+            myMap.put("Email", emailEditText.getText().toString());
+            myMap.put("Role", roleSelectionSpinner.getSelectedItem().toString());
+            myRef.setValue(addressEditText.getText().toString());
+            myRef.updateChildren(myMap);
 
-                mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                loadingProgressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    Toast.makeText(RegisterActivity.this, "Hello, please log in here", Toast.LENGTH_LONG).show();
+            mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            loadingProgressBar.setVisibility(View.GONE);
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Toast.makeText(RegisterActivity.this, "Hello, please log in here", Toast.LENGTH_LONG).show();
 
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                                }
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
-                        });
-            }
+                        }
+                    });
         });
     }
 }
