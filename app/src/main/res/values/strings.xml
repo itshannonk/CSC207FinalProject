@@ -15,7 +15,12 @@
     <string name="login_failed">"Login failed"</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="placing_order">Place Order</string>
+    <string name="enter_your_old_password">Enter your old password</string>
+    <string name="enter_your_new_password">Enter your new password</string>
     <string name="selecting_roles">Role</string>
+    <string name="username_error">Username Error</string>
+    <string name="password_error">Password Error</string>
+
     <string-array name="roles">
         <item>Business Owner</item>
         <item>Truck Driver</item>

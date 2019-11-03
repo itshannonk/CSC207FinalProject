@@ -1,5 +1,14 @@
 package com.example.scotiabankpaymentsystem.login;
 
+import android.content.Intent;
+import android.os.Bundle;
+//import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ProgressBar;
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,164 +37,70 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class LoginActivity extends AppCompatActivity {
-
-    private LoginViewModel loginViewModel;
+public class LoginActivity extends AppCompatActivity implements LoginView{
+    private ProgressBar progressBar;
+    private EditText username;
+    private EditText password;
+    private LoginPresenter presenter;
     private FirebaseAuth firebaseAuth;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
-                .get(LoginViewModel.class);
+        progressBar = findViewById(R.id.loading);
+        username = findViewById(R.id.email);
+        password = findViewById(R.id.password);
         firebaseAuth = FirebaseAuth.getInstance();
-
-        final EditText emailEditText = findViewById(R.id.email);
-        final EditText passwordEditText = findViewById(R.id.password);
-        final Button loginButton = findViewById(R.id.login);
-        final Button registerButton = findViewById(R.id.register);
-        final ProgressBar loadingProgressBar = findViewById(R.id.loading);
-
-        //Checks if the information you entered is valid
-        loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
-            @Override
-            public void onChanged(@Nullable LoginFormState loginFormState) {
-                if (loginFormState == null) {
-                    return;
-                }
-                //Turns the LoginButton on if both fields are entered
-                loginButton.setEnabled(loginFormState.isDataValid());
-                //The little red exclamation mark by the text fields will indicate an error if there is one
-                if (loginFormState.getUsernameError() != null) {
-                    emailEditText.setError(getString(loginFormState.getUsernameError()));
-                }
-                if (loginFormState.getPasswordError() != null) {
-                    passwordEditText.setError(getString(loginFormState.getPasswordError()));
-                }
-            }
-        });
-
-
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-                loadingProgressBar.setVisibility(View.GONE);
-                //If the information you entered is invalid in anyway, an error message will appear
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                //If the information you entered is good, "Welcome!"
-                if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
-//                //the id of the button is login
-//                button = (Button) findViewById(R.id.login);
-                //opens the next page
-                openActivity();
-                //Complete and destroy login activity once successful
-                finish();
-            }
-        });
-
-        //Stores what the user entered
-        TextWatcher afterTextChangedListener = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // ignore
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // ignore
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-                loginViewModel.loginDataChanged(emailEditText.getText().toString(),
-                        passwordEditText.getText().toString());
-            }
-        };
-
-        emailEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.addTextChangedListener(afterTextChangedListener);
-        passwordEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    loginViewModel.login(emailEditText.getText().toString(),
-                            passwordEditText.getText().toString());
-                }
-                return false;
-            }
-        });
-
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                loadingProgressBar.setVisibility(View.VISIBLE);
-            loginViewModel.login(emailEditText.getText().toString(),
-                    passwordEditText.getText().toString());
-            //updating the firstbase system
-//                FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com/");
-//                //name = firstNameEditText.getText().toString();
-//                BusinessOwner User = new BusinessOwner(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString(), passwordEditText.getText().toString(), addressEditText.getText().toString());
-//                DatabaseReference myRef = database.getReference(firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-//                HashMap<String, Object> myMap = new HashMap<String, Object>();
-//                myMap.put("Name",firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
-//                myMap.put("Address", addressEditText.getText().toString());
-//                myMap.put("Password", passwordEditText.getText().toString());
-//                myMap.put("Email", emailEditText.getText().toString());
-//                myRef.setValue(addressEditText.getText().toString());
-//                myRef.updateChildren(myMap);
-
-            // authenticating....
-            firebaseAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
-                .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
-
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            startActivity(new Intent(LoginActivity.this, SBOActivity.class));
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Toast.makeText(LoginActivity.this, task.getException().getMessage(),
-                                    Toast.LENGTH_LONG).show();
-
-                        }
-                    }
-                });
-            }
-        });
-
-        registerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            loadingProgressBar.setVisibility(View.VISIBLE);
-            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-            }
-        });
+        findViewById(R.id.login).setOnClickListener(v -> validateCredentials());
+        findViewById(R.id.register).setOnClickListener(v -> register());
+        presenter = new LoginPresenter(this, new LoginInteractor());
     }
 
-    private void updateUiWithUser(LoggedInUserView model) {
-        //String welcome = getString(R.string.welcome) + model.getDisplayName();
-        String welcome = getString(R.string.welcome);
-        // TODO : initiate successful logged in experience
-        Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+    @Override
+    protected void onDestroy() {
+        presenter.onDestroy();
+        super.onDestroy();
     }
 
-    private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
     }
-    //Opens the next page
-    public void openActivity() {
-        Intent intent = new Intent(LoginActivity.this, SBOActivity.class);
-        startActivity(intent);
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setUsernameError() {
+        username.setError(getString(R.string.username_error));
+    }
+
+    @Override
+    public void setPasswordError() {
+        password.setError(getString(R.string.password_error));
+    }
+
+    @Override
+    public void navigateToHome() {
+        startActivity(new Intent(this, SBOActivity.class));
+        Toast.makeText(LoginActivity.this, "Welcome! :)",
+                Toast.LENGTH_LONG).show();
+
+        finish();
+    }
+
+    private void validateCredentials() {
+        presenter.validateCredentials(this, username.getText().toString(), password.getText().toString());
+
+    }
+
+    private void register() {
+        showProgress();
+        startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+
     }
 }
