@@ -18,10 +18,20 @@
     <string name="enter_your_old_password">Enter your old password</string>
     <string name="enter_your_new_password">Enter your new password</string>
     <string name="selecting_roles">Role</string>
+    <string name="choose_role">Choose your role</string>
+
+
+    <string name="first_name_error">Enter your first name</string>
+    <string name="role_error">Enter your role</string>
+    <string name="last_name_error">Enter your last name</string>
+    <string name="email_error">Email Error: enter a valid email</string>
+    <string name="address_error">Address Error: enter a valid address</string>
     <string name="username_error">Username Error</string>
     <string name="password_error">Password Error</string>
+    <string name="email_exists">An account is already associated with this email</string>
 
     <string-array name="roles">
+        <item>Choose your role</item>
         <item>Business Owner</item>
         <item>Truck Driver</item>
         <item>CocaCola</item>

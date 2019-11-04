@@ -29,6 +29,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.Registration.RegisterActivity;
 import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
