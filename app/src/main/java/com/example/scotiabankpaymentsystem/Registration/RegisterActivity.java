@@ -18,23 +18,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
-import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.HashMap;
-
-// TODO: MVP model for Register
-// TODO: Add constraints to data entered by user (ie cannot be empty)
-// TODO: Check if email is already in database! (idk if Firebase already have this feature??)
 /**
  * Class that registers the users when they sign up and this uses Firebase's authentication
  */
-public class RegisterActivity extends AppCompatActivity implements RegistrationView{
+public class RegisterActivity extends AppCompatActivity implements RegistrationView {
 
     private ProgressBar progressBar;
     private EditText firstName;
@@ -110,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
 
     @Override
     public void setRoleError() {
-        ((TextView)roleSelectionSpinner.getSelectedView()).setError("Error message");
+        ((TextView) roleSelectionSpinner.getSelectedView()).setError("Error message");
 
     }
 

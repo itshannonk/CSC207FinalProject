@@ -20,7 +20,8 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
         registerInteractor.register(registerActivity, firstName, lastName, password, email, address, role, this);
     }
 
-    void onDestroy() {registerView = null;
+    void onDestroy() {
+        registerView = null;
     }
 
     @Override
