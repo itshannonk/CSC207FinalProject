@@ -51,22 +51,20 @@ public class RegisterInteractor {
             noProblems = false;
         }
         if (role.equals("Choose your role")) {
+            // the user has not selected a role and it is still at the default of "choose your role"
             listener.onRoleError();
             noProblems = false;
         }
         if(noProblems){
             //authenticating the user into firebase
-            System.out.println("authenticating the user");
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             // authenticated new user so this will so this will now be added to the firebase database
                             if (task.isSuccessful()) {
-                                System.out.println("no errors and it is now updating the firebase");
                                 // Sign in success, update UI with the signed-in user's information
                                 Toast.makeText(registerActivity, "Welcome " + firstName + " " + lastName, Toast.LENGTH_LONG).show();
-                                //Toast.makeText(RegisterActivity.this, "Hello, please log in here", Toast.LENGTH_LONG);
                                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                                 DatabaseReference myRef = database.getReference(FirebaseAuth.getInstance().getCurrentUser().getUid());
                                 HashMap<String, Object> thisUserInfo = new HashMap<String, Object>();

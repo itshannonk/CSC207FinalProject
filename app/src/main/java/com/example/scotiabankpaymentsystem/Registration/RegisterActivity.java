@@ -40,8 +40,8 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        System.out.println("it has created the register page");
 
+        // it is setting the inputs to a variable for easier access
         progressBar = findViewById(R.id.loadingRegister);
         firstName = findViewById(R.id.First_Name);
         lastName = findViewById(R.id.lastName);
@@ -52,12 +52,13 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         registerButton = findViewById(R.id.register);
         loadingProgressBar = findViewById(R.id.loading);
 
+        // now it is setting the role to the associated selected role. It has to detect when the user changes the selected drop down item.
         roleSelectionSpinner = findViewById(R.id.role);
         ArrayAdapter<String> roleAdapter = new ArrayAdapter<String>(RegisterActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.roles));
         roleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         roleSelectionSpinner.setAdapter(roleAdapter);
-        System.out.println("this is the role adapter " + roleSelectionSpinner.getSelectedItem().toString());
+        //when the user changes their input for the selected role
         roleSelectionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -69,15 +70,15 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
                 role = "";
             }
         });
+        // the register button has to register if there is any click at anytime
         findViewById(R.id.register).setOnClickListener(v -> {
             register();
         });
+        // the presenter that is associated with the RegisterActivity
         presenter = new RegisterPresenter(this, new RegisterInteractor());
     }
 
     private void register() {
-        System.out.println("it is trying to register");
-        System.out.println("this is the role " + role);
         presenter.registerUser(this, firstName.getText().toString(), lastName.getText().toString(), password.getText().toString(), email.getText().toString(), role, address.getText().toString());
     }
 
@@ -98,8 +99,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
 
     @Override
     public void setRoleError() {
-        ((TextView) roleSelectionSpinner.getSelectedView()).setError("Error message");
-
+        ((TextView) roleSelectionSpinner.getSelectedView()).setError("Select a role");
     }
 
     @Override

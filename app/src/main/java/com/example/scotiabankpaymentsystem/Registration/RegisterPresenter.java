@@ -12,17 +12,12 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
     }
 
     void registerUser(Activity registerActivity, String firstName, String lastName, String password, String email, String role, String address) {
-        System.out.println("it is not null");
         if (registerView != null) {
             registerView.showProgress();
         }
-        System.out.println("it has entered the registerPresenter");
         registerInteractor.register(registerActivity, firstName, lastName, password, email, address, role, this);
     }
 
-    void onDestroy() {
-        registerView = null;
-    }
 
     @Override
     public void onFirstNameError() {
@@ -40,7 +35,6 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
         }
 
     }
-
 
     @Override
     public void onAccountAlreadyExistsError() {
