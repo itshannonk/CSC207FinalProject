@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.cocacola;
+package com.example.scotiabankpaymentsystem.driver;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,12 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.data.ChangePassword;
-
 /**
- * A page that has CocaCola's settings.
+ * A page that has Driver's settings.
  */
-
-public class CocaColaSettings extends AppCompatActivity {
+public class DriverSettings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +25,7 @@ public class CocaColaSettings extends AppCompatActivity {
     }
 
     public void openActivityChangePassword() {
-        Intent intent = new Intent(com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings.this, ChangePassword.class);
+        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverSettings.this, ChangePassword.class);
         startActivity(intent);
     }
 }
-

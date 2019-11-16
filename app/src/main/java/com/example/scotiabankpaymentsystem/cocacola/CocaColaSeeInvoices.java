@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 
-public class CocaColaSeeDeliveries extends AppCompatActivity {
+public class CocaColaSeeInvoices extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,7 +15,7 @@ public class CocaColaSeeDeliveries extends AppCompatActivity {
     }
 
 //    public void openActivity2() {
-//        Intent intent = new Intent(CocaColaSeeDeliveries.this, MainActivity.class);
+//        Intent intent = new Intent(CocaColaSeeInvoices.this, MainActivity.class);
 //        startActivity(intent);
 //    }
 }

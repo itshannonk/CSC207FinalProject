@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.cocacola;
+package com.example.scotiabankpaymentsystem.driver;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,9 +20,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 /**
- * The main page of CocaCola's profile.
+ * The main page of a Driver's profile.
  */
-public class CocaColaActivity extends AppCompatActivity {
+public class DriverActivity extends AppCompatActivity {
 
     FirebaseUser user;
     DatabaseReference databaseReference;
@@ -33,7 +33,7 @@ public class CocaColaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cocacola_home);
+        setContentView(R.layout.activity_driver_home);
 
         // Initialize the current user and database
         // userToken = user.getIdToken();
@@ -45,11 +45,11 @@ public class CocaColaActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userName = dataSnapshot.child("CocaCola").child(userID).child("Name").getValue(String.class);
-                userEmail = dataSnapshot.child("CocaCola").child(userID).child("Email").getValue(String.class);
+                userName = dataSnapshot.child("Driver").child(userID).child("Name").getValue(String.class);
+                userEmail = dataSnapshot.child("Driver").child(userID).child("Email").getValue(String.class);
 
                 TextView welcomeText = findViewById(R.id.welcome_name);
-                String welcome = "Welcome Corporate Overlord";
+                String welcome = "Welcome " + userName;
                 welcomeText.setText(welcome);
             }
 
@@ -59,21 +59,21 @@ public class CocaColaActivity extends AppCompatActivity {
             }
         });
 
-        //Checking if the seeDeliveries in CocaCola page button has been pressed
-        Button button = findViewById(R.id.Order);
+        //Checking if the seeDeliveries in Driver page button has been pressed
+        Button button = findViewById(R.id.SeeDelivery);
         button.setOnClickListener(v -> {
-            //open the next page for CocaCola to seeStatus
-            openActivitySeeOrder();
+            //open the next page for Driver to seeDeliveries
+            openactivityseedelivery();
         });
 
-        //Checking if the settings in CocaCola page button has been pressed
+        //Checking if the settings in Driver page button has been pressed
         Button buttonSettings = findViewById(R.id.Setting);
         buttonSettings.setOnClickListener(v -> {
-            //open the next page for CocaCola to change settings
+            //open the next page for Driver to change settings
             openActivitySetting();
         });
 
-        //Checking if the logout in CocaCola page button has been pressed
+        //Checking if the logout in Driver page button has been pressed
         Button buttonLogOut = findViewById(R.id.LogOut);
         buttonLogOut.setOnClickListener(v -> {
 
@@ -86,25 +86,21 @@ public class CocaColaActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Goodbye :)", Toast.LENGTH_LONG).show();
         });
 
-//        openActivity2();
     }
-//    public void openActivity2() {
-//        Intent intent = new Intent(CocaColaActivity.this, MainActivity.class);
-//        startActivity(intent);
-//    }
 
-    private void openActivitySeeOrder() {
-        Intent intent = new Intent(CocaColaActivity.this, CocaColaSeeInvoices.class);
+
+    private void openactivityseedelivery() {
+        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverActivity.this, DriverSeeDeliveries.class);
         startActivity(intent);
     }
 
     private void openActivitySetting() {
-        Intent intent = new Intent(CocaColaActivity.this, CocaColaSettings.class);
+        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverActivity.this, DriverSettings.class);
         startActivity(intent);
     }
 
     private void openActivityLogOut() {
-        Intent intent = new Intent(CocaColaActivity.this, LoginActivity.class);
+        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverActivity.this, LoginActivity.class);
         //erases the history of pages from last session
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

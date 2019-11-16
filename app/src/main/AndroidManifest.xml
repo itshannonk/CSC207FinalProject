@@ -42,7 +42,7 @@
             android:name=".cocacola.CocaColaActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".cocacola.CocaColaSeeDeliveries"
+            android:name=".cocacola.CocaColaSeeInvoices"
             android:parentActivityName=".cocacola.CocaColaActivity"
             android:screenOrientation="portrait" />
         <activity

@@ -10,9 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.CocaColaSeeDeliveries;
+import com.example.scotiabankpaymentsystem.cocacola.CocaColaSeeInvoices;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.google.android.material.resources.TextAppearanceConfig;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -91,7 +90,7 @@ public class SBOActivity extends AppCompatActivity {
     }
 
     private void openActivitySeeStatus() {
-        Intent intent = new Intent(SBOActivity.this, CocaColaSeeDeliveries.class);
+        Intent intent = new Intent(SBOActivity.this, CocaColaSeeInvoices.class);
         startActivity(intent);
     }
 
