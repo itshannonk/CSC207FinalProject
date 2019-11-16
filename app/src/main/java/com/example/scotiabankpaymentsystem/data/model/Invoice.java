@@ -1,13 +1,20 @@
 package com.example.scotiabankpaymentsystem.data.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Invoice {
-    private List<Item> listOfItems;
+    private List<Order> listOfOrders = new ArrayList<Order>();
     private double totalPrice;
-    private boolean statusOfInvoice;
-    private int ID;
+    private boolean statusOfInvoice = false;
+    private int ID = -1;
 
+    public Invoice(){
+        ID += 1;
+        listOfOrders.add(new Order());
+        listOfOrders.add(new Order());
+        statusOfInvoice = false;
+    }
     void setStatusOfInvoice(boolean status) {
         this.statusOfInvoice = status;
     }
@@ -16,12 +23,12 @@ public class Invoice {
         return this.statusOfInvoice;
     }
 
-    void addItem(Item newItem) {
-        listOfItems.add(newItem);
+    public void addOrder(Order newOrder) {
+        listOfOrders.add(newOrder);
     }
 
-    List<Item> getListOfOrder() {
-        return this.listOfItems;
+    List<Order> getListOfOrder() {
+        return this.listOfOrders;
     }
 
     double getTotalPrice() {
@@ -32,7 +39,7 @@ public class Invoice {
         this.totalPrice = newPrice;
     }
 
-    int getID() {
+    public int getID() {
         return this.ID;
     }
 }

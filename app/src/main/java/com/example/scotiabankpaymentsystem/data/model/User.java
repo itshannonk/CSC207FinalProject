@@ -10,7 +10,7 @@ public abstract class User {
     private String password;
     private String address;
     private int customerID = -1;
-    private List<Item> orders;
+    private List<Order> orders;
     private Invoice invoice;
 
     public User(String name, String password, String address) {
@@ -30,4 +30,5 @@ public abstract class User {
     public int getCustomerID() {
         return customerID;
     }
+
 }

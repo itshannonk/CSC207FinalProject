@@ -20,6 +20,8 @@ package com.example.scotiabankpaymentsystem.Registration;
 
 import android.app.Activity;
 
+import com.example.scotiabankpaymentsystem.data.model.User;
+
 public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedListener {
     private RegistrationView registerView;
     private RegisterInteractor registerInteractor;
