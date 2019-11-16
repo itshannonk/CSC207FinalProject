@@ -1,13 +1,13 @@
 package com.example.scotiabankpaymentsystem.driver;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
@@ -19,11 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-/**
- * The main page of a Driver's profile.
- */
 public class DriverActivity extends AppCompatActivity {
-
     FirebaseUser user;
     DatabaseReference databaseReference;
     String userName;
@@ -33,9 +29,7 @@ public class DriverActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_home);
-
-        // Initialize the current user and database
+        setContentView(R.layout.activity_driver);// Initialize the current user and database
         // userToken = user.getIdToken();
         user = FirebaseAuth.getInstance().getCurrentUser();
         userID = user.getUid();
@@ -45,8 +39,8 @@ public class DriverActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userName = dataSnapshot.child("Driver").child(userID).child("Name").getValue(String.class);
-                userEmail = dataSnapshot.child("Driver").child(userID).child("Email").getValue(String.class);
+                userName = dataSnapshot.child("Truck Driver").child(userID).child("Name").getValue(String.class);
+                userEmail = dataSnapshot.child("Truck Driver").child(userID).child("Email").getValue(String.class);
 
                 TextView welcomeText = findViewById(R.id.welcome_name);
                 String welcome = "Welcome " + userName;

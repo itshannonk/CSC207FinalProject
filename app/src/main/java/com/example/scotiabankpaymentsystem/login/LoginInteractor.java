@@ -22,9 +22,18 @@ package com.example.scotiabankpaymentsystem.login;
 import android.app.Activity;
 import android.text.TextUtils;
 import android.util.Patterns;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.example.scotiabankpaymentsystem.R;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginInteractor {
 
@@ -34,7 +43,9 @@ public class LoginInteractor {
         void onUsernameError();
         void onPasswordError();
         void onLoginError();
-        void onSuccess();
+        void onSBOSuccess();
+        void onTruckDriverSuccess();
+        void onCocaColaSuccess();
     }
 
     public void login(Activity loginActivity, final String username, final String password, final OnLoginFinishedListener listener) {
@@ -51,7 +62,31 @@ public class LoginInteractor {
                                     Toast.LENGTH_LONG).show();
                             listener.onLoginError();
                         } else {
-                            listener.onSuccess();
+                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+                            // Get the information of the current logged in user from database
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                    if((dataSnapshot.child("Truck Driver").hasChild(userID))){
+                                        System.out.println("entered truck");
+                                        listener.onTruckDriverSuccess();
+                                    }
+                                    else if((dataSnapshot.child("Business Owner").hasChild(userID))){
+                                        System.out.println("entered SBO");
+                                        listener.onSBOSuccess();
+                                    }
+                                    else{
+                                        System.out.println("entered coke");
+                                        listener.onCocaColaSuccess();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                }
+                            });
                         }
                     });
         }

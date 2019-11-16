@@ -28,5 +28,9 @@ public interface LoginView {
 
     void setPasswordError();
 
-    void navigateToHome();
+    void navigateToSBOHome();
+
+    void navigateToTruckDriverHome();
+
+    void navigateToCocaColaHome();
 }

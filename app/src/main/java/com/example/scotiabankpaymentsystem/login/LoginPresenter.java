@@ -68,9 +68,23 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
     }
 
     @Override
-    public void onSuccess() {
+    public void onSBOSuccess() {
         if (loginView != null) {
-            loginView.navigateToHome();
+            loginView.navigateToSBOHome();
+        }
+    }
+
+    @Override
+    public void onTruckDriverSuccess() {
+        if (loginView != null) {
+            loginView.navigateToTruckDriverHome();
+        }
+    }
+
+    @Override
+    public void onCocaColaSuccess() {
+        if (loginView != null) {
+            loginView.navigateToCocaColaHome();
         }
     }
 }
