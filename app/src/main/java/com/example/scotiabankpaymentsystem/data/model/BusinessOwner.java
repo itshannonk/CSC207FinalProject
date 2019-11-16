@@ -10,13 +10,6 @@ public class BusinessOwner extends User {
     }
 
     /**
-     * ?
-     */
-    void PlaceOrder() {
-
-    }
-
-    /**
      * Return the BusinessOwner's current invoice.
      */
     void seeInvoice() {

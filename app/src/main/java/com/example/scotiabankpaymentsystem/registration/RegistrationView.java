@@ -16,7 +16,7 @@
  *
  * We modified the code.
  */
-package com.example.scotiabankpaymentsystem.Registration;
+package com.example.scotiabankpaymentsystem.registration;
 
 public interface RegistrationView {
     void showProgress();

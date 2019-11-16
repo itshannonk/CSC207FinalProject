@@ -7,10 +7,12 @@
 
     <TextView
         android:id="@+id/welcome_name"
+        android:ellipsize="end"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:gravity="center"
-        android:text=""
+        android:text="hello"
         android:textSize="25sp"
         android:typeface="monospace" />
 
@@ -33,7 +35,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="25dp"
-        android:text="Settings"
+        android:text="Setting"
         tools:visibility="visible" />
 
     <Button

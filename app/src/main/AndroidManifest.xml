@@ -20,16 +20,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Registration.RegisterActivity"
+            android:name=".registration.RegisterActivity"
             android:label="@string/app_name"
             android:parentActivityName=".login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".businessowner.SBOActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".businessowner.SBOPlaceOrder"
-            android:parentActivityName=".businessowner.SBOActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".businessowner.SBOSeeOrder"

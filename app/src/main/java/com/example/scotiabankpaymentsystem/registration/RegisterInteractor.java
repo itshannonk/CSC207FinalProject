@@ -16,7 +16,7 @@
  *
  * We modified the code.
  */
-package com.example.scotiabankpaymentsystem.Registration;
+package com.example.scotiabankpaymentsystem.registration;
 
 import android.app.Activity;
 import android.widget.Toast;

@@ -16,11 +16,9 @@
  *
  * We modified the code.
  */
-package com.example.scotiabankpaymentsystem.Registration;
+package com.example.scotiabankpaymentsystem.registration;
 
 import android.app.Activity;
-
-import com.example.scotiabankpaymentsystem.data.model.User;
 
 public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedListener {
     private RegistrationView registerView;
