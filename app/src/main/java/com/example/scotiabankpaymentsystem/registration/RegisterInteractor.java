@@ -37,6 +37,7 @@ import java.util.HashMap;
 public class RegisterInteractor {
     private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private final FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
+    private boolean testing2= false;
     interface OnRegisterFinishedListener{
         void onFirstNameError();
         void onLastNameError();
@@ -81,7 +82,7 @@ public class RegisterInteractor {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             // authenticated new user so this will so this will now be added to the firebase database
-                            if (task.isSuccessful()) {
+                            if (task.isSuccessful() & !testing2) {
                                 DatabaseReference roleDatabaseReference = database.getReference(role);
 
                                 // this can be used to Observer design pattern since it will
@@ -129,6 +130,7 @@ public class RegisterInteractor {
                                 thisUserInfo.put("Invoices", myJSON);
                                 //thisUserInfo.put("Role", role);
                                 myRef.updateChildren(thisUserInfo);
+                                testing2 = true;
                                 listener.onSuccess();
                             } else {
                                 // If sign in fails, display a message to the user. This includes if the user already has an email.

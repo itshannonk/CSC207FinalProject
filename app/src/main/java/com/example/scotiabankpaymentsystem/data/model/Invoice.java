@@ -25,12 +25,13 @@ public class Invoice {
         return statusOfInvoice;
     }
 
-    public Invoice(){
+    public Invoice() {
         ID += 1;
         listOfOrders.add(new Order());
         listOfOrders.add(new Order());
         statusOfInvoice = false;
     }
+
     void setStatusOfInvoice(boolean status) {
         this.statusOfInvoice = status;
     }
@@ -58,6 +59,10 @@ public class Invoice {
     public int getID() {
         return this.ID;
     }
+
+    public void setid(int newID) {
+    this.ID =newID;
+}
 
     @Override
     public String toString(){

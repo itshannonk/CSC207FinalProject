@@ -1,6 +1,7 @@
 package com.example.scotiabankpaymentsystem.businessowner;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import com.google.gson.Gson;
  * A page that contains SBO's orders
  */
 public class SBOSeeOrder extends AppCompatActivity {
+    public static boolean testing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +42,27 @@ public class SBOSeeOrder extends AppCompatActivity {
                 if(!(newInvoiceString.equals(""))){
                     invoiceText.setText(newInvoiceString);
                 }
+                if(!testing) {
+                    //This is how you convert from a json file to an object
+                    Gson gson = new Gson();
+                    String json = newInvoiceString;
+                    Invoice invoice = gson.fromJson(json, Invoice.class);
+                    invoice.setID(5);
+                    Gson gsonChanged = new Gson();
+                    String mynewJSON = gsonChanged.toJson(invoice);
 
-                //This is how you convert from a json file to an object
-                Gson gson = new Gson();
-                String json = newInvoiceString;
-                Invoice invoice = gson.fromJson(json, Invoice.class);
-                System.out.println(invoice.getID());
+                    FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
+                    DatabaseReference roleDatabaseReference = database.getReference("Business Owner");
+                    DatabaseReference myRef = roleDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    DatabaseReference RefToReplace = myRef.child("Invoices");
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            RefToReplace.setValue(mynewJSON);
+                        }
+                    }, 2000);
+                    testing = true;
+                }
             }
 
             @Override
