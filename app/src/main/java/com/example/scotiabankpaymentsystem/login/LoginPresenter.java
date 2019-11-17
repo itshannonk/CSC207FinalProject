@@ -87,5 +87,6 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
             loginView.navigateToCocaColaHome();
         }
     }
+
 }
 

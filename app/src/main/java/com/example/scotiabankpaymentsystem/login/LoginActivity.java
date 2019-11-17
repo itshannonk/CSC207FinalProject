@@ -24,6 +24,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -111,4 +112,5 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         showProgress();
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
     }
+
 }

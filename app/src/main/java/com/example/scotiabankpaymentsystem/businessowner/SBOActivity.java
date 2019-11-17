@@ -90,7 +90,7 @@ public class SBOActivity extends AppCompatActivity {
     }
 
     private void openActivitySeeStatus() {
-        Intent intent = new Intent(SBOActivity.this, CocaColaSeeInvoices.class);
+        Intent intent = new Intent(SBOActivity.this, SBOSeeOrder.class);
         startActivity(intent);
     }
 

@@ -9,6 +9,22 @@ public class Invoice {
     private boolean statusOfInvoice = false;
     private int ID = -1;
 
+    public void setListOfOrders(List<Order> listOfOrders) {
+        this.listOfOrders = listOfOrders;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
+
+    public List<Order> getListOfOrders() {
+        return listOfOrders;
+    }
+
+    public boolean isStatusOfInvoice() {
+        return statusOfInvoice;
+    }
+
     public Invoice(){
         ID += 1;
         listOfOrders.add(new Order());
@@ -41,5 +57,10 @@ public class Invoice {
 
     public int getID() {
         return this.ID;
+    }
+
+    @Override
+    public String toString(){
+        return "invoice ID " + this.ID;
     }
 }

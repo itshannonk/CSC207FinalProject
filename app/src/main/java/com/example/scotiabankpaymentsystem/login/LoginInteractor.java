@@ -28,6 +28,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.data.model.Invoice;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -69,6 +70,7 @@ public class LoginInteractor {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
                                     if((dataSnapshot.child("Truck Driver").hasChild(userID))){
                                         System.out.println("entered truck");
                                         listener.onTruckDriverSuccess();
