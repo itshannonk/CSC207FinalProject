@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.data.model.Invoice;
+import com.example.scotiabankpaymentsystem.Invoice.Invoice;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -47,10 +47,12 @@ public class SBOSeeOrder extends AppCompatActivity {
                     Gson gson = new Gson();
                     String json = newInvoiceString;
                     Invoice invoice = gson.fromJson(json, Invoice.class);
-                    invoice.setID(5);
+                    invoice.setId(5);
+                    invoice.getStatus().setIssued(true);
+                    invoice.getStatus().setDelivered(true);
+                    invoice.getStatus().setPaid(true);
                     Gson gsonChanged = new Gson();
                     String mynewJSON = gsonChanged.toJson(invoice);
-
                     FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
                     DatabaseReference roleDatabaseReference = database.getReference("Business Owner");
                     DatabaseReference myRef = roleDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
