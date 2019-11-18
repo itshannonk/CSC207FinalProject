@@ -2,8 +2,10 @@ package com.example.scotiabankpaymentsystem.driver;
 
 import android.printservice.CustomPrinterIconCallback;
 
+import com.example.scotiabankpaymentsystem.Invoice.Invoice;
 import com.example.scotiabankpaymentsystem.businessowner.Customer;
 
+import java.security.KeyStore;
 import java.util.ArrayList;
 
 public class Distributer {
@@ -30,6 +32,9 @@ public class Distributer {
     }
 
     public void updateStatus(Customer customer) {
-        
+        ArrayList<Invoice> invoice_list = customer.getInvoice();
+        for (Invoice i : invoice_list){
+            i.getStatus().setDelivered(true);
+        }
     }
 }
