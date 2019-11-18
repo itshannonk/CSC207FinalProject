@@ -39,29 +39,29 @@ public class CocaColaSeeInvoices extends AppCompatActivity {
                 if(!(newInvoiceString.equals(""))){
                     invoiceText.setText(newInvoiceString);
                 }
-                if(!testing) {
-                    //This is how you convert from a json file to an object
-                    Gson gson = new Gson();
-                    String json = newInvoiceString;
-                    Invoice invoice = gson.fromJson(json, Invoice.class);
-                    invoice.setId(6);
-                    invoice.getStatus().setIssued(true);
-                    invoice.getStatus().setDelivered(true);
-                    invoice.getStatus().setPaid(true);
-                    Gson gsonChanged = new Gson();
-                    String mynewJSON = gsonChanged.toJson(invoice);
-                    FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
-                    DatabaseReference roleDatabaseReference = database.getReference("Business Owner");
-                    DatabaseReference myRef = roleDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-                    DatabaseReference RefToReplace = myRef.child("Invoices");
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            RefToReplace.setValue(mynewJSON);
-                        }
-                    }, 2000);
-                    testing = true;
-                }
+//                if(!testing) {
+//                    //This is how you convert from a json file to an object
+//                    Gson gson = new Gson();
+//                    String json = newInvoiceString;
+//                    Invoice invoice = gson.fromJson(json, Invoice.class);
+//                    invoice.setId(6);
+//                    invoice.getStatus().setIssued(true);
+//                    invoice.getStatus().setDelivered(true);
+//                    invoice.getStatus().setPaid(true);
+//                    Gson gsonChanged = new Gson();
+//                    String mynewJSON = gsonChanged.toJson(invoice);
+//                    FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
+//                    DatabaseReference roleDatabaseReference = database.getReference("CocaCola");
+//                    DatabaseReference myRef = roleDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//                    DatabaseReference RefToReplace = myRef.child("Invoices");
+//                    new Handler().postDelayed(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            RefToReplace.setValue(mynewJSON);
+//                        }
+//                    }, 2000);
+//                    testing = true;
+//                }
             }
 
             @Override
