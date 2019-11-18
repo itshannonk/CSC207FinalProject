@@ -57,7 +57,7 @@ public class DriverActivity extends AppCompatActivity {
         Button button = findViewById(R.id.SeeDelivery);
         button.setOnClickListener(v -> {
             //open the next page for Driver to seeDeliveries
-            openactivityseedelivery();
+            openActivitySeeDelivery();
         });
 
         //Checking if the settings in Driver page button has been pressed
@@ -82,19 +82,18 @@ public class DriverActivity extends AppCompatActivity {
 
     }
 
-
-    private void openactivityseedelivery() {
-        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverActivity.this, DriverSeeDeliveries.class);
+    private void openActivitySeeDelivery() {
+        Intent intent = new Intent(DriverActivity.this, DriverSeeDeliveries.class);
         startActivity(intent);
     }
 
     private void openActivitySetting() {
-        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverActivity.this, DriverSettings.class);
+        Intent intent = new Intent(DriverActivity.this, DriverSettings.class);
         startActivity(intent);
     }
 
     private void openActivityLogOut() {
-        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverActivity.this, LoginActivity.class);
+        Intent intent = new Intent(DriverActivity.this, LoginActivity.class);
         //erases the history of pages from last session
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
