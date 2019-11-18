@@ -48,6 +48,6 @@ public class Invoice {
     }
 
     public void changeStatus() {
-
+        // Update invoice status locally and remotely
     }
 }

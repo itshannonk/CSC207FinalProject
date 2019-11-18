@@ -46,10 +46,11 @@ public class Customer {
     }
 
     public Invoice receiveInvoice() {
+        // Save invoice to database under current customer's name
         return null;
     }
 
     public void payInvoice() {
-
+        // Update invoice status locally and in remote database
     }
 }

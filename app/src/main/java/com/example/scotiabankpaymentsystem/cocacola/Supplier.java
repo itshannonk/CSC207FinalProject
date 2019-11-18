@@ -25,6 +25,6 @@ public class Supplier {
     }
 
     public void setPaidStatus() {
-
+        // Update invoice status remotely and locally
     }
 }

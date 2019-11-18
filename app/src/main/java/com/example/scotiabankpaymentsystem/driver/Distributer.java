@@ -28,7 +28,7 @@ public class Distributer {
     }
 
     public void deliverGoods(Customer customer) {
-
+        // Update invoice status locally and remotely
     }
 
     public void updateStatus(Customer customer) {
