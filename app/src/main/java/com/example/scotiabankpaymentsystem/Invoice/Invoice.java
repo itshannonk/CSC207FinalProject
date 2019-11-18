@@ -12,7 +12,7 @@ public class Invoice {
     private int id;
 
     public Invoice() {
-
+        this.status = new Status();
     }
 
     public ArrayList<Order> getOrders() {
