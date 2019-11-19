@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
+import com.example.scotiabankpaymentsystem.driver.driverSetting;
+import com.example.scotiabankpaymentsystem.driver.driverSeeOrder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -83,12 +85,12 @@ public class DriverActivity extends AppCompatActivity {
     }
 
     private void openActivitySeeDelivery() {
-        Intent intent = new Intent(DriverActivity.this, DriverSeeDeliveries.class);
+        Intent intent = new Intent(this, driverSeeOrder.class);
         startActivity(intent);
     }
 
     private void openActivitySetting() {
-        Intent intent = new Intent(DriverActivity.this, DriverSettings.class);
+        Intent intent = new Intent(DriverActivity.this, com.example.scotiabankpaymentsystem.driver.driverSetting.class);
         startActivity(intent);
     }
 

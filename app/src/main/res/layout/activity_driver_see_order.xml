@@ -74,4 +74,4 @@
         android:layout_marginLeft="100dp"
         android:text="Go Back"
         tools:visibility="visible" />
-    </LinearLayout>
+</LinearLayout>

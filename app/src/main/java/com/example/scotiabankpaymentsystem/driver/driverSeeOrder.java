@@ -1,12 +1,11 @@
 package com.example.scotiabankpaymentsystem.driver;
 
-import android.app.AppComponentFactory;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.Invoice.Invoice;
 import com.example.scotiabankpaymentsystem.R;
@@ -18,13 +17,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-public class DriverSeeDeliveries extends AppCompatActivity {
+public class driverSeeOrder extends AppCompatActivity {
     public static boolean testing = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_driver_seeorder_has);
+        setContentView(R.layout.activity_driver_see_order);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         // Get the information of the current logged in user from database
@@ -69,4 +67,3 @@ public class DriverSeeDeliveries extends AppCompatActivity {
         });
     }
 }
-

@@ -1,11 +1,11 @@
 package com.example.scotiabankpaymentsystem.driver;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.data.ChangePassword;
@@ -16,16 +16,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-/**
- * A page that has Driver's settings.
- */
-public class DriverSettings extends AppCompatActivity {
+public class driverSetting extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_businessowner_settings);
-
+        setContentView(R.layout.activity_driver_setting);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         // Get the information of the current logged in user from database
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -37,17 +33,17 @@ public class DriverSettings extends AppCompatActivity {
                 System.out.println("invoice check once");
                 nameText.setText(newNameString);
 
-        //Checking if the changePassword in SBO's Settings page button has been pressed
-        findViewById(R.id.password).setOnClickListener(v -> {
-            //open the next page for the SBO to chan
-            openActivityChangePassword();
-        });
-    }
+                //Checking if the changePassword in SBO's Settings page button has been pressed
+                findViewById(R.id.password).setOnClickListener(v -> {
+                    //open the next page for the SBO to chan
+                    openActivityChangePassword();
+                });
+            }
 
-    public void openActivityChangePassword() {
-        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.DriverSettings.this, ChangePassword.class);
-        startActivity(intent);
-    }
+            public void openActivityChangePassword() {
+                Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.driverSetting.this, ChangePassword.class);
+                startActivity(intent);
+            }
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });}
