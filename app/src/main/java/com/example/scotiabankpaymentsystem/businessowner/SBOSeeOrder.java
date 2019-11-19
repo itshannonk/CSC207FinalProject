@@ -24,7 +24,6 @@ import com.google.gson.Gson;
  */
 public class SBOSeeOrder extends AppCompatActivity {
     public static boolean testing = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,22 +46,26 @@ public class SBOSeeOrder extends AppCompatActivity {
                     Gson gson = new Gson();
                     String json = newInvoiceString;
                     Invoice invoice = gson.fromJson(json, Invoice.class);
+                    //we can now do methods around the invoices
                     invoice.setId(5);
                     invoice.getStatus().setIssued(true);
                     invoice.getStatus().setDelivered(true);
                     invoice.getStatus().setPaid(true);
+                    //changing it back to an String to push back to the firebase
                     Gson gsonChanged = new Gson();
                     String mynewJSON = gsonChanged.toJson(invoice);
                     FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
                     DatabaseReference roleDatabaseReference = database.getReference("Business Owner");
                     DatabaseReference myRef = roleDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
                     DatabaseReference RefToReplace = myRef.child("Invoices");
+                    //slight delay for the display of the data to mimic realtime
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
                             RefToReplace.setValue(mynewJSON);
                         }
                     }, 2000);
+                    //testing boolean is for testing purposes so that it only executes this once.
                     testing = true;
                 }
             }

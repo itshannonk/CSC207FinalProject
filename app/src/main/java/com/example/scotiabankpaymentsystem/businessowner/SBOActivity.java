@@ -46,16 +46,14 @@ public class SBOActivity extends AppCompatActivity {
         userID = user.getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        // Get the information of the current logged in user from database
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        // Get the information of the current logged in user from database single time listener
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userName = dataSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class);
                 userEmail = dataSnapshot.child("Business Owner").child(userID).child("Email").getValue(String.class);
-
-                TextView welcomeText = findViewById(R.id.welcome_name);
-                String welcome = "Welcome " + userName;
-                welcomeText.setText(welcome);
+                //display the username after the data is retrieved since this is a single time listener.
+                displayName();
             }
 
             @Override
@@ -89,6 +87,11 @@ public class SBOActivity extends AppCompatActivity {
             finish();
             Toast.makeText(getApplicationContext(), "Goodbye :)", Toast.LENGTH_LONG).show();
         });
+    }
+    private void displayName(){
+        TextView welcomeText = findViewById(R.id.welcome_name);
+        String welcome = "Welcome " + userName;
+        welcomeText.setText(welcome);
     }
 
     private void openActivitySeeStatus() {
