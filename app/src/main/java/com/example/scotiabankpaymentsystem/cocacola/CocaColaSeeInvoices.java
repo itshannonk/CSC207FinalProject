@@ -36,6 +36,7 @@ public class CocaColaSeeInvoices extends AppCompatActivity {
                 TextView invoiceText = findViewById(R.id.Invoice);
                 System.out.println("invoice check once");
                 System.out.println(newInvoiceString);
+                invoiceText.setText(newInvoiceString);
                 if(!(newInvoiceString.equals(""))){
                     invoiceText.setText(newInvoiceString);
                 }
@@ -43,6 +44,7 @@ public class CocaColaSeeInvoices extends AppCompatActivity {
                     //This is how you convert from a json file to an object
                     Gson gson = new Gson();
                     String json = newInvoiceString;
+
                     Invoice invoice = gson.fromJson(json, Invoice.class);
                     invoice.setId(6);
                     invoice.getStatus().setIssued(true);

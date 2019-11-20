@@ -47,12 +47,13 @@ public class SBOSettings extends AppCompatActivity {
                 });
             }
 
-            public void openActivityChangePassword() {
-                Intent intent = new Intent(SBOSettings.this, ChangePassword.class);
-                startActivity(intent);
-            }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
-        });}}
+        });}
+
+    public void openActivityChangePassword() {
+        Intent intent = new Intent(SBOSettings.this, ChangePassword.class);
+        startActivity(intent);
+    }
+}
