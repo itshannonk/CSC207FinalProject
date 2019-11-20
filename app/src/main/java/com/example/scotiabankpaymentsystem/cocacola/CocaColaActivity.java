@@ -47,10 +47,8 @@ public class CocaColaActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userName = dataSnapshot.child("CocaCola").child(userID).child("Name").getValue(String.class);
                 userEmail = dataSnapshot.child("CocaCola").child(userID).child("Email").getValue(String.class);
-
-                TextView welcomeText = findViewById(R.id.welcome_name);
-                String welcome = "Welcome Corporate Overlord";
-                welcomeText.setText(welcome);
+                //display the username after the data is retrieved since this is a single time listener.
+                displayName();
             }
 
             @Override
@@ -92,6 +90,11 @@ public class CocaColaActivity extends AppCompatActivity {
 //        Intent intent = new Intent(CocaColaActivity.this, MainActivity.class);
 //        startActivity(intent);
 //    }
+    private void displayName(){
+        TextView welcomeText = findViewById(R.id.welcome_name);
+        String welcome = "Welcome Corporate Overlord";
+        welcomeText.setText(welcome);
+    }
 
     private void openActivitySeeOrder() {
         Intent intent = new Intent(CocaColaActivity.this, CocaColaSeeInvoices.class);
