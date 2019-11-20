@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".driver.driverSeeOrder"
-            android:parentActivityName=".driver.DriverActivity"></activity>
-        <activity android:name=".driver.driverSetting"
-            android:parentActivityName=".driver.DriverActivity"/>
+        <activity
+            android:name=".driver.driverSeeOrder"
+            android:parentActivityName=".driver.DriverActivity" />
+        <activity
+            android:name=".driver.driverSetting"
+            android:parentActivityName=".driver.DriverActivity" />
         <activity android:name=".driver.DriverActivity" />
         <activity
             android:name=".login.LoginActivity"

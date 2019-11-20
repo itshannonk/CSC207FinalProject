@@ -36,6 +36,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+/**
+ * This is the Model because it implements a use case (login)
+ */
 public class LoginInteractor {
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();

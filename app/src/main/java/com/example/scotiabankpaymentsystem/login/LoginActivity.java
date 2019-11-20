@@ -24,17 +24,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaActivity;
 import com.example.scotiabankpaymentsystem.driver.DriverActivity;
 import com.example.scotiabankpaymentsystem.registration.RegisterActivity;
-import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
+import com.example.scotiabankpaymentsystem.businessowner.home.testing;
 
+/**
+ * This is the Activity and it implements the View methods
+ */
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private ProgressBar progressBar;
     private EditText username;

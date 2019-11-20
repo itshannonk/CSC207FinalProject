@@ -34,7 +34,8 @@ public class SBOActivity extends AppCompatActivity {
 
     // TODO: get invoices!
 
-
+    Customer useruser;
+    DataSnapshot latestSnapshot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class SBOActivity extends AppCompatActivity {
                 userEmail = dataSnapshot.child("Business Owner").child(userID).child("Email").getValue(String.class);
                 //display the username after the data is retrieved since this is a single time listener.
                 displayName();
+                latestSnapshot = dataSnapshot;
             }
 
             @Override
@@ -62,6 +64,8 @@ public class SBOActivity extends AppCompatActivity {
             }
         });
 
+
+        System.out.println("outside" + latestSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class));
         //Checking if the seeStatus in SBO page button has been pressed
         Button button = findViewById(R.id.SeeStatus);
         button.setOnClickListener(v -> {
@@ -76,7 +80,7 @@ public class SBOActivity extends AppCompatActivity {
             openActivitySetting();
         });
 
-        //Checking if the logout in SBO page button has been pressed
+        //Checking if thelogout in SBO page button has been pressed
         Button buttonLogOut = findViewById(R.id.LogOut);
         buttonLogOut.setOnClickListener(v -> {
             //clear session between app and FireBase database
@@ -88,6 +92,11 @@ public class SBOActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Goodbye :)", Toast.LENGTH_LONG).show();
         });
     }
+
+    private void setvalues(String username) {
+        userName = username;
+    }
+
     private void displayName(){
         TextView welcomeText = findViewById(R.id.welcome_name);
         String welcome = "Welcome " + userName;

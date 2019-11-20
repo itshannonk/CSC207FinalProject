@@ -17,23 +17,17 @@
  * We modified the code.
  */
 
-package com.example.scotiabankpaymentsystem.login;
+package com.example.scotiabankpaymentsystem.businessowner.home;
 
 /**
  * This is the View and it calls a presenter method every time there is a user action
  */
-public interface LoginView {
-    void showProgress();
+public interface SBOHomeView {
 
-    void hideProgress();
+    void navigateToActivitySettings();
+    void navigateToActivitySeeStatus();
+    void navigateToActivityLogOut();
+    void displayName();
+    void setDisplayName(String username);
 
-    void setUsernameError();
-
-    void setPasswordError();
-
-    void navigateToSBOHome();
-
-    void navigateToTruckDriverHome();
-
-    void navigateToCocaColaHome();
 }

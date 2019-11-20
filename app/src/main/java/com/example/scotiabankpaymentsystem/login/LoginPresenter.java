@@ -21,6 +21,10 @@ package com.example.scotiabankpaymentsystem.login;
 
 import android.app.Activity;
 
+/**
+ * This is the Presenter who acts as the middleman between View and Model.
+ * It retrieves data from the model and returns it formatted to the view.
+ */
 public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
 
     private LoginView loginView;
