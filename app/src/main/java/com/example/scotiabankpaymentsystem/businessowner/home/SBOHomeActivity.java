@@ -3,21 +3,15 @@ package com.example.scotiabankpaymentsystem.businessowner.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSettings;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.example.scotiabankpaymentsystem.login.LoginInteractor;
-import com.example.scotiabankpaymentsystem.login.LoginPresenter;
-import com.example.scotiabankpaymentsystem.login.LoginView;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -37,8 +31,6 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_home);
 
-        displayName();
-
         settingsButton = findViewById(R.id.Setting);
         seeStatusButton = findViewById(R.id.SeeStatus);
         logoutButton = findViewById(R.id.LogOut);
@@ -47,6 +39,8 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         findViewById(R.id.SeeStatus).setOnClickListener(v -> navigateToActivitySeeStatus());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new SBOHomePresenter(this, new SBOHomeInteractor());
+
+        displayName();
     }
 
     @Override
@@ -54,8 +48,6 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         presenter.onDestroy();
         super.onDestroy();
     }
-
-
 
     @Override
     public void navigateToActivitySettings() {
@@ -87,12 +79,10 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
     @Override
     public void displayName() {
         presenter.displayName();
-        System.out.println(presenter);
     }
 
     @Override
-    public void setDisplayName(String username){
-        System.out.println("home username: " + username);
+    public void setDisplayName(String username) {
         TextView welcomeText = findViewById(R.id.welcome_name);
         String welcome = "Welcome " + username;
         welcomeText.setText(welcome);

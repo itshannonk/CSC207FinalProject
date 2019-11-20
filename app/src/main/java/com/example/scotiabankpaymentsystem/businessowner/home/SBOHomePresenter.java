@@ -1,15 +1,15 @@
 package com.example.scotiabankpaymentsystem.businessowner.home;
 
-public class SBOHomePresenter implements SBOHomeInteractor.OnLoginFinishedListener{
+public class SBOHomePresenter implements SBOHomeInteractor.OnLoginFinishedListener {
     private SBOHomeView sboHomeView;
     private SBOHomeInteractor sboHomeInteractor;
 
-    SBOHomePresenter(SBOHomeView sboHomeView, SBOHomeInteractor sboHomeInteractor){
+    SBOHomePresenter(SBOHomeView sboHomeView, SBOHomeInteractor sboHomeInteractor) {
         this.sboHomeView = sboHomeView;
         this.sboHomeInteractor = sboHomeInteractor;
     }
 
-    public void displayName(){
+    public void displayName() {
         System.out.println("reached presenter display name");
         sboHomeInteractor.displayName(this);
     }

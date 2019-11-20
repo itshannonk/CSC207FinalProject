@@ -1,7 +1,5 @@
 package com.example.scotiabankpaymentsystem.businessowner.home;
 
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -18,15 +16,12 @@ public class SBOHomeInteractor {
         void onHomePageSuccess(String username);
     }
 
-    FirebaseUser user;
-    String userID;
-    DatabaseReference databaseReference;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    private String userID = user.getUid();
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
     //getting stuff from database
     public void displayName(final OnLoginFinishedListener listener) {
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        userID = user.getUid();
 
         // Get the information of the current logged in user from database single time listener
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".driver.driverSeeOrder"
-            android:parentActivityName=".driver.DriverActivity" />
+            android:parentActivityName=".driver.DriverActivity"></activity>
         <activity
             android:name=".driver.driverSetting"
             android:parentActivityName=".driver.DriverActivity" />
@@ -32,15 +32,15 @@
             android:parentActivityName=".login.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".businessowner.SBOActivity"
+            android:name=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".businessowner.SBOSeeOrder"
-            android:parentActivityName=".businessowner.SBOActivity"
+            android:parentActivityName=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".businessowner.SBOSettings"
-            android:parentActivityName=".businessowner.SBOActivity"
+            android:parentActivityName=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".data.ChangePassword"
