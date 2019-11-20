@@ -5,14 +5,17 @@ import com.example.scotiabankpaymentsystem.Status.Status;
 
 import java.util.ArrayList;
 
+// IS IT BAD TO HAVE STATIC VARIABLES????
 public class Invoice {
     private ArrayList<Order> orders;
     private int price;
     private Status status;
+    private static int counter = 0;
     private int id;
 
     public Invoice() {
         this.status = new Status();
+        this.id = counter++;
     }
 
     public ArrayList<Order> getOrders() {

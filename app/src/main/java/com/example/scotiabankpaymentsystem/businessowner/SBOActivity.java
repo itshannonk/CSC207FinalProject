@@ -53,7 +53,7 @@ public class SBOActivity extends AppCompatActivity {
                 userName = dataSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class);
                 userEmail = dataSnapshot.child("Business Owner").child(userID).child("Email").getValue(String.class);
                 //display the username after the data is retrieved since this is a single time listener.
-                displayName();
+                displayName(userName, userEmail);
             }
 
             @Override
@@ -88,12 +88,13 @@ public class SBOActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Goodbye :)", Toast.LENGTH_LONG).show();
         });
     }
-    private void displayName(){
+    private void displayName(String username, String email){
+        this.userName = username;
+        this.userEmail = email;
         TextView welcomeText = findViewById(R.id.welcome_name);
         String welcome = "Welcome " + userName;
         welcomeText.setText(welcome);
     }
-
     private void openActivitySeeStatus() {
         Intent intent = new Intent(SBOActivity.this, SBOSeeOrder.class);
         startActivity(intent);

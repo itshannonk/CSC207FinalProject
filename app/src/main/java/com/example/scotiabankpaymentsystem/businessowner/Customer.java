@@ -6,11 +6,12 @@ import com.example.scotiabankpaymentsystem.Invoice.Invoice;
 public class Customer {
     private String name;
     private String address;
+    private static int counter;
     private int id;
     private ArrayList<Invoice> invoice;
 
     public Customer() {
-
+        this.id = counter++;
     }
 
     public String getName() {
@@ -41,7 +42,10 @@ public class Customer {
         this.id = id;
     }
 
-    public void setInvoice(ArrayList<Invoice> invoice) {
+    public void setInvoice(ArrayList<Invoice> invoice)
+    {//why is this a set invoice not addint it to an array
+
+        // DON'T FORGET TO ADD THIS INVOICE by calling the addInvoiceToFirebaseMethod or it might cause problems
         this.invoice = invoice;
     }
 
@@ -52,5 +56,8 @@ public class Customer {
 
     public void payInvoice() {
         // Update invoice status locally and in remote database
+    }
+    public void addInvoiceToFireBase(Invoice invoice){
+
     }
 }

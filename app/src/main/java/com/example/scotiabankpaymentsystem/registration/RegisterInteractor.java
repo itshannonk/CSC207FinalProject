@@ -23,7 +23,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.scotiabankpaymentsystem.data.model.Invoice;
+import com.example.scotiabankpaymentsystem.Invoice.Invoice;
+import com.example.scotiabankpaymentsystem.businessowner.Customer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -119,15 +120,56 @@ public class RegisterInteractor {
                                 thisUserInfo.put("Address", address);
                                 thisUserInfo.put("Password", password);
                                 thisUserInfo.put("Email", email);
+                                Gson gson = new Gson();
 
                                 // this is converting the invoice to a json format
                                 // which will make it a string and then it can be inputed
-                                Invoice invoice = new Invoice();
-                                Gson gson = new Gson();
-                                String myJSON = gson.toJson(invoice);
+                                if(role.equals("Business Owner")) {
+                                    Invoice invoice = new Invoice();
+                                    String myJSON = gson.toJson(invoice);
+
+                                    // get second invoice
+                                    Invoice invoice2 = new Invoice();
+                                    String myJSON2 = gson.toJson(invoice);
+
+                                    // third invoice mock
+                                    Invoice invoice3 = new Invoice();
+                                    String myJSON3 = gson.toJson(invoice);
+
+                                    // fourth invoice mock
+                                    Invoice invoice4 = new Invoice();
+                                    String myJSON4 = gson.toJson(invoice);
+                                    //
+                                    HashMap<String, String> invoiceList = new HashMap<String, String>();
+                                    invoiceList.put(Integer.toString(invoice.getId()), myJSON);
+                                    invoiceList.put(Integer.toString(invoice2.getId()), myJSON2);
+                                    invoiceList.put(Integer.toString(invoice3.getId()), myJSON3);
+                                    invoiceList.put(Integer.toString(invoice4.getId()), myJSON4);
+                                    thisUserInfo.put("Invoices", invoiceList);
+                                    database.getReference("Invoices").setValue(invoiceList);
+                                }
+                                else{
+
+                                    Customer customer = new Customer();
+                                    String myJSON = gson.toJson(customer);
 
 
-                                thisUserInfo.put("Invoices", myJSON);
+                                    Customer customer2 = new Customer();
+                                    String myJSON2 = gson.toJson(customer);
+
+                                    Customer customer3 = new Customer();
+                                    String myJSON3 = gson.toJson(customer);
+
+                                    Customer customer4 = new Customer();
+                                    String myJSON4 = gson.toJson(customer);
+
+                                    HashMap<String, String> invoiceList = new HashMap<String, String>();
+                                    invoiceList.put(Integer.toString(customer.getId()), myJSON);
+                                    invoiceList.put(Integer.toString(customer2.getId()), myJSON2);
+                                    invoiceList.put(Integer.toString(customer3.getId()), myJSON3);
+                                    invoiceList.put(Integer.toString(customer4.getId()), myJSON4);
+                                    thisUserInfo.put("Customers", invoiceList);
+                                }
                                 //thisUserInfo.put("Role", role);
                                 myRef.updateChildren(thisUserInfo);
                                 testing2 = true;
