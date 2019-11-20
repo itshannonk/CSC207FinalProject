@@ -23,7 +23,7 @@ import com.google.gson.Gson;
  * A page that contains SBO's orders
  */
 public class SBOSeeOrder extends AppCompatActivity {
-    public static boolean testing = false;
+    private static boolean testing = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
