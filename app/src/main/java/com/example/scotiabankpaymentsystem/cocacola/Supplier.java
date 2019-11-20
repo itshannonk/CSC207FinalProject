@@ -26,5 +26,10 @@ public class Supplier {
 
     public void setPaidStatus() {
         // Update invoice status remotely and locally
+        for (Customer c : customers) {
+            for (Invoice i : c.getInvoice()) {
+                i.getStatus().setPaid(true);
+            }
+        }
     }
 }

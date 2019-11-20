@@ -40,11 +40,12 @@ public class driverSetting extends AppCompatActivity {
                 });
             }
 
-            public void openActivityChangePassword() {
-                Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.driverSetting.this, ChangePassword.class);
-                startActivity(intent);
-            }
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });}
+
+    public void openActivityChangePassword() {
+        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.driverSetting.this, ChangePassword.class);
+        startActivity(intent);
+    }
 }
