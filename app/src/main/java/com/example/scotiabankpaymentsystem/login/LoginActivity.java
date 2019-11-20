@@ -24,17 +24,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaActivity;
 import com.example.scotiabankpaymentsystem.driver.DriverActivity;
 import com.example.scotiabankpaymentsystem.registration.RegisterActivity;
-import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
 
+/**
+ * This is the Activity and it implements the View methods
+ */
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private ProgressBar progressBar;
     private EditText username;
@@ -81,22 +83,23 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void navigateToSBOHome(){
-        startActivity(new Intent(this, SBOActivity.class));
+    public void navigateToSBOHome() {
+        startActivity(new Intent(this, SBOHomeActivity.class));
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
         finish();
     }
 
     @Override
-    public void navigateToTruckDriverHome(){
+    public void navigateToTruckDriverHome() {
         startActivity(new Intent(this, DriverActivity.class));
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
         finish();
     }
+
     @Override
-    public void navigateToCocaColaHome(){
+    public void navigateToCocaColaHome() {
         startActivity(new Intent(this, CocaColaActivity.class));
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();

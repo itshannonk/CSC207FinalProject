@@ -33,7 +33,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.SBOActivity;
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaActivity;
 import com.example.scotiabankpaymentsystem.driver.DriverActivity;
 
@@ -148,13 +148,11 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
 
     @Override
     public void navigateToHome() {
-        if(role.equals("Business Owner")) {
-            startActivity(new Intent(this, SBOActivity.class));
-        }
-        else if (role.equals("CocaCola")){
+        if (role.equals("Business Owner")) {
+            startActivity(new Intent(this, SBOHomeActivity.class));
+        } else if (role.equals("CocaCola")) {
             startActivity(new Intent(this, CocaColaActivity.class));
-        }
-        else{
+        } else {
             startActivity(new Intent(this, DriverActivity.class));
         }
         Toast.makeText(RegisterActivity.this, "Welcome, " + firstName.getText().toString().trim() + " " + lastName.getText().toString().trim() + " :)",
