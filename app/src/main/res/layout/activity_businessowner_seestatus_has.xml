@@ -56,4 +56,14 @@
         tools:visibility="visible" />
 
 
+    <Button
+        android:id="@+id/GoBack"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:text="Go Back"
+        tools:visibility="visible" />
+
 </LinearLayout>
