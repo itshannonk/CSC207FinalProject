@@ -30,8 +30,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
-import com.example.scotiabankpaymentsystem.cocacola.CocaColaActivity;
-import com.example.scotiabankpaymentsystem.driver.DriverActivity;
+import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
+import com.example.scotiabankpaymentsystem.driver.home.DriverHomeActivity;
 import com.example.scotiabankpaymentsystem.registration.RegisterActivity;
 
 /**
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToTruckDriverHome() {
-        startActivity(new Intent(this, DriverActivity.class));
+        startActivity(new Intent(this, DriverHomeActivity.class));
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
         finish();
@@ -100,7 +100,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToCocaColaHome() {
-        startActivity(new Intent(this, CocaColaActivity.class));
+        startActivity(new Intent(this, CCHomeActivity.class));
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
         finish();

@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.Status;
+package com.example.scotiabankpaymentsystem.status;
 
 public class Status {
     private boolean issued = false;

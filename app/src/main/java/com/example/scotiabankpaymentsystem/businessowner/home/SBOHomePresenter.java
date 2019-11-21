@@ -1,6 +1,6 @@
 package com.example.scotiabankpaymentsystem.businessowner.home;
 
-public class SBOHomePresenter implements SBOHomeInteractor.OnLoginFinishedListener {
+public class SBOHomePresenter implements SBOHomeInteractor.onDisplayDataFinishedListener {
     private SBOHomeView sboHomeView;
     private SBOHomeInteractor sboHomeInteractor;
 
@@ -10,7 +10,6 @@ public class SBOHomePresenter implements SBOHomeInteractor.OnLoginFinishedListen
     }
 
     public void displayName() {
-        System.out.println("reached presenter display name");
         sboHomeInteractor.displayName(this);
     }
 
@@ -20,7 +19,6 @@ public class SBOHomePresenter implements SBOHomeInteractor.OnLoginFinishedListen
 
     @Override
     public void onHomePageSuccess(String username) {
-        System.out.println("reached presenter success");
         sboHomeView.setDisplayName(username);
     }
 }

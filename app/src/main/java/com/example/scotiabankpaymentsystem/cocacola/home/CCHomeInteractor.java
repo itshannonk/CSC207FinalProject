@@ -1,8 +1,9 @@
-package com.example.scotiabankpaymentsystem.businessowner.home;
+package com.example.scotiabankpaymentsystem.cocacola.home;
+
 
 import androidx.annotation.NonNull;
 
-import com.example.scotiabankpaymentsystem.businessowner.Customer;
+import com.example.scotiabankpaymentsystem.cocacola.Supplier;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -12,7 +13,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 
-public class SBOHomeInteractor {
+public class CCHomeInteractor {
+
     interface onDisplayDataFinishedListener {
         //successfully retrieves user information from database
         void onHomePageSuccess(String username);
@@ -21,7 +23,7 @@ public class SBOHomeInteractor {
     private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private String userID = user.getUid();
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-    private Customer customer = new Customer();
+    private Supplier supplier = new Supplier();
 
 
     public void displayName(final onDisplayDataFinishedListener listener) {
@@ -29,9 +31,10 @@ public class SBOHomeInteractor {
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String username = dataSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class);
+                String username = dataSnapshot.child("CocaCola").child(userID).child("Name").getValue(String.class);
                 listener.onHomePageSuccess(username);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 //Toast.makeText(getApplicationContext(), "Network error, please check your connection", Toast.LENGTH_LONG);
@@ -40,23 +43,12 @@ public class SBOHomeInteractor {
     }
 
     // Creates the customer by retrieving information from the database
-    public void createCustomer(){
+    public void createSupplier() {
         // Get the information of the current logged in user from database single time listener
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                customer.setName(dataSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class));
-                customer.setAddress(dataSnapshot.child("Business Owner").child(userID).child("Address").getValue(String.class));
-
-                //getting invoices from the database as string, creating Invoice objects and storing them in an ArrayList
-                //TODO for amy: don't forget to set invoices!
-//                String invoiceString = dataSnapshot.child("Business Owner").child(userID).child("Invoices").getValue(String.class);
-//                Gson gson = new Gson();
-//                Invoice invoice = gson.fromJson(invoiceString, Invoice.class);
-//
-//                "{\"id\":5,\"price\":0,\"status\":{\"delivered\":true,\"issued\":true,\"paid\":true}}"
-//                customer.setInvoice();
-
+                //TODO for amy: implement this
             }
 
             @Override
@@ -66,15 +58,12 @@ public class SBOHomeInteractor {
         });
     }
 
-    public FirebaseUser getFirebaseUser(){
+    public FirebaseUser getFirebaseUser() {
         return this.user;
     }
 
-    public DatabaseReference getDatabaseReference(){
+    public DatabaseReference getDatabaseReference() {
         return this.databaseReference;
     }
-
-    public Customer getCustomer(){
-        return this.customer;
-    }
 }
+

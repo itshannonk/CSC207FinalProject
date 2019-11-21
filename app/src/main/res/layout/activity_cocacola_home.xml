@@ -15,7 +15,7 @@
         android:typeface="monospace" />
 
     <Button
-        android:id="@+id/Order"
+        android:id="@+id/SeeInvoice"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/welcome_name"
@@ -29,7 +29,7 @@
         android:id="@+id/Setting"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Order"
+        android:layout_below="@+id/SeeInvoice"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="25dp"

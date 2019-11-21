@@ -2,13 +2,12 @@ package com.example.scotiabankpaymentsystem.cocacola;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scotiabankpaymentsystem.Invoice.Invoice;
+import com.example.scotiabankpaymentsystem.invoice.Invoice;
 import com.example.scotiabankpaymentsystem.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

@@ -34,8 +34,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
-import com.example.scotiabankpaymentsystem.cocacola.CocaColaActivity;
-import com.example.scotiabankpaymentsystem.driver.DriverActivity;
+import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
+import com.example.scotiabankpaymentsystem.driver.home.DriverHomeActivity;
+
+import java.sql.Driver;
 
 /**
  * Class that registers the users when they sign up and this uses Firebase's authentication
@@ -151,9 +153,9 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         if (role.equals("Business Owner")) {
             startActivity(new Intent(this, SBOHomeActivity.class));
         } else if (role.equals("CocaCola")) {
-            startActivity(new Intent(this, CocaColaActivity.class));
+            startActivity(new Intent(this, CCHomeActivity.class));
         } else {
-            startActivity(new Intent(this, DriverActivity.class));
+            startActivity(new Intent(this, DriverHomeActivity.class));
         }
         Toast.makeText(RegisterActivity.this, "Welcome, " + firstName.getText().toString().trim() + " " + lastName.getText().toString().trim() + " :)",
                 Toast.LENGTH_LONG).show();

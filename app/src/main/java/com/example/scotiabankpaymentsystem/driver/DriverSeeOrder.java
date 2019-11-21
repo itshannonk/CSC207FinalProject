@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
-import com.example.scotiabankpaymentsystem.Invoice.Invoice;
+import com.example.scotiabankpaymentsystem.invoice.Invoice;
 import com.example.scotiabankpaymentsystem.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
-public class driverSeeOrder extends AppCompatActivity {
+public class DriverSeeOrder extends AppCompatActivity {
     public static boolean testing = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

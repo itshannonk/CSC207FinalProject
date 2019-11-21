@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.scotiabankpaymentsystem.Invoice.Invoice;
+import com.example.scotiabankpaymentsystem.invoice.Invoice;
 import com.example.scotiabankpaymentsystem.businessowner.Customer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

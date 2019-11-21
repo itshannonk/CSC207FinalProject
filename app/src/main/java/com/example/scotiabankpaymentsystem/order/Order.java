@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.Order;
+package com.example.scotiabankpaymentsystem.order;
 
 import com.example.scotiabankpaymentsystem.Item.Item;
 

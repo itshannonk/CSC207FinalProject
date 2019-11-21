@@ -1,7 +1,7 @@
-package com.example.scotiabankpaymentsystem.Invoice;
+package com.example.scotiabankpaymentsystem.invoice;
 
-import com.example.scotiabankpaymentsystem.Order.Order;
-import com.example.scotiabankpaymentsystem.Status.Status;
+import com.example.scotiabankpaymentsystem.order.Order;
+import com.example.scotiabankpaymentsystem.status.Status;
 
 import java.util.ArrayList;
 

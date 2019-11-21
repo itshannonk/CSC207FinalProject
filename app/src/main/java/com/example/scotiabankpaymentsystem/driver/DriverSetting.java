@@ -16,7 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class driverSetting extends AppCompatActivity {
+public class DriverSetting extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class driverSetting extends AppCompatActivity {
         });}
 
     public void openActivityChangePassword() {
-        Intent intent = new Intent(com.example.scotiabankpaymentsystem.driver.driverSetting.this, ChangePassword.class);
+        Intent intent = new Intent(DriverSetting.this, ChangePassword.class);
         startActivity(intent);
     }
 }
