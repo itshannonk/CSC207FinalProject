@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.data;
+package com.example.scotiabankpaymentsystem.settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 

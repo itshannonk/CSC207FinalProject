@@ -23,8 +23,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.example.scotiabankpaymentsystem.invoice.Invoice;
-import com.example.scotiabankpaymentsystem.businessowner.Customer;
+import com.example.scotiabankpaymentsystem.model.Invoice;
+import com.example.scotiabankpaymentsystem.model.Customer;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -67,11 +67,11 @@ public class RegisterInteractor {
             listener.onEmailError();
             noProblems = false;
         }
-        if (address.trim().isEmpty()) {
+        if (address.trim().isEmpty() && role.equals("a Business Owner")) {
             listener.onAddressError();
             noProblems = false;
         }
-        if (role.equals("Choose your role")) {
+        if (role.equals("Are you...")) {
             // the user has not selected a role and it is still at the default of "choose your role"
             listener.onRoleError();
             noProblems = false;

@@ -50,7 +50,6 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
     private EditText address;
     private EditText email;
     private Button registerButton;
-    private ProgressBar loadingProgressBar;
     private Spinner roleSelectionSpinner;
     private String role;
     private RegisterPresenter presenter;
@@ -70,7 +69,6 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
 
 
         registerButton = findViewById(R.id.next_button);
-        loadingProgressBar = findViewById(R.id.loading);
 //        findViewById(R.id.signin_tab).setOnClickListener(v -> switchTabs());
 
         // now it is setting the role to the associated selected role. It has to detect when the user changes the selected drop down item.
@@ -172,7 +170,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
 
     @Override
     public void navigateToHome() {
-        if (role.equals("Business Owner")) {
+        if (role.equals("a Business Owner")) {
             startActivity(new Intent(this, SBOHomeActivity.class));
         } else if (role.equals("CocaCola")) {
             startActivity(new Intent(this, CCHomeActivity.class));

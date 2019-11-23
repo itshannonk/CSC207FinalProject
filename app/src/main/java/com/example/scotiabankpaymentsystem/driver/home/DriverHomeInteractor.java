@@ -3,8 +3,7 @@ package com.example.scotiabankpaymentsystem.driver.home;
 
 import androidx.annotation.NonNull;
 
-import com.example.scotiabankpaymentsystem.cocacola.Supplier;
-import com.example.scotiabankpaymentsystem.driver.Distributer;
+import com.example.scotiabankpaymentsystem.model.Distributer;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

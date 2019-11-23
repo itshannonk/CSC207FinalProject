@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.Customer;
+import com.example.scotiabankpaymentsystem.model.Customer;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSettings;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;

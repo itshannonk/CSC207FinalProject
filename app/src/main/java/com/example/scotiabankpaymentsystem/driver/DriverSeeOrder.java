@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
-import com.example.scotiabankpaymentsystem.invoice.Invoice;
+import com.example.scotiabankpaymentsystem.model.Invoice;
 import com.example.scotiabankpaymentsystem.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

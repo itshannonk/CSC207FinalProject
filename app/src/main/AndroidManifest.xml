@@ -37,7 +37,7 @@
             android:parentActivityName=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".data.ChangePassword"
+            android:name=".settings.ChangePassword"
             android:parentActivityName=".businessowner.SBOSettings" />
         <activity
             android:name=".cocacola.home.CCHomeActivity"

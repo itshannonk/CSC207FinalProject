@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.Item;
+package com.example.scotiabankpaymentsystem.model;
 
 public class Item {
     private String name;

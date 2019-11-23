@@ -1,7 +1,4 @@
-package com.example.scotiabankpaymentsystem.cocacola;
-
-import com.example.scotiabankpaymentsystem.businessowner.Customer;
-import com.example.scotiabankpaymentsystem.invoice.Invoice;
+package com.example.scotiabankpaymentsystem.model;
 
 import java.util.ArrayList;
 

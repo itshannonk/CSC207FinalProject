@@ -1,6 +1,4 @@
-package com.example.scotiabankpaymentsystem.order;
-
-import com.example.scotiabankpaymentsystem.Item.Item;
+package com.example.scotiabankpaymentsystem.model;
 
 import java.util.ArrayList;
 

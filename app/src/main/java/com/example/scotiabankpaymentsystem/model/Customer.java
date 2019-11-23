@@ -1,7 +1,7 @@
-package com.example.scotiabankpaymentsystem.businessowner;
+package com.example.scotiabankpaymentsystem.model;
 
 import java.util.ArrayList;
-import com.example.scotiabankpaymentsystem.invoice.Invoice;
+import com.example.scotiabankpaymentsystem.model.Invoice;
 
 public class Customer {
     private String name;

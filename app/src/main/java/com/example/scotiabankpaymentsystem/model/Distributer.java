@@ -1,7 +1,4 @@
-package com.example.scotiabankpaymentsystem.driver;
-
-import com.example.scotiabankpaymentsystem.invoice.Invoice;
-import com.example.scotiabankpaymentsystem.businessowner.Customer;
+package com.example.scotiabankpaymentsystem.model;
 
 import java.util.ArrayList;
 

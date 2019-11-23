@@ -2,7 +2,7 @@ package com.example.scotiabankpaymentsystem.businessowner.home;
 
 import androidx.annotation.NonNull;
 
-import com.example.scotiabankpaymentsystem.businessowner.Customer;
+import com.example.scotiabankpaymentsystem.model.Customer;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
