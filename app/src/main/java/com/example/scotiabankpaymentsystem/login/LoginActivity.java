@@ -151,7 +151,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 //This code is executed if there is an error.
             }
         });
-
         ExampleRequestQueue.add(ExampleStringRequest);
     }
 }
