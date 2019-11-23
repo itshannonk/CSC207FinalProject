@@ -29,6 +29,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
@@ -57,6 +63,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         findViewById(R.id.cancel_button).setOnClickListener(v -> clearTextFields());
         findViewById(R.id.signup_tab).setOnClickListener(v -> switchTabs());
         presenter = new LoginPresenter(this, new LoginInteractor());
+        testingFunctions();
 
     }
 
@@ -126,5 +133,25 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private void switchTabs(){
         register();
+    }
+    public void testingFunctions(){
+        RequestQueue ExampleRequestQueue = Volley.newRequestQueue(this);
+        String url = "https://us-central1-csc207-tli.cloudfunctions.net/testing";
+        StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                //This code is executed if the server responds, whether or not the response contains data.
+                //The String 'response' contains the server's response.
+                //You can test it by printing response.substring(0,500) to the screen.
+                System.out.println(response);
+            }
+        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //This code is executed if there is an error.
+            }
+        });
+
+        ExampleRequestQueue.add(ExampleStringRequest);
     }
 }

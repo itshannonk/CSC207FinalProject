@@ -20,12 +20,19 @@
 package com.example.scotiabankpaymentsystem.login;
 
 import android.app.Activity;
+import android.net.http.RequestQueue;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.data.model.Invoice;
@@ -40,6 +47,8 @@ import com.google.firebase.database.ValueEventListener;
  * This is the Model because it implements a use case (login)
  */
 public class LoginInteractor {
+    private TextView mTextViewResult;
+    private RequestQueue mQueue;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
