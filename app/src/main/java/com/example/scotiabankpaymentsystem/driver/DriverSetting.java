@@ -33,7 +33,7 @@ public class DriverSetting extends AppCompatActivity {
                 System.out.println("invoice check once");
                 nameText.setText(newNameString);
 
-                //Checking if the changePassword in SBO's Settings page button has been pressed
+                //Checking if the changePassword in SBO's SettingsActivity page button has been pressed
                 findViewById(R.id.password).setOnClickListener(v -> {
                     //open the next page for the SBO to chan
                     openActivityChangePassword();

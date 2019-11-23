@@ -3,4 +3,6 @@
     <color name="colorPrimary">#F44336</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#FA7EAB</color>
+    <color name="loginPageBackgroundColor">#FFFFFF</color>
+
 </resources>

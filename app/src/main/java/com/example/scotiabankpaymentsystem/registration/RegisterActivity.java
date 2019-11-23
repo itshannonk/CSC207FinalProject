@@ -36,8 +36,7 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 import com.example.scotiabankpaymentsystem.driver.home.DriverHomeActivity;
-
-import java.sql.Driver;
+import com.example.scotiabankpaymentsystem.login.LoginActivity;
 
 /**
  * Class that registers the users when they sign up and this uses Firebase's authentication
@@ -63,19 +62,25 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
 
         // it is setting the inputs to a variable for easier access
         progressBar = findViewById(R.id.loadingRegister);
-        firstName = findViewById(R.id.First_Name);
+        firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
         password = findViewById(R.id.password);
         address = findViewById(R.id.Address);
         email = findViewById(R.id.email);
 
+
         registerButton = findViewById(R.id.register);
         loadingProgressBar = findViewById(R.id.loading);
+//        findViewById(R.id.signin_tab).setOnClickListener(v -> switchTabs());
 
         // now it is setting the role to the associated selected role. It has to detect when the user changes the selected drop down item.
         roleSelectionSpinner = findViewById(R.id.role);
+        roleSelectionSpinner.setPrompt("Are you...");
+
         ArrayAdapter<String> roleAdapter = new ArrayAdapter<String>(RegisterActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.roles));
+
+
         roleAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         roleSelectionSpinner.setAdapter(roleAdapter);
         //when the user changes their input for the selected role
@@ -83,6 +88,13 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 role = roleSelectionSpinner.getSelectedItem().toString();
+                if (role.equals("a Business Owner")){
+                    address.setEnabled(true);
+                    address.setHintTextColor(getResources().getColor(R.color.common_google_signin_btn_text_dark_default));
+                } else {
+                    address.setEnabled(false);
+                    address.setHintTextColor(getResources().getColor(R.color.common_google_signin_btn_text_light_disabled));
+                }
             }
 
             @Override
@@ -91,9 +103,19 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
             }
         });
         // the register button has to register if there is any click at anytime
-        findViewById(R.id.register).setOnClickListener(v -> {
+        findViewById(R.id.next_button).setOnClickListener(v -> {
             register();
         });
+
+        findViewById(R.id.cancel_button).setOnClickListener(v -> {
+            clearTextFields();
+        });
+
+        findViewById(R.id.signin_tab).setOnClickListener(v -> {
+            switchTabs();
+        });
+
+
         // the presenter that is associated with the RegisterActivity
         presenter = new RegisterPresenter(this, new RegisterInteractor());
     }
@@ -160,5 +182,18 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         Toast.makeText(RegisterActivity.this, "Welcome, " + firstName.getText().toString().trim() + " " + lastName.getText().toString().trim() + " :)",
                 Toast.LENGTH_LONG).show();
         finish();
+    }
+
+    private void switchTabs(){
+//        showProgress();
+        startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+    }
+
+    private void clearTextFields() {
+        firstName.getText().clear();
+        lastName.getText().clear();
+        address.getText().clear();
+        email.getText().clear();
+        password.getText().clear();
     }
 }

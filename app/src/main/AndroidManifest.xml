@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".settings.SettingsActivity"></activity>
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/app_name"
@@ -52,10 +52,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".driver.home.DriverHomeActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".driver.DriverSeeOrder"
-            android:parentActivityName=".driver.home.DriverHomeActivity"></activity>
+            android:parentActivityName=".driver.home.DriverHomeActivity" />
         <activity
             android:name=".driver.DriverSetting"
             android:parentActivityName=".driver.home.DriverHomeActivity" />

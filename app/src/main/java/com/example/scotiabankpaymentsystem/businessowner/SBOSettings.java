@@ -40,7 +40,7 @@ public class SBOSettings extends AppCompatActivity {
                     nameText.setText(newNameString);
                     addressText.setText(newAddressString);
 
-                //Checking if the changePassword in SBO's Settings page button has been pressed
+                //Checking if the changePassword in SBO's SettingsActivity page button has been pressed
                 findViewById(R.id.password).setOnClickListener(v -> {
                     //open the next page for the SBO to chan
                     openActivityChangePassword();

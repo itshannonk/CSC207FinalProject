@@ -1,15 +1,21 @@
 <resources>
     <string name="app_name">Scotiabank Payment System</string>
     <!-- Strings related to login -->
+    <string name="prompt_username">Username</string>
+    <string name="prompt_password">Password</string>
+    <string name="login_cancel">Cancel</string>
+    <string name="login_next">Next</string>
     <string name="prompt_email">Email</string>
+
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
-    <string name="prompt_password">Password</string>
+    <string name="email">Email</string>
+
     <string name="address">Address</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_up">Sign up</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">"Welcome!"</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -31,9 +37,9 @@
     <string name="email_exists">An account is already associated with this email</string>
 
     <string-array name="roles">
-        <item>Choose your role</item>
-        <item>Business Owner</item>
-        <item>Truck Driver</item>
+        <item>Are you...</item>
+        <item>a Business Owner</item>
+        <item>a Truck Driver</item>
         <item>CocaCola</item>
     </string-array>
     <string name="title_activity_login2">LogIn</string>

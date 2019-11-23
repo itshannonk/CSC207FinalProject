@@ -22,38 +22,42 @@ package com.example.scotiabankpaymentsystem.login;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 import com.example.scotiabankpaymentsystem.driver.home.DriverHomeActivity;
 import com.example.scotiabankpaymentsystem.registration.RegisterActivity;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.textfield.TextInputEditText;
 
 /**
  * This is the Activity and it implements the View methods
  */
 public class LoginActivity extends AppCompatActivity implements LoginView {
+    private TextInputEditText email;
+    private TextInputEditText  password;
     private ProgressBar progressBar;
-    private EditText username;
-    private EditText password;
     private LoginPresenter presenter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        email = findViewById(R.id.email_edit_text);
+        password = findViewById(R.id.password_edit_text);
         progressBar = findViewById(R.id.loading);
-        username = findViewById(R.id.email);
-        password = findViewById(R.id.password);
-        findViewById(R.id.login).setOnClickListener(v -> validateCredentials());
-        findViewById(R.id.register).setOnClickListener(v -> register());
+        findViewById(R.id.next_button).setOnClickListener(v -> validateCredentials());
+        findViewById(R.id.cancel_button).setOnClickListener(v -> clearTextFields());
+        findViewById(R.id.signup_tab).setOnClickListener(v -> switchTabs());
         presenter = new LoginPresenter(this, new LoginInteractor());
+
     }
 
     @Override
@@ -74,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void setUsernameError() {
-        username.setError(getString(R.string.username_error));
+        email.setError(getString(R.string.username_error));
     }
 
     @Override
@@ -107,13 +111,20 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     private void validateCredentials() {
-        presenter.validateCredentials(this, username.getText().toString(), password.getText().toString());
+        presenter.validateCredentials(this, email.getText().toString(), password.getText().toString());
+    }
 
+    private void clearTextFields() {
+        email.getText().clear();
+        password.getText().clear();
     }
 
     private void register() {
-        showProgress();
+//        showProgress();
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
     }
 
+    private void switchTabs(){
+        register();
+    }
 }

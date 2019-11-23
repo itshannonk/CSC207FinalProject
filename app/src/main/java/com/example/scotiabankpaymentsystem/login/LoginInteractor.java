@@ -55,7 +55,7 @@ public class LoginInteractor {
     public void login(Activity loginActivity, final String username, final String password, final OnLoginFinishedListener listener) {
         if (TextUtils.isEmpty(username) || username.trim().isEmpty() || (username.contains("@") && !Patterns.EMAIL_ADDRESS.matcher(username).matches())) {
             listener.onUsernameError();
-        } else if (TextUtils.isEmpty(password)) {
+        } else if (TextUtils.isEmpty(password) || password.trim().length() < 5) {
             //  || password.trim().length() < 5
             listener.onPasswordError();
         } else {
