@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         setContentView(R.layout.activity_register);
 
         // it is setting the inputs to a variable for easier access
-        progressBar = findViewById(R.id.loadingRegister);
+        progressBar = findViewById(R.id.loading);
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
         password = findViewById(R.id.password);
@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         email = findViewById(R.id.email);
 
 
-        registerButton = findViewById(R.id.register);
+        registerButton = findViewById(R.id.next_button);
         loadingProgressBar = findViewById(R.id.loading);
 //        findViewById(R.id.signin_tab).setOnClickListener(v -> switchTabs());
 
