@@ -13,7 +13,7 @@ import com.example.scotiabankpaymentsystem.model.Customer;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSettings;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Frontend!!
@@ -66,7 +66,7 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
     @Override
     public void navigateToActivityLogOut() {
         //clear session between app and FireBase database
-        FirebaseAuth.getInstance().signOut();
+        //FirebaseAuth.getInstance().signOut();
         //go back to the original login page
         Intent intent = new Intent(SBOHomeActivity.this, LoginActivity.class);
         //erases the history of pages from last session
@@ -80,7 +80,7 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
     @Override
     public void displayName() {
-        presenter.displayName();
+        //presenter.displayName();
     }
 
     @Override

@@ -12,8 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSeeInvoices;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class SBOActivity extends AppCompatActivity {
 
-    FirebaseUser user;
+    //FirebaseUser user;
     DatabaseReference databaseReference;
     //userToken;
     String userName;
@@ -42,25 +42,25 @@ public class SBOActivity extends AppCompatActivity {
         setContentView(R.layout.activity_businessowner_home);
         // Initialize the current user and database
         // userToken = user.getIdToken();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        userID = user.getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        // Get the information of the current logged in user from database single time listener
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                userName = dataSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class);
-                userEmail = dataSnapshot.child("Business Owner").child(userID).child("Email").getValue(String.class);
-                //display the username after the data is retrieved since this is a single time listener.
-                displayName(userName, userEmail);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(getApplicationContext(), "Network error, please check your connection", Toast.LENGTH_LONG);
-            }
-        });
+//        user = FirebaseAuth.getInstance().getCurrentUser();
+//        userID = user.getUid();
+//        databaseReference = FirebaseDatabase.getInstance().getReference();
+//
+//        // Get the information of the current logged in user from database single time listener
+//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                userName = dataSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class);
+//                userEmail = dataSnapshot.child("Business Owner").child(userID).child("Email").getValue(String.class);
+//                //display the username after the data is retrieved since this is a single time listener.
+//                displayName(userName, userEmail);
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                Toast.makeText(getApplicationContext(), "Network error, please check your connection", Toast.LENGTH_LONG);
+//            }
+//        });
 
         //Checking if the seeStatus in SBO page button has been pressed
         Button button = findViewById(R.id.SeeStatus);
@@ -80,7 +80,7 @@ public class SBOActivity extends AppCompatActivity {
         Button buttonLogOut = findViewById(R.id.LogOut);
         buttonLogOut.setOnClickListener(v -> {
             //clear session between app and FireBase database
-            FirebaseAuth.getInstance().signOut();
+            //FirebaseAuth.getInstance().signOut();
             //go back to the original login page
             openActivityLogOut();
             //close the SBO page
@@ -110,7 +110,7 @@ public class SBOActivity extends AppCompatActivity {
         //erases the history of pages from last session
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        FirebaseAuth.getInstance().signOut();
+        //FirebaseAuth.getInstance().signOut();
         startActivity(intent);
     }
 }

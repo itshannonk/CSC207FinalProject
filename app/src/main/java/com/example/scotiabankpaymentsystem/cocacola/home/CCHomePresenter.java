@@ -11,7 +11,7 @@ public class CCHomePresenter implements CCHomeInteractor.onDisplayDataFinishedLi
     }
 
     public void displayName() {
-        ccHomeInteractor.displayName(this);
+        //ccHomeInteractor.displayName(this);
     }
 
     void onDestroy() {

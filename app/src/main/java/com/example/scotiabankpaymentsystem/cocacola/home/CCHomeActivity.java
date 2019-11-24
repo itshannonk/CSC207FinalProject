@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseAuth;
 
 public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
@@ -59,7 +59,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     @Override
     public void navigateToActivityLogOut() {
         //clear session between app and FireBase database
-        FirebaseAuth.getInstance().signOut();
+        //FirebaseAuth.getInstance().signOut();
         //go back to the original login page
         Intent intent = new Intent(CCHomeActivity.this, LoginActivity.class);
         //erases the history of pages from last session

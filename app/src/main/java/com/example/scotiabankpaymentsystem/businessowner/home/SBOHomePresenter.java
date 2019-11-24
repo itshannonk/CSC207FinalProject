@@ -9,9 +9,9 @@ public class SBOHomePresenter implements SBOHomeInteractor.onDisplayDataFinished
         this.sboHomeInteractor = sboHomeInteractor;
     }
 
-    public void displayName() {
-        sboHomeInteractor.displayName(this);
-    }
+    //public void displayName() {
+        //sboHomeInteractor.displayName(this);
+    //}
 
     void onDestroy() {
         sboHomeView = null;

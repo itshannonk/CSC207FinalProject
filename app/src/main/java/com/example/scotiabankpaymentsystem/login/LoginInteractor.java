@@ -49,7 +49,7 @@ public class LoginInteractor{
     private TextView mTextViewResult;
     private RequestQueue mQueue;
 
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    //private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
     interface OnLoginFinishedListener {
         void onUsernameError();
@@ -68,20 +68,26 @@ public class LoginInteractor{
             listener.onPasswordError();
         } else {
             com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
-            StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, "https://us-central1-csc207-tli.cloudfunctions.net/login_page_get?username="+username+"&password" + "=" + password, new Response.Listener<String>() {
+            String url = "https://us-central1-csc207-tli.cloudfunctions.net/login_page_get?email="+username+"&password" + "=" + password;
+            System.out.println(url);
+            StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     //This code is executed if the server responds, whether or not the response contains data.
                     //The String 'response' contains the server's response.
                     //You can test it by printing response.substring(0,500) to the screen.
+                    System.out.println(response);
                     if(response.equals("Business Owner")){
                         listener.onSBOSuccess();
+                        System.out.println("SBO");
                     }
                     else if(response.equals("CocaCola")){
                         listener.onCocaColaSuccess();
+                        System.out.println("coke");
                     }
                     else if(response.equals("Truck Driver")){
                         listener.onTruckDriverSuccess();
+                        System.out.println("driver");
                     }
                     else{
                         Toast.makeText(loginActivity, "Login error",

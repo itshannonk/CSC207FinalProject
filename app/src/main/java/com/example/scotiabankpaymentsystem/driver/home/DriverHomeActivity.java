@@ -13,7 +13,7 @@ import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
 import com.example.scotiabankpaymentsystem.driver.DriverSeeOrder;
 import com.example.scotiabankpaymentsystem.driver.DriverSetting;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.auth.FirebaseAuth;
 
 public class DriverHomeActivity extends AppCompatActivity implements DriverHomeView {
 
@@ -61,7 +61,7 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     @Override
     public void navigateToActivityLogOut() {
         //clear session between app and FireBase database
-        FirebaseAuth.getInstance().signOut();
+        //FirebaseAuth.getInstance().signOut();
         //go back to the original login page
         Intent intent = new Intent(DriverHomeActivity.this, LoginActivity.class);
         //erases the history of pages from last session
