@@ -80,7 +80,7 @@ public class LoginInteractor{
                     else if(response.equals("CocaCola")){
                         listener.onCocaColaSuccess();
                     }
-                    else if(response.equals("")){
+                    else if(response.equals("Truck Driver")){
                         listener.onTruckDriverSuccess();
                     }
                     else{
