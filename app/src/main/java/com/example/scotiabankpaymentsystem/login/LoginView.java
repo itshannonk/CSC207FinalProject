@@ -31,9 +31,9 @@ public interface LoginView {
 
     void setPasswordError();
 
-    void navigateToSBOHome();
+    void navigateToSBOHome(String userID);
 
-    void navigateToTruckDriverHome();
+    void navigateToTruckDriverHome(String userID);
 
-    void navigateToCocaColaHome();
+    void navigateToCocaColaHome(String userID);
 }

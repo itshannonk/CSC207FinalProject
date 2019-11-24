@@ -93,24 +93,30 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void navigateToSBOHome() {
-        startActivity(new Intent(this, SBOHomeActivity.class));
+    public void navigateToSBOHome(String userID) {
+        Intent newIntent = new Intent(this, SBOHomeActivity.class);
+        newIntent.putExtra("userID", userID);
+        startActivity(newIntent);
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
         finish();
     }
 
     @Override
-    public void navigateToTruckDriverHome() {
-        startActivity(new Intent(this, DriverHomeActivity.class));
+    public void navigateToTruckDriverHome(String userID) {
+        Intent newIntent = new Intent(this, DriverHomeActivity.class);
+        newIntent.putExtra("userID", userID);
+        startActivity(newIntent);
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
         finish();
     }
 
     @Override
-    public void navigateToCocaColaHome() {
-        startActivity(new Intent(this, CCHomeActivity.class));
+    public void navigateToCocaColaHome(String userID) {
+        Intent newIntent = new Intent(this, CCHomeActivity.class);
+        newIntent.putExtra("userID", userID);
+        startActivity(newIntent);
         Toast.makeText(LoginActivity.this, "Welcome! :)",
                 Toast.LENGTH_LONG).show();
         finish();

@@ -55,9 +55,9 @@ public class LoginInteractor{
         void onUsernameError();
         void onPasswordError();
         void onLoginError();
-        void onSBOSuccess();
-        void onTruckDriverSuccess();
-        void onCocaColaSuccess();
+        void onSBOSuccess(String userID);
+        void onTruckDriverSuccess(String userID);
+        void onCocaColaSuccess(String userID);
     }
 
     public void login(Activity loginActivity, final String username, final String password, final OnLoginFinishedListener listener, final Context context) {
@@ -77,20 +77,28 @@ public class LoginInteractor{
                     //The String 'response' contains the server's response.
                     //You can test it by printing response.substring(0,500) to the screen.
                     System.out.println(response);
-                    if(response.equals("Business Owner")){
-                        listener.onSBOSuccess();
-                        System.out.println("SBO");
+                    try{
+                        String[] HTTPresponse = response.split(",");
+                        if(HTTPresponse[0].equals("Business Owner")){
+                            listener.onSBOSuccess(HTTPresponse[1]);
+                            System.out.println("SBO");
+                        }
+                        else if(HTTPresponse[0].equals("CocaCola")){
+                            listener.onCocaColaSuccess(HTTPresponse[1]);
+                            System.out.println("coke");
+                        }
+                        else if(HTTPresponse[0].equals("Truck Driver")){
+                            listener.onTruckDriverSuccess(HTTPresponse[1]);
+                            System.out.println("driver");
+                        }
+                        else{
+                            Toast.makeText(loginActivity, "Login error",
+                                    Toast.LENGTH_LONG).show();
+                            listener.onLoginError();
+                        }
                     }
-                    else if(response.equals("CocaCola")){
-                        listener.onCocaColaSuccess();
-                        System.out.println("coke");
-                    }
-                    else if(response.equals("Truck Driver")){
-                        listener.onTruckDriverSuccess();
-                        System.out.println("driver");
-                    }
-                    else{
-                        Toast.makeText(loginActivity, "Login error",
+                    catch(Exception e){
+                        Toast.makeText(loginActivity, "Login Error",
                                 Toast.LENGTH_LONG).show();
                         listener.onLoginError();
                     }

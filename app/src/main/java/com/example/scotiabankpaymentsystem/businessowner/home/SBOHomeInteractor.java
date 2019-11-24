@@ -17,6 +17,9 @@ public class SBOHomeInteractor {
         //successfully retrieves user information from database
         void onHomePageSuccess(String username);
     }
+    //public void displayName(final onDisplayDataFinishedListener){
+
+    //}
 
 //    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 //    private String userID = user.getUid();
