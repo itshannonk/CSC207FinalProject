@@ -1,5 +1,7 @@
 package com.example.scotiabankpaymentsystem.businessowner.home;
 
+import android.content.Context;
+
 public class SBOHomePresenter implements SBOHomeInteractor.onDisplayDataFinishedListener {
     private SBOHomeView sboHomeView;
     private SBOHomeInteractor sboHomeInteractor;
@@ -9,9 +11,9 @@ public class SBOHomePresenter implements SBOHomeInteractor.onDisplayDataFinished
         this.sboHomeInteractor = sboHomeInteractor;
     }
 
-    //public void displayName() {
-        //sboHomeInteractor.displayName(this);
-    //}
+    public void displayName(String userID, Context context) {
+        sboHomeInteractor.displayName(this, userID, context);
+    }
 
     void onDestroy() {
         sboHomeView = null;

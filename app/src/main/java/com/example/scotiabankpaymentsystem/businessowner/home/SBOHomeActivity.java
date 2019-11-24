@@ -80,7 +80,9 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
     @Override
     public void displayName() {
-        //presenter.displayName();
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("userID");
+        presenter.displayName(userID, this);
     }
 
     @Override
@@ -89,4 +91,5 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         String welcome = "Welcome " + username;
         welcomeText.setText(welcome);
     }
+
 }
