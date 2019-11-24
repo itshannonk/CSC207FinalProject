@@ -20,6 +20,7 @@
 package com.example.scotiabankpaymentsystem.login;
 
 import android.app.Activity;
+import android.content.Context;
 
 /**
  * This is the Presenter who acts as the middleman between View and Model.
@@ -35,12 +36,12 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
         this.loginInteractor = loginInteractor;
     }
 
-    void validateCredentials(Activity loginActivity, String username, String password) {
+    void validateCredentials(Activity loginActivity, String username, String password, Context context) {
         if (loginView != null) {
             loginView.showProgress();
         }
 
-        loginInteractor.login(loginActivity, username, password, this);
+        loginInteractor.login(loginActivity, username, password, this, context);
     }
 
     void onDestroy() {

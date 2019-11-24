@@ -20,22 +20,21 @@
 package com.example.scotiabankpaymentsystem.login;
 
 import android.app.Activity;
+import android.content.Context;
 import android.net.http.RequestQueue;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.Fragment;
 
 import androidx.annotation.NonNull;
+
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
-import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.data.model.Invoice;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,7 +45,7 @@ import com.google.firebase.database.ValueEventListener;
 /**
  * This is the Model because it implements a use case (login)
  */
-public class LoginInteractor {
+public class LoginInteractor{
     private TextView mTextViewResult;
     private RequestQueue mQueue;
 
@@ -61,49 +60,47 @@ public class LoginInteractor {
         void onCocaColaSuccess();
     }
 
-    public void login(Activity loginActivity, final String username, final String password, final OnLoginFinishedListener listener) {
+    public void login(Activity loginActivity, final String username, final String password, final OnLoginFinishedListener listener, final Context context) {
         if (TextUtils.isEmpty(username) || username.trim().isEmpty() || (username.contains("@") && !Patterns.EMAIL_ADDRESS.matcher(username).matches())) {
             listener.onUsernameError();
         } else if (TextUtils.isEmpty(password) || password.trim().length() < 5) {
             //  || password.trim().length() < 5
             listener.onPasswordError();
         } else {
-            firebaseAuth.signInWithEmailAndPassword(username, password)
-                    .addOnCompleteListener(loginActivity , task -> {
-                        if(!task.isSuccessful()) {
-                            Toast.makeText(loginActivity, task.getException().getMessage(),
-                                    Toast.LENGTH_LONG).show();
-                            listener.onLoginError();
-                        } else {
-                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-
-                            // Get the information of the current logged in user from database
-                            databaseReference.addValueEventListener(new ValueEventListener() {
-                                @Override
-                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                    String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-                                    if((dataSnapshot.child("Truck Driver").hasChild(userID))){
-                                        System.out.println("entered truck");
-                                        listener.onTruckDriverSuccess();
-                                    }
-                                    else if((dataSnapshot.child("Business Owner").hasChild(userID))){
-                                        System.out.println("entered SBO");
-                                        listener.onSBOSuccess();
-                                    }
-                                    else{
-                                        System.out.println("entered coke");
-                                        listener.onCocaColaSuccess();
-                                    }
-                                }
-
-                                @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
-                                }
-                            });
-                        }
-                    });
+            com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
+            StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, "https://us-central1-csc207-tli.cloudfunctions.net/login_page_get?username="+username+"&password" + "=" + password, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    //This code is executed if the server responds, whether or not the response contains data.
+                    //The String 'response' contains the server's response.
+                    //You can test it by printing response.substring(0,500) to the screen.
+                    if(response.equals("Business Owner")){
+                        listener.onSBOSuccess();
+                    }
+                    else if(response.equals("CocaCola")){
+                        listener.onCocaColaSuccess();
+                    }
+                    else if(response.equals("")){
+                        listener.onTruckDriverSuccess();
+                    }
+                    else{
+                        Toast.makeText(loginActivity, "Login error",
+                                Toast.LENGTH_LONG).show();
+                        listener.onLoginError();
+                    }
+                }
+            }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    //This code is executed if there is an error.
+                    Toast.makeText(loginActivity, "Login error",
+                            Toast.LENGTH_LONG).show();
+                    listener.onLoginError();
+                }
+            });
+            ExampleRequestQueue.add(ExampleStringRequest);
         }
     }
+
 }
 
