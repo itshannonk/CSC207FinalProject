@@ -13,7 +13,7 @@ public class CCHomePresenter implements CCHomeInteractor.onDisplayDataFinishedLi
     }
 
     public void displayName(String userID, Context context) {
-        CCHomeInteractor.displayName(this, userID, context);
+        ccHomeInteractor.displayName(this, userID, context);
     }
 
     void onDestroy() {
