@@ -9,6 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.ClickInvoices;
+import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 import com.example.scotiabankpaymentsystem.model.Customer;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSettings;
@@ -27,6 +29,7 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
     private TextView welcomeText;
     private SBOHomePresenter presenter;
     private Customer customer;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,8 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         findViewById(R.id.SeeStatus).setOnClickListener(v -> navigateToActivitySeeStatus());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new SBOHomePresenter(this, new SBOHomeInteractor());
-
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("userID");
         displayName();
     }
 
@@ -53,14 +57,16 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
     @Override
     public void navigateToActivitySettings() {
-        Intent intent = new Intent(SBOHomeActivity.this, SBOSettings.class);
-        startActivity(intent);
+        Intent newIntent = new Intent(SBOHomeActivity.this, SBOSettings.class);
+        newIntent.putExtra("userID", userID);
+        startActivity(newIntent);
     }
 
     @Override
     public void navigateToActivitySeeStatus() {
-        Intent intent = new Intent(SBOHomeActivity.this, SBOSeeOrder.class);
-        startActivity(intent);
+        Intent newIntent = new Intent(SBOHomeActivity.this, ClickInvoices.class);
+        newIntent.putExtra("userID", userID);
+        startActivity(newIntent);
     }
 
     @Override
@@ -80,8 +86,6 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
     @Override
     public void displayName() {
-        Intent intent = getIntent();
-        String userID = intent.getStringExtra("userID");
         presenter.displayName(userID, this);
     }
 

@@ -1,5 +1,6 @@
 package com.example.scotiabankpaymentsystem.businessowner;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.model.Invoice;
 //import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -24,16 +26,30 @@ import com.google.gson.Gson;
  */
 public class SBOSeeOrder extends AppCompatActivity {
     private static boolean testing = false;
+    private String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_seestatus_has);
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        findViewById(R.id.GoBack).setOnClickListener(v -> navigateToHome());
+
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("userID");
+        String invoiceID = intent.getStringExtra("invoiceID");
+        System.out.println(userID);
+        System.out.println(invoiceID);
+        TextView invoiceText = findViewById(R.id.SeeInvoice);
+        String tempForInvoice = "this is the userID: " + userID + "this is the invoice ID: " + invoiceID;
+        invoiceText.setText(tempForInvoice);
+
+
+        //DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         // Get the information of the current logged in user from database
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        //databaseReference.addValueEventListener(new ValueEventListener() {
+           // @Override
+            //public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 //String newInvoiceString = dataSnapshot.child("Business Owner").child(userID).child("Invoices").getValue(String.class);
 //                TextView invoiceText = findViewById(R.id.Invoice);
@@ -68,11 +84,16 @@ public class SBOSeeOrder extends AppCompatActivity {
 //                    //testing boolean is for testing purposes so that it only executes this once.
 //                    testing = true;
 //                }
-            }
+            //}
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
+            //@Override
+            //public void onCancelled(@NonNull DatabaseError databaseError) {
+            //}
+        //});
+    }
+    public void navigateToHome() {
+        Intent newIntent = new Intent(SBOSeeOrder.this, ClickInvoices.class);
+        newIntent.putExtra("userID", userID);
+        startActivity(newIntent);
     }
 }

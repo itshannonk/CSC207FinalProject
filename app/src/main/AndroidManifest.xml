@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.scotiabankpaymentsystem">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -10,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".settings.SettingsActivity"></activity>
+        <activity
+            android:name=".businessowner.ClickInvoices"
+            android:parentActivityName=".businessowner.home.SBOHomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.SettingsActivity" />
         <activity
             android:name=".login.LoginActivity"
             android:label="@string/app_name"
@@ -31,7 +36,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".businessowner.SBOSeeOrder"
-            android:parentActivityName=".businessowner.home.SBOHomeActivity"
+            android:parentActivityName=".businessowner.ClickInvoices"
             android:screenOrientation="portrait" />
         <activity
             android:name=".businessowner.SBOSettings"
