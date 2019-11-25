@@ -1,5 +1,7 @@
 package com.example.scotiabankpaymentsystem.cocacola.home;
 
+import android.content.Context;
+
 public class CCHomePresenter implements CCHomeInteractor.onDisplayDataFinishedListener {
 
     private CCHomeView ccHomeView;
@@ -10,8 +12,8 @@ public class CCHomePresenter implements CCHomeInteractor.onDisplayDataFinishedLi
         this.ccHomeInteractor = ccHomeInteractor;
     }
 
-    public void displayName() {
-        //ccHomeInteractor.displayName(this);
+    public void displayName(String userID, Context context) {
+        CCHomeInteractor.displayName(this, userID, context);
     }
 
     void onDestroy() {
@@ -23,3 +25,5 @@ public class CCHomePresenter implements CCHomeInteractor.onDisplayDataFinishedLi
         ccHomeView.setDisplayName(username);
     }
 }
+
+
