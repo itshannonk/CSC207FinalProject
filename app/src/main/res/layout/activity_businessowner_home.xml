@@ -40,7 +40,7 @@
         android:layout_below="@+id/welcome_name"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="-25dp"
+        android:layout_marginTop="-20dp"
         android:text="See Status/invoice"
         tools:visibility="visible" />
 
