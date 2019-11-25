@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
+import com.example.scotiabankpaymentsystem.model.Supplier;
 //import com.google.firebase.auth.FirebaseAuth;
 
 public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
@@ -20,6 +21,8 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     private Button settingsButton;
     private Button logoutButton;
     private TextView welcomeText;
+    private Supplier supplier;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,8 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         findViewById(R.id.SeeInvoice).setOnClickListener(v -> navigateToActivitySeeInvoice());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new CCHomePresenter(this, new CCHomeInteractor());
-
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("userID");
         displayName();
     }
 
@@ -73,7 +77,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
     @Override
     public void displayName() {
-        presenter.displayName();
+        presenter.displayName(userID, this);
     }
 
     @Override

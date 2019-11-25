@@ -13,6 +13,7 @@ import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
 import com.example.scotiabankpaymentsystem.driver.DriverSeeOrder;
 import com.example.scotiabankpaymentsystem.driver.DriverSetting;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
+import com.example.scotiabankpaymentsystem.model.Distributer;
 //import com.google.firebase.auth.FirebaseAuth;
 
 public class DriverHomeActivity extends AppCompatActivity implements DriverHomeView {
@@ -22,6 +23,8 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     private Button settingsButton;
     private Button logoutButton;
     private TextView welcomeText;
+    private Distributer distributer;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,7 +78,7 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
 
     @Override
     public void displayName() {
-        presenter.displayName();
+        presenter.displayName(userID, this);
     }
 
     @Override

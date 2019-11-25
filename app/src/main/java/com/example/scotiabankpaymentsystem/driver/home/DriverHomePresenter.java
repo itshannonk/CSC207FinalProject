@@ -1,5 +1,7 @@
 package com.example.scotiabankpaymentsystem.driver.home;
 
+import android.content.Context;
+
 public class DriverHomePresenter implements DriverHomeInteractor.onDisplayDataFinishedListener {
 
     private DriverHomeView driverHomeView;
@@ -10,8 +12,8 @@ public class DriverHomePresenter implements DriverHomeInteractor.onDisplayDataFi
         this.driverHomeInteractor = driverHomeInteractor;
     }
 
-    public void displayName() {
-        driverHomeInteractor.displayName(this);
+    public void displayName(String userID, Context context) {
+        driverHomeInteractor.displayName(this, userID, context);
     }
 
     void onDestroy() {
