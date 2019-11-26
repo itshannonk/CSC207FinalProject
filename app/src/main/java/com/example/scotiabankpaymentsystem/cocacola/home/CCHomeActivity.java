@@ -9,7 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.cocacola.CocaColaSeeInvoices;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
+import com.example.scotiabankpaymentsystem.cocacola.clickCustomers;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Supplier;
 //import com.google.firebase.auth.FirebaseAuth;
@@ -56,7 +58,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
     @Override
     public void navigateToActivitySeeInvoice() {
-        Intent intent = new Intent(CCHomeActivity.this, CocaColaSettings.class);
+        Intent intent = new Intent(CCHomeActivity.this, clickCustomers.class);
         startActivity(intent);
     }
 

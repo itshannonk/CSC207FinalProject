@@ -27,9 +27,9 @@ public class CocaColaSeeInvoices extends AppCompatActivity {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         // Get the information of the current logged in user from database
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        //databaseReference.addValueEventListener(new ValueEventListener() {
+            //@Override
+            //public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 //                String newInvoiceString = dataSnapshot.child("CocaCola").child(userID).child("Invoices").getValue(String.class);
 //                TextView invoiceText = findViewById(R.id.Invoice);
@@ -65,11 +65,11 @@ public class CocaColaSeeInvoices extends AppCompatActivity {
 //                }
             }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });
-    }
+           // @Override
+            //public void onCancelled(@NonNull DatabaseError databaseError) {
+            //}
+        //});
+    //}
 
 //    public void openActivity2() {
 //        Intent intent = new Intent(CocaColaSeeInvoices.this, MainActivity.class);
