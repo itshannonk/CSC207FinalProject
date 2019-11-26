@@ -31,6 +31,7 @@ public class CCClickCustomers extends AppCompatActivity {
                     public void run() {
                         Intent newIntent = new Intent(CCClickCustomers.this, CCHomeActivity.class);
                         newIntent.putExtra("userID", userID);
+                        System.out.println("ccClickCustomer" + userID);
                         startActivity(newIntent);
                         finish();
                     }
@@ -83,6 +84,7 @@ public class CCClickCustomers extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent newIntent = new Intent(CCClickCustomers.this, CCInvoiceManipulationChoice.class);
                     // when we switch to the SBOSeeOrder, it will pass in both the userID and invoiceID
+                    System.out.println(userID + "inside the click for clickCustomer");
                     newIntent.putExtra("userID", userID);
                     startActivity(newIntent);
                 }
