@@ -16,11 +16,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.ClickInvoices;
-import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 
-public class clickCustomers extends AppCompatActivity {
+public class CCClickCustomers extends AppCompatActivity {
     String userID;
 
     @Override
@@ -31,7 +29,7 @@ public class clickCustomers extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(clickCustomers.this, CCHomeActivity.class);
+                        Intent newIntent = new Intent(CCClickCustomers.this, CCHomeActivity.class);
                         newIntent.putExtra("userID", userID);
                         startActivity(newIntent);
                         finish();
@@ -44,7 +42,7 @@ public class clickCustomers extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_click_customers);
+        setContentView(R.layout.activity_cc_click_customers);
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
         System.out.println(userID + "this is the clickCustomer userID");
@@ -83,7 +81,7 @@ public class clickCustomers extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(clickCustomers.this, CocaColaSeeInvoices.class);
+                    Intent newIntent = new Intent(CCClickCustomers.this, CCInvoiceManipulationChoice.class);
                     // when we switch to the SBOSeeOrder, it will pass in both the userID and invoiceID
                     newIntent.putExtra("userID", userID);
                     startActivity(newIntent);

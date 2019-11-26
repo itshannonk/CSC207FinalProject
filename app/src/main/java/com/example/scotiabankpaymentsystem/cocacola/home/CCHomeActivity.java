@@ -9,9 +9,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.CocaColaSeeInvoices;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
-import com.example.scotiabankpaymentsystem.cocacola.clickCustomers;
+import com.example.scotiabankpaymentsystem.cocacola.CCClickCustomers;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Supplier;
 //import com.google.firebase.auth.FirebaseAuth;
@@ -29,14 +28,14 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cocacola_home);
+        setContentView(R.layout.activity_cc_home);
 
         settingsButton = findViewById(R.id.Setting);
-        seeInvoicesButton = findViewById(R.id.totalPrice);
+        seeInvoicesButton = findViewById(R.id.see_all_customers);
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
         findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
-        findViewById(R.id.totalPrice).setOnClickListener(v -> navigateToActivitySeeInvoice());
+        findViewById(R.id.see_all_customers).setOnClickListener(v -> navigateToActivitySeeInvoice());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new CCHomePresenter(this, new CCHomeInteractor());
         Intent intent = getIntent();
@@ -59,7 +58,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
     @Override
     public void navigateToActivitySeeInvoice() {
-        Intent intent = new Intent(CCHomeActivity.this, clickCustomers.class);
+        Intent intent = new Intent(CCHomeActivity.this, CCClickCustomers.class);
         startActivity(intent);
     }
 
