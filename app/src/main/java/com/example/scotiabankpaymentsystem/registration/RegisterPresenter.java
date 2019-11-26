@@ -19,6 +19,7 @@
 package com.example.scotiabankpaymentsystem.registration;
 
 import android.app.Activity;
+import android.content.Context;
 
 public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedListener {
     private RegistrationView registerView;
@@ -29,11 +30,11 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
         this.registerInteractor = registerInteractor;
     }
 
-    void registerUser(Activity registerActivity, String firstName, String lastName, String password, String email, String role, String address) {
+    void registerUser(String firstName, String lastName, String password, String email, String role, String address, Context context) {
         if (registerView != null) {
             registerView.showProgress();
         }
-        registerInteractor.register(registerActivity, firstName, lastName, password, email, address, role, this);
+        registerInteractor.register(firstName, lastName, password, email, address, role, this, context);
     }
 
 
@@ -98,9 +99,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
     }
 
     @Override
-    public void onSuccess() {
+    public void onSuccess(String userID) {
         if (registerView != null) {
-            registerView.navigateToHome();
+            registerView.navigateToHome(userID);
         }
 
     }

@@ -37,5 +37,5 @@ public interface RegistrationView {
 
     void setAddressError();
 
-    void navigateToHome();
+    void navigateToHome(String userID);
 }
