@@ -23,7 +23,6 @@ public class ClickInvoices extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("DID IT ENETER");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_click_invoices);
         //this is the go back button
@@ -33,17 +32,13 @@ public class ClickInvoices extends AppCompatActivity {
         // receiving the information that was sent from the previous page/activity
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
-        System.out.println(userID + "userID");
 
         //now using the API
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(this);
         String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_list_of_invoice_ids?userID="+userID;
-        System.out.println(url);
         StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                System.out.println("qwhy dfkjskdjfsldkfsd");
-                System.out.println(response);
                 //returns all the invoice ID's in a string so it now has to be parsed
                 String[] IDs = response.split(",");
                 //now we know how many invoices do we need to create the same number of buttons
@@ -53,13 +48,11 @@ public class ClickInvoices extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 //This code is executed if there is an error.
-                System.out.println(error);
             }
         });
         ExampleRequestQueue.add(ExampleStringRequest);
     }
     public void createButtons(String[] response){
-        System.out.println(response);
         LinearLayout ll = (LinearLayout) findViewById(R.id.ll);
 
         for(int i = 0; i<response.length;i++){

@@ -2,22 +2,19 @@ package com.example.scotiabankpaymentsystem.businessowner;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
-import com.example.scotiabankpaymentsystem.model.Invoice;
+import android.os.Handler;
 //import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.gson.Gson;
+
 
 // TODO: differentiate if SBO has orders or not
 
@@ -39,11 +36,45 @@ public class SBOSeeOrder extends AppCompatActivity {
         String invoiceID = intent.getStringExtra("invoiceID");
         System.out.println(userID);
         System.out.println(invoiceID);
-        TextView invoiceText = findViewById(R.id.SeeInvoice);
+        TextView invoiceText = findViewById(R.id.totalPrice);
         String tempForInvoice = "this is the userID: " + userID + "this is the invoice ID: " + invoiceID;
         invoiceText.setText(tempForInvoice);
 
-
+        System.out.println("did it come here");
+        com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(this);
+        String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_invoice_information?userID="+userID+"&invoiceID="+invoiceID;
+        StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                System.out.println("did it come here22222222" + response);
+                if(!(response.equals(""))) {
+                    String[] invoiceIDs = response.split(",");
+                    String inputText = "";
+                    // showing if it is delivered
+                    TextView invoiceTextDeliever = findViewById(R.id.Delivered);
+                    inputText ="Delievered: " + invoiceIDs[0];
+                    invoiceTextDeliever.setText(inputText);
+                    //showing if it's issued
+                    TextView invoiceTextIssued = findViewById(R.id.Issued);
+                    inputText ="Issued: " + invoiceIDs[1];
+                    invoiceTextIssued.setText(inputText);
+                    //showing if it's paid
+                    TextView invoiceTextPaid = findViewById(R.id.Paid);
+                    inputText ="Paid: " + invoiceIDs[2];
+                    invoiceTextPaid.setText(inputText);
+                    //showing the total price
+                    TextView invoiceTextPrice = findViewById(R.id.totalPrice);
+                    inputText ="Total Price " + invoiceIDs[3];
+                    invoiceTextPrice.setText(inputText);
+                }
+            }
+        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //This code is executed if there is an error.
+            }
+        });
+        ExampleRequestQueue.add(ExampleStringRequest);
         //DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
         // Get the information of the current logged in user from database
@@ -92,8 +123,16 @@ public class SBOSeeOrder extends AppCompatActivity {
         //});
     }
     public void navigateToHome() {
-        Intent newIntent = new Intent(SBOSeeOrder.this, ClickInvoices.class);
-        newIntent.putExtra("userID", userID);
-        startActivity(newIntent);
+        // since it takes a while for the information (like 1 second) so there is a delay
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                Intent newIntent = new Intent(SBOSeeOrder.this, ClickInvoices.class);
+                newIntent.putExtra("userID", userID);
+                startActivity(newIntent);
+            }
+        }, 200);
     }
 }

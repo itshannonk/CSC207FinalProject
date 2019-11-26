@@ -2,6 +2,7 @@ package com.example.scotiabankpaymentsystem.businessowner.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,9 +65,16 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
     @Override
     public void navigateToActivitySeeStatus() {
-        Intent newIntent = new Intent(SBOHomeActivity.this, ClickInvoices.class);
-        newIntent.putExtra("userID", userID);
-        startActivity(newIntent);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                Intent newIntent = new Intent(SBOHomeActivity.this, ClickInvoices.class);
+                newIntent.putExtra("userID", userID);
+                startActivity(newIntent);
+            }
+        }, 200);
     }
 
     @Override
