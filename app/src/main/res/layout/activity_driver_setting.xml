@@ -26,18 +26,22 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="30dp"
         android:text="Change Name"
+        android:textColor="#881212"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
         tools:visibility="visible" />
 
     <EditText
         android:id="@+id/ChangeName"
+        style="@android:style/Widget.Holo.EditText"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
+        android:autofillHints=""
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        android:autofillHints="" />
+        android:text="Name" />
 
     <Button
         android:id="@+id/password"

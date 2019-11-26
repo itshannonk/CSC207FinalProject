@@ -13,6 +13,8 @@
         android:layout_marginLeft="150dp"
         android:layout_marginTop="100dp"
         android:text="Change Status\n(Delivered/Paid)"
+        android:textColor="#881212"
+        android:textStyle="bold|italic"
         tools:visibility="visible" />
 
     <EditText
@@ -29,10 +31,12 @@
         android:id="@+id/SeeAddress"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
+        android:layout_marginTop="1dp"
         android:text="Address:"
+        android:textColor="#881212"
+        android:textStyle="bold|italic"
         tools:visibility="visible" />
 
     <TextView
@@ -49,10 +53,12 @@
         android:id="@+id/SeeInvoice"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
+        android:layout_marginTop="5dp"
         android:text="Invoice"
+        android:textColor="#881212"
+        android:textStyle="bold|italic"
         tools:visibility="visible" />
 
     <TextView

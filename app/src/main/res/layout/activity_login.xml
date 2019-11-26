@@ -53,11 +53,11 @@
             android:layout_width="300dp"
             android:layout_height="70dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="100dp"
             android:layout_marginBottom="16dp"
             app:srcCompat="@drawable/scotiabank" />
 
-<!--        <TextView-->
+        <!--        <TextView-->
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_gravity="center_horizontal"-->
@@ -65,15 +65,6 @@
 <!--            android:text="Request to pay :)"-->
 <!--            android:textAllCaps="true"-->
 <!--            android:textSize="16sp" />-->
-
-        <ProgressBar
-            android:id="@+id/loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="40dp"
-            android:layout_gravity="center_horizontal"
-            android:visibility="invisible" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_text_input"
@@ -128,6 +119,15 @@
                 android:layout_toLeftOf="@id/next_button"
                 android:text="@string/login_cancel" />
         </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:layout_gravity="center_horizontal"
+            android:visibility="invisible" />
 
 <!--        <TextView-->
 <!--            android:id="@+id/register"-->

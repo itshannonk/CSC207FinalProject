@@ -23,8 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Change Name"
+        android:textColor="#881212"
+        android:textSize="14sp"
+        android:textStyle="bold|italic"
         tools:visibility="visible" />
 
     <EditText
@@ -41,7 +44,7 @@
         android:id="@+id/password"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:text="Change Password"
@@ -55,6 +58,8 @@
         android:layout_marginLeft="100dp"
         android:layout_marginTop="1dp"
         android:text="Change Address"
+        android:textColor="#881212"
+        android:textStyle="bold|italic"
         tools:visibility="visible" />
 
     <EditText
