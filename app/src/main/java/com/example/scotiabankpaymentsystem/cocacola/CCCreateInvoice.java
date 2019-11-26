@@ -46,7 +46,7 @@ public class CCCreateInvoice extends AppCompatActivity {
         }
         else {
             String url = "https://us-central1-csc207-tli.cloudfunctions.net/create_invoice?userID=" + userID + "&invoiceid="
-                    + String.valueOf(invoiceID) + "&item=" + item + "&quantity=" + quantity + "&price=" + price;
+                    + String.valueOf(invoiceID) + "&item=" + item.getText() + "&quantity=" + quantity.getText() + "&price=" + price.getText();
             System.out.println(url);
             StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
