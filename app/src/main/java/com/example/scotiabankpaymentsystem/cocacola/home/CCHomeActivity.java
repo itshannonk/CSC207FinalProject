@@ -2,6 +2,7 @@ package com.example.scotiabankpaymentsystem.cocacola.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,6 +10,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+<<<<<<< HEAD
+=======
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
+import com.example.scotiabankpaymentsystem.cocacola.CocaColaSeeInvoices;
+>>>>>>> 5758dc775d5ee5506b5926e07096706ac966e7b1
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
 import com.example.scotiabankpaymentsystem.cocacola.CCClickCustomers;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
@@ -35,7 +41,11 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
         findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
+<<<<<<< HEAD
         findViewById(R.id.see_all_customers).setOnClickListener(v -> navigateToActivitySeeInvoice());
+=======
+        findViewById(R.id.totalPrice).setOnClickListener(v -> navigateToActivitySeeCustomer());
+>>>>>>> 5758dc775d5ee5506b5926e07096706ac966e7b1
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new CCHomePresenter(this, new CCHomeInteractor());
         Intent intent = getIntent();
@@ -57,9 +67,26 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     }
 
     @Override
+<<<<<<< HEAD
     public void navigateToActivitySeeInvoice() {
         Intent intent = new Intent(CCHomeActivity.this, CCClickCustomers.class);
         startActivity(intent);
+=======
+    public void navigateToActivitySeeCustomer() {
+        final Handler handler = new Handler();
+        Intent newIntent = new Intent(CCHomeActivity.this, clickCustomers.class);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                newIntent.putExtra("userID", userID);
+                startActivity(newIntent);
+                Toast.makeText(CCHomeActivity.this, "Welcome! :)",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }, 200);
+>>>>>>> 5758dc775d5ee5506b5926e07096706ac966e7b1
     }
 
     @Override

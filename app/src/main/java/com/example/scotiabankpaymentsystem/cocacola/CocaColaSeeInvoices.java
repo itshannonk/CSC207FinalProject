@@ -1,5 +1,6 @@
 package com.example.scotiabankpaymentsystem.cocacola;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,9 @@ public class CocaColaSeeInvoices extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cc_see_invoices);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        Intent intent = getIntent();
+        String userID = intent.getStringExtra("userID");
+        System.out.println(userID + "this is the ccSeeInvoiceuserID");
 
         // Get the information of the current logged in user from database
         //databaseReference.addValueEventListener(new ValueEventListener() {

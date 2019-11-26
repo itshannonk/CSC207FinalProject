@@ -4,7 +4,7 @@ public interface CCHomeView {
 
     void navigateToActivitySettings();
 
-    void navigateToActivitySeeInvoice();
+    void navigateToActivitySeeCustomer();
 
     void navigateToActivityLogOut();
 
