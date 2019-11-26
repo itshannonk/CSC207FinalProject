@@ -119,7 +119,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
     }
 
     private void register() {
-        presenter.registerUser(this, firstName.getText().toString(), lastName.getText().toString(), password.getText().toString(), email.getText().toString(), role, address.getText().toString());
+        presenter.registerUser(firstName.getText().toString(), lastName.getText().toString(), password.getText().toString(), email.getText().toString(), role, address.getText().toString(),  this);
     }
 
     @Override
@@ -169,13 +169,21 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
     }
 
     @Override
-    public void navigateToHome() {
+    public void navigateToHome(String userID) {
+
         if (role.equals("a Business Owner")) {
-            startActivity(new Intent(this, SBOHomeActivity.class));
+            Intent newIntent = new Intent(this, SBOHomeActivity.class);
+            newIntent.putExtra("userID", userID);
+            startActivity(newIntent);
+
         } else if (role.equals("CocaCola")) {
-            startActivity(new Intent(this, CCHomeActivity.class));
+            Intent newIntent = new Intent(this, CCHomeActivity.class);
+            newIntent.putExtra("userID", userID);
+            startActivity(newIntent);
         } else {
-            startActivity(new Intent(this, DriverHomeActivity.class));
+            Intent newIntent = new Intent(this, DriverHomeActivity.class);
+            newIntent.putExtra("userID", userID);
+            startActivity(newIntent);
         }
         Toast.makeText(RegisterActivity.this, "Welcome, " + firstName.getText().toString().trim() + " " + lastName.getText().toString().trim() + " :)",
                 Toast.LENGTH_LONG).show();
