@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,15 +16,38 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.ClickInvoices;
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
+import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 
 public class clickCustomers extends AppCompatActivity {
     String userID;
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent newIntent = new Intent(clickCustomers.this, CCHomeActivity.class);
+                        newIntent.putExtra("userID", userID);
+                        startActivity(newIntent);
+                        finish();
+                    }
+                }, 200);
+                break;
+        }
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_click_customers);
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
+        System.out.println(userID + "this is the clickCustomer userID");
 
         //now using the API
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(this);

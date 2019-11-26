@@ -105,22 +105,40 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToTruckDriverHome(String userID) {
+        final Handler handler = new Handler();
         Intent newIntent = new Intent(this, DriverHomeActivity.class);
-        newIntent.putExtra("userID", userID);
-        startActivity(newIntent);
-        Toast.makeText(LoginActivity.this, "Welcome! :)",
-                Toast.LENGTH_LONG).show();
-        finish();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+
+                newIntent.putExtra("userID", userID);
+                System.out.println(userID + "login");
+                startActivity(newIntent);
+                Toast.makeText(LoginActivity.this, "Welcome! :)",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }, 200);
     }
 
     @Override
     public void navigateToCocaColaHome(String userID) {
+        final Handler handler = new Handler();
         Intent newIntent = new Intent(this, CCHomeActivity.class);
-        newIntent.putExtra("userID", userID);
-        startActivity(newIntent);
-        Toast.makeText(LoginActivity.this, "Welcome! :)",
-                Toast.LENGTH_LONG).show();
-        finish();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+
+                newIntent.putExtra("userID", userID);
+                System.out.println(userID + "login");
+                startActivity(newIntent);
+                Toast.makeText(LoginActivity.this, "Welcome! :)",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }, 200);
     }
 
     private void validateCredentials() {

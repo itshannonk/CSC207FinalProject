@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".cocacola.clickCustomers"></activity>
+        <activity android:name=".cocacola.clickCustomers"
+            android:parentActivityName=".cocacola.home.CCHomeActivity"></activity>
         <activity
             android:name=".businessowner.ClickInvoices"
             android:parentActivityName=".businessowner.home.SBOHomeActivity"

@@ -41,6 +41,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         presenter = new CCHomePresenter(this, new CCHomeInteractor());
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
+        System.out.print(userID + "userid!!!!!!!!!!!");
         displayName();
     }
 
