@@ -18,12 +18,28 @@
         tools:visibility="visible" />
 
     <TextView
+        android:id="@+id/welcome_name"
+        android:layout_width="311dp"
+        android:layout_height="68dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="-80dp"
+        android:layout_marginBottom="64dp"
+        android:enabled="true"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="25sp"
+        android:typeface="monospace" />
+
+    <TextView
         android:id="@+id/item_name"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="-50dp"
         android:text="Item Name"
         android:textColor="#881212"
         android:textSize="14sp"
