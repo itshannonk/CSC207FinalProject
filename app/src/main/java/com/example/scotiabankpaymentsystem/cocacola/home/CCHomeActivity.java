@@ -2,6 +2,7 @@ package com.example.scotiabankpaymentsystem.cocacola.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -9,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSeeInvoices;
 import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
 import com.example.scotiabankpaymentsystem.cocacola.clickCustomers;
@@ -36,7 +38,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
         findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
-        findViewById(R.id.totalPrice).setOnClickListener(v -> navigateToActivitySeeInvoice());
+        findViewById(R.id.totalPrice).setOnClickListener(v -> navigateToActivitySeeCustomer());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new CCHomePresenter(this, new CCHomeInteractor());
         Intent intent = getIntent();
@@ -58,9 +60,20 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     }
 
     @Override
-    public void navigateToActivitySeeInvoice() {
-        Intent intent = new Intent(CCHomeActivity.this, clickCustomers.class);
-        startActivity(intent);
+    public void navigateToActivitySeeCustomer() {
+        final Handler handler = new Handler();
+        Intent newIntent = new Intent(CCHomeActivity.this, clickCustomers.class);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                newIntent.putExtra("userID", userID);
+                startActivity(newIntent);
+                Toast.makeText(CCHomeActivity.this, "Welcome! :)",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }, 200);
     }
 
     @Override
