@@ -21,6 +21,7 @@ package com.example.scotiabankpaymentsystem.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -28,6 +29,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.ClickInvoices;
+import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 import com.example.scotiabankpaymentsystem.driver.home.DriverHomeActivity;
@@ -85,12 +88,19 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToSBOHome(String userID) {
+        final Handler handler = new Handler();
         Intent newIntent = new Intent(this, SBOHomeActivity.class);
-        newIntent.putExtra("userID", userID);
-        startActivity(newIntent);
-        Toast.makeText(LoginActivity.this, "Welcome! :)",
-                Toast.LENGTH_LONG).show();
-        finish();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 5s = 5000ms
+                newIntent.putExtra("userID", userID);
+                startActivity(newIntent);
+                Toast.makeText(LoginActivity.this, "Welcome! :)",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+        }, 200);
     }
 
     @Override

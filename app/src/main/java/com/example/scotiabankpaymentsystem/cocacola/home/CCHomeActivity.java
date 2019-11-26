@@ -30,11 +30,11 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         setContentView(R.layout.activity_cocacola_home);
 
         settingsButton = findViewById(R.id.Setting);
-        seeInvoicesButton = findViewById(R.id.SeeInvoice);
+        seeInvoicesButton = findViewById(R.id.totalPrice);
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
         findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
-        findViewById(R.id.SeeInvoice).setOnClickListener(v -> navigateToActivitySeeInvoice());
+        findViewById(R.id.totalPrice).setOnClickListener(v -> navigateToActivitySeeInvoice());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new CCHomePresenter(this, new CCHomeInteractor());
         Intent intent = getIntent();
