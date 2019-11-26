@@ -2,6 +2,7 @@ package com.example.scotiabankpaymentsystem.businessowner;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +13,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
+
 import android.os.Handler;
 //import com.google.firebase.auth.FirebaseAuth;
 
@@ -28,8 +31,6 @@ public class SBOSeeOrder extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_seestatus_has);
-
-        findViewById(R.id.GoBack).setOnClickListener(v -> navigateToHome());
 
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
@@ -122,17 +123,21 @@ public class SBOSeeOrder extends AppCompatActivity {
             //}
         //});
     }
-    public void navigateToHome() {
-        // since it takes a while for the information (like 1 second) so there is a delay
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // Do something after 5s = 5000ms
-                Intent newIntent = new Intent(SBOSeeOrder.this, ClickInvoices.class);
-                newIntent.putExtra("userID", userID);
-                startActivity(newIntent);
-            }
-        }, 200);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent newIntent = new Intent(SBOSeeOrder.this, ClickInvoices.class);
+                        newIntent.putExtra("userID", userID);
+                        startActivity(newIntent);
+                    }
+                }, 200);
+                break;
+        }
+        return true;
     }
 }

@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -21,12 +24,30 @@ import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 public class ClickInvoices extends AppCompatActivity {
     private String userID;
 
+    // this override is to override the action bar back button so that it passes around the userID
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent newIntent = new Intent(ClickInvoices.this, SBOHomeActivity.class);
+                        newIntent.putExtra("userID", userID);
+                        startActivity(newIntent);
+                        finish();
+                    }
+                }, 200);
+                break;
+        }
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_click_invoices);
         //this is the go back button
-        findViewById(R.id.GoBack).setOnClickListener(v -> navigateToHome());
 
 
         // receiving the information that was sent from the previous page/activity
@@ -77,10 +98,5 @@ public class ClickInvoices extends AppCompatActivity {
             ll.addView(btn);
         }
 
-    }
-    public void navigateToHome() {
-        Intent newIntent = new Intent(ClickInvoices.this, SBOHomeActivity.class);
-        newIntent.putExtra("userID", userID);
-        startActivity(newIntent);
     }
 }
