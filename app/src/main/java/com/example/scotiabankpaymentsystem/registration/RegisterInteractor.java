@@ -18,45 +18,41 @@
  */
 package com.example.scotiabankpaymentsystem.registration;
 
-import android.app.Activity;
 import android.content.Context;
-import android.net.Uri;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Handler;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.FirebaseDatabase;
+
 //import com.google.firebase.auth.AuthResult;
 //import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.gson.Gson;
-
-import java.net.URL;
-import java.util.HashMap;
 
 public class RegisterInteractor {
     //private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private final FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
-    private boolean testing2= false;
-    interface OnRegisterFinishedListener{
+    private boolean testing2 = false;
+
+    interface OnRegisterFinishedListener {
         void onFirstNameError();
+
         void onLastNameError();
+
         void onPasswordError();
+
         void onEmailError();
+
         void onAddressError();
+
         void onRoleError();
+
         void onAccountAlreadyExistsError();
+
         void onSuccess(String userID);
     }
+
     public void register(final String firstName, final String lastName, final String password, final String email, final String address, final String role, final OnRegisterFinishedListener listener, Context context) {
         boolean noProblems = true;
         if (firstName.trim().isEmpty() || (firstName.contains("@"))) {
@@ -84,12 +80,12 @@ public class RegisterInteractor {
             listener.onRoleError();
             noProblems = false;
         }
-        if(noProblems){
+        if (noProblems) {
             com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
             String url;
             if (role.equals("a Business Owner")) {
                 url = "https://us-central1-csc207-tli.cloudfunctions.net/create_user?address=" + address + "&email=" + email +
-                    "&name=" + firstName + "%20" + lastName + "&password=" + password + "&role=" + "a%20Business%20Owner";
+                        "&name=" + firstName + "%20" + lastName + "&password=" + password + "&role=" + "a%20Business%20Owner";
             } else {
                 url = "https://us-central1-csc207-tli.cloudfunctions.net/create_user?address=" + "" + "&email=" + email +
                         "&name=" + firstName + "%20" + lastName + "&password=" + password + "&role=" + role;
@@ -116,7 +112,7 @@ public class RegisterInteractor {
             ExampleRequestQueue.add(stringRequest);
         }
 
-            //authenticating the user into firebase
+        //authenticating the user into firebase
 //            firebaseAuth.createUserWithEmailAndPassword(email, password)
 //                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 //                        @Override
@@ -220,6 +216,6 @@ public class RegisterInteractor {
 //                            }
 //                        }
 //                    });
-        }
     }
+}
 

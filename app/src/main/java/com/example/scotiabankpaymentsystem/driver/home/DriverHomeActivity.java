@@ -9,8 +9,9 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
-import com.example.scotiabankpaymentsystem.driver.DriverSeeOrder;
+import com.example.scotiabankpaymentsystem.businessowner.ClickInvoices;
+import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
+import com.example.scotiabankpaymentsystem.driver.DriverSeeDeliveries;
 import com.example.scotiabankpaymentsystem.driver.DriverSetting;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Distributer;
@@ -52,12 +53,14 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     @Override
     public void navigateToActivitySettings() {
         Intent intent = new Intent(DriverHomeActivity.this, DriverSetting.class);
+        intent.putExtra("userID", userID);
         startActivity(intent);
     }
 
     @Override
     public void navigateToActivitySeeDelivery() {
-        Intent intent = new Intent(DriverHomeActivity.this, DriverSeeOrder.class);
+        Intent intent = new Intent(DriverHomeActivity.this, DriverSeeDeliveries.class);
+        intent.putExtra("userID", userID);
         startActivity(intent);
     }
 

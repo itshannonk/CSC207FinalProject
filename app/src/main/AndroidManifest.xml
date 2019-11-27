@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".cocacola.CCCreateInvoice"></activity>
+        <activity android:name=".activity_driver_displayinvoice"></activity>
+        <activity android:name=".cocacola.CCCreateInvoice" />
         <activity android:name=".cocacola.CCInvoiceManipulationChoice" />
         <activity
             android:name=".cocacola.CCClickCustomers"
@@ -65,8 +66,11 @@
             android:name=".driver.home.DriverHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".driver.DriverSeeOrder"
+            android:name=".driver.DriverSeeDeliveries"
             android:parentActivityName=".driver.home.DriverHomeActivity" />
+        <activity
+            android:name=".driver.DriverDisplayInvoice"
+            android:parentActivityName=".driver.DriverSeeDeliveries" />
         <activity
             android:name=".driver.DriverSetting"
             android:parentActivityName=".driver.home.DriverHomeActivity" />
