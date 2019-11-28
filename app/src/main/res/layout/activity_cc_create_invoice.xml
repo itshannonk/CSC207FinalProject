@@ -33,13 +33,23 @@
         android:textSize="25sp"
         android:typeface="monospace" />
 
+    <Button
+        android:id="@+id/create_invoice"
+        android:layout_width="225dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="-120dp"
+        android:text="create Invoice"
+        tools:visibility="visible" />
+
     <TextView
         android:id="@+id/item_name"
         android:layout_width="225dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
-        android:layout_marginTop="-50dp"
+        android:layout_marginTop="30dp"
         android:text="Item Name"
         android:textColor="#881212"
         android:textSize="14sp"
@@ -99,14 +109,5 @@
         android:text=""
         tools:visibility="visible" />
 
-    <Button
-        android:id="@+id/create_invoice"
-        android:layout_width="225dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="100dp"
-        android:layout_marginLeft="100dp"
-        android:text="create Invoice"
-        tools:visibility="visible" />
 
 </LinearLayout>
