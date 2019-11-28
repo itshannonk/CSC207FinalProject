@@ -18,7 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 
-public class ClickInvoices extends AppCompatActivity {
+public class SBOSeeOrders extends AppCompatActivity {
     private String userID;
 
     // this override is to override the action bar back button so that it passes around the userID
@@ -30,7 +30,7 @@ public class ClickInvoices extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(ClickInvoices.this, SBOHomeActivity.class);
+                        Intent newIntent = new Intent(SBOSeeOrders.this, SBOHomeActivity.class);
                         newIntent.putExtra("userID", userID);
                         startActivity(newIntent);
                         finish();
@@ -43,7 +43,7 @@ public class ClickInvoices extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_businessowner_click_invoices);
+        setContentView(R.layout.activity_businessowner_seeallorders);
         //this is the go back button
 
 
@@ -84,8 +84,8 @@ public class ClickInvoices extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(ClickInvoices.this, SBOSeeOrder.class);
-                    // when we switch to the SBOSeeOrder, it will pass in both the userID and invoiceID
+                    Intent newIntent = new Intent(SBOSeeOrders.this, SBODisplayInvoice.class);
+                    // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
                     newIntent.putExtra("userID", userID);
                     newIntent.putExtra("invoiceID", finalID);
                     startActivity(newIntent);

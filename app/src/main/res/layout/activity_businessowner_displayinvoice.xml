@@ -41,7 +41,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
-        android:text="Issued/Not Issued"
+        android:text="Issued:"
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -55,7 +55,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="15dp"
-        android:text="Paid/Not Paid"
+        android:text="Paid:"
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -69,7 +69,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="15dp"
-        android:text="Delivered/Not Delivered"
+        android:text="Delivered:"
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -84,7 +84,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="15dp"
-        android:text="Price"
+        android:text="Total Price:"
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic" />
@@ -96,7 +96,7 @@
         android:layout_below="@+id/totalPrice"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="14dp"
         android:text="See current invoice"
         tools:visibility="visible" />
 
@@ -104,9 +104,11 @@
         android:id="@+id/Pay"
         android:layout_width="150dp"
 
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Invoice"
         android:layout_marginStart="125dp"
         android:layout_marginLeft="125dp"
-        android:layout_height="wrap_content"
+        android:layout_marginTop="-310dp"
         android:text="Click to pay!" />
 
 

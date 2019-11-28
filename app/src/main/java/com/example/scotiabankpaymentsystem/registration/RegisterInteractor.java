@@ -107,6 +107,7 @@ public class RegisterInteractor {
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
                 public void onErrorResponse(VolleyError error) {
+                    System.out.println("registration doesn't work");
                 }
             });
             ExampleRequestQueue.add(stringRequest);

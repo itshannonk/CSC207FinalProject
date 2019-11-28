@@ -10,10 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.ClickInvoices;
-import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
+import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrders;
 import com.example.scotiabankpaymentsystem.model.Customer;
-import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSettings;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 //import com.google.firebase.auth.FirebaseAuth;
@@ -70,7 +68,7 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
             @Override
             public void run() {
                 // Do something after 5s = 5000ms
-                Intent newIntent = new Intent(SBOHomeActivity.this, ClickInvoices.class);
+                Intent newIntent = new Intent(SBOHomeActivity.this, SBOSeeOrders.class);
                 newIntent.putExtra("userID", userID);
                 startActivity(newIntent);
             }

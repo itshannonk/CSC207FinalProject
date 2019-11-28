@@ -15,7 +15,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 
 import android.os.Handler;
 import android.widget.Toast;
@@ -27,15 +26,14 @@ import android.widget.Toast;
 /**
  * A page that contains SBO's orders
  */
-public class SBOSeeOrder extends AppCompatActivity {
-    private static boolean testing = false;
+public class SBODisplayInvoice extends AppCompatActivity {
     private String userID;
     private String invoiceID;
     private Button payButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_businessowner_seestatus_has);
+        setContentView(R.layout.activity_businessowner_displayinvoice);
         // this will initiate the pay button
         payButton = (Button)findViewById(R.id.Pay);
         payButton.setOnClickListener(v -> changeBoolean());
@@ -63,7 +61,7 @@ public class SBOSeeOrder extends AppCompatActivity {
                     String inputText = "";
                     // showing if it is delivered
                     TextView invoiceTextDeliever = findViewById(R.id.Delivered);
-                    inputText ="Delievered: " + invoiceIDs[0];
+                    inputText ="Delivered: " + invoiceIDs[0];
                     invoiceTextDeliever.setText(inputText);
                     //showing if it's issued
                     TextView invoiceTextIssued = findViewById(R.id.Issued);
@@ -81,7 +79,7 @@ public class SBOSeeOrder extends AppCompatActivity {
                     }
                     //showing the total price
                     TextView invoiceTextPrice = findViewById(R.id.totalPrice);
-                    inputText ="Total Price " + invoiceIDs[3];
+                    inputText ="Total Price: " + invoiceIDs[3];
                     invoiceTextPrice.setText(inputText);
                 }
             }
@@ -127,7 +125,7 @@ public class SBOSeeOrder extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(SBOSeeOrder.this, ClickInvoices.class);
+                        Intent newIntent = new Intent(SBODisplayInvoice.this, SBOSeeOrders.class);
                         newIntent.putExtra("userID", userID);
                         startActivity(newIntent);
                     }

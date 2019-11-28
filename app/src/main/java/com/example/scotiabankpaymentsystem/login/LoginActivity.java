@@ -29,8 +29,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.ClickInvoices;
-import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 import com.example.scotiabankpaymentsystem.driver.home.DriverHomeActivity;
