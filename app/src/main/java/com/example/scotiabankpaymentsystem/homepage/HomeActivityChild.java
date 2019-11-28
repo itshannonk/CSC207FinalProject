@@ -10,7 +10,7 @@
 //
 //import com.example.scotiabankpaymentsystem.R;
 //import com.example.scotiabankpaymentsystem.model.Customer;
-//import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrder;
+//import com.example.scotiabankpaymentsystem.businessowner.SBODisplayInvoice;
 //import com.example.scotiabankpaymentsystem.businessowner.SBOSettings;
 //import com.example.scotiabankpaymentsystem.homepage.HomeActivity;
 //import com.example.scotiabankpaymentsystem.login.LoginActivity;
@@ -54,7 +54,7 @@
 //
 //    @Override
 //    public void navigateToActivitySeeStatus() {
-//        Intent intent = new Intent(HomeActivityChild.this, SBOSeeOrder.class);
+//        Intent intent = new Intent(HomeActivityChild.this, SBODisplayInvoice.class);
 //        startActivity(intent);
 //    }
 //

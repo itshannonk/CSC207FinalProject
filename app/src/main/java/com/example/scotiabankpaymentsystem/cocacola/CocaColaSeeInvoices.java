@@ -11,7 +11,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class CocaColaSeeInvoices extends AppCompatActivity {
-    public static boolean testing = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

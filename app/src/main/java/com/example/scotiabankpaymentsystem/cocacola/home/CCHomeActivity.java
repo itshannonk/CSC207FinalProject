@@ -97,7 +97,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     @Override
     public void setDisplayName(String username) {
         TextView welcomeText = findViewById(R.id.welcome_name);
-        String welcome = "Welcome " + username;
+        String welcome = "Welcome, Corporate Overlord";
         welcomeText.setText(welcome);
     }
 }

@@ -4,12 +4,33 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.MenuItem;
 
 import com.example.scotiabankpaymentsystem.R;
 
 public class CCInvoiceManipulationChoice extends AppCompatActivity {
-    String userID;
+    private String userID;
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent newIntent = new Intent(CCInvoiceManipulationChoice.this, CCClickCustomers.class);
+                        newIntent.putExtra("userID", userID);
+                        System.out.println("ccClickCustomer" + userID);
+                        startActivity(newIntent);
+                        finish();
+                    }
+                }, 200);
+                break;
+        }
+        return true;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

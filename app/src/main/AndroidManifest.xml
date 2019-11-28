@@ -11,13 +11,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".cocacola.CCCreateInvoice"></activity>
-        <activity android:name=".cocacola.CCInvoiceManipulationChoice" />
+        <activity android:name=".cocacola.CCCreateInvoice"
+            android:parentActivityName=".cocacola.CCClickCustomers"/>
+        <activity android:name=".cocacola.CCInvoiceManipulationChoice"
+            android:parentActivityName=".cocacola.CCClickCustomers"/>
         <activity
             android:name=".cocacola.CCClickCustomers"
             android:parentActivityName=".cocacola.home.CCHomeActivity" />
         <activity
-            android:name=".businessowner.ClickInvoices"
+            android:name=".businessowner.SBOSeeOrders"
             android:parentActivityName=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".settings.SettingsActivity" />
@@ -40,8 +42,8 @@
             android:name=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".businessowner.SBOSeeOrder"
-            android:parentActivityName=".businessowner.ClickInvoices"
+            android:name=".businessowner.SBODisplayInvoice"
+            android:parentActivityName=".businessowner.SBOSeeOrders"
             android:screenOrientation="portrait" />
         <activity
             android:name=".businessowner.SBOSettings"
@@ -65,8 +67,11 @@
             android:name=".driver.home.DriverHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".driver.DriverSeeOrder"
+            android:name=".driver.DriverSeeDeliveries"
             android:parentActivityName=".driver.home.DriverHomeActivity" />
+        <activity
+            android:name=".driver.DriverDisplayInvoice"
+            android:parentActivityName=".driver.DriverSeeDeliveries" />
         <activity
             android:name=".driver.DriverSetting"
             android:parentActivityName=".driver.home.DriverHomeActivity" />

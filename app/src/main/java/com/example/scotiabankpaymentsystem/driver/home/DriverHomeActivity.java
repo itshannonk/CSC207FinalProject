@@ -9,8 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
-import com.example.scotiabankpaymentsystem.driver.DriverSeeOrder;
+import com.example.scotiabankpaymentsystem.driver.DriverSeeDeliveries;
 import com.example.scotiabankpaymentsystem.driver.DriverSetting;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Distributer;
@@ -39,7 +38,7 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         findViewById(R.id.SeeDelivery).setOnClickListener(v -> navigateToActivitySeeDelivery());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new DriverHomePresenter(this, new DriverHomeInteractor());
-
+        getUserID();
         displayName();
     }
 
@@ -52,13 +51,15 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     @Override
     public void navigateToActivitySettings() {
         Intent intent = new Intent(DriverHomeActivity.this, DriverSetting.class);
+        intent.putExtra("userID", userID);
         startActivity(intent);
     }
 
     @Override
     public void navigateToActivitySeeDelivery() {
-        Intent intent = new Intent(DriverHomeActivity.this, DriverSeeOrder.class);
-        startActivity(intent);
+        Intent intent = new Intent(DriverHomeActivity.this, DriverSeeDeliveries.class);
+        intent.putExtra("userID", userID);
+        startActivityForResult(intent, 1);
     }
 
     @Override
@@ -87,4 +88,23 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         String welcome = "Welcome " + username;
         welcomeText.setText(welcome);
     }
+
+    public void getUserID(){
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("userID");
+    }
+
+    public void setUserID(String userID){
+        this.userID = userID;
+    }
+
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 1) {
+//            if(resultCode == RESULT_OK) {
+//                String userID = data.getStringExtra("userID");
+//                setUserID(userID);
+//            }
+//        }
+//    }
 }
