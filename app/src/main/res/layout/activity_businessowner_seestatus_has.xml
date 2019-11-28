@@ -24,7 +24,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
-        android:text="Issued/Not Issued"
+        android:text=""
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -37,7 +37,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="1dp"
-        android:text="Paid/Not Paid"
+        android:text=""
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -50,7 +50,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="1dp"
-        android:text="Delivered/Not Delivered"
+        android:text=""
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -63,7 +63,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="5dp"
-        android:text="Price"
+        android:text=""
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"/>
@@ -76,7 +76,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="1dp"
-        android:text="See current invoice"
+        android:text=""
         tools:visibility="visible" />
 
 
