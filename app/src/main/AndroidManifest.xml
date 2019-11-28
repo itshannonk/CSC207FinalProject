@@ -11,8 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".cocacola.CCCreateInvoice" />
-        <activity android:name=".cocacola.CCInvoiceManipulationChoice" />
+        <activity android:name=".cocacola.CCCreateInvoice"
+            android:parentActivityName=".cocacola.CCClickCustomers"/>
+        <activity android:name=".cocacola.CCInvoiceManipulationChoice"
+            android:parentActivityName=".cocacola.CCClickCustomers"/>
         <activity
             android:name=".cocacola.CCClickCustomers"
             android:parentActivityName=".cocacola.home.CCHomeActivity" />
