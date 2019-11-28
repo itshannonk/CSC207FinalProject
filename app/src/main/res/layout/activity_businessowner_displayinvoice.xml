@@ -41,7 +41,10 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="150dp"
         android:layout_marginTop="20dp"
+<<<<<<< HEAD:app/src/main/res/layout/activity_businessowner_displayinvoice.xml
         android:text="Issued:"
+=======
+>>>>>>> 04da73faec9501b75a140f6dd6ce3f14809a8a52:app/src/main/res/layout/activity_businessowner_seestatus_has.xml
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -54,8 +57,12 @@
         android:layout_below="@+id/Issued"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
+<<<<<<< HEAD:app/src/main/res/layout/activity_businessowner_displayinvoice.xml
         android:layout_marginTop="15dp"
         android:text="Paid:"
+=======
+        android:layout_marginTop="1dp"
+>>>>>>> 04da73faec9501b75a140f6dd6ce3f14809a8a52:app/src/main/res/layout/activity_businessowner_seestatus_has.xml
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
@@ -68,8 +75,12 @@
         android:layout_below="@+id/Paid"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
+<<<<<<< HEAD:app/src/main/res/layout/activity_businessowner_displayinvoice.xml
         android:layout_marginTop="15dp"
         android:text="Delivered:"
+=======
+        android:layout_marginTop="1dp"
+>>>>>>> 04da73faec9501b75a140f6dd6ce3f14809a8a52:app/src/main/res/layout/activity_businessowner_seestatus_has.xml
         android:textColor="#881212"
         android:textSize="18sp"
         android:textStyle="bold|italic"
