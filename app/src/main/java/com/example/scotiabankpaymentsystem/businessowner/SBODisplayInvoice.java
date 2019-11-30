@@ -47,6 +47,10 @@ public class SBODisplayInvoice extends AppCompatActivity {
         String tempForInvoice = "this is the userID: " + userID + "this is the invoice ID: " + invoiceID;
         invoiceText.setText(tempForInvoice);
 
+        if(!(intent.getStringExtra("userType").equals("SBO"))){
+            payButton.setVisibility(View.GONE);
+        }
+
         System.out.println("did it come here");
         //api calls
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(this);
@@ -127,6 +131,8 @@ public class SBODisplayInvoice extends AppCompatActivity {
                     public void run() {
                         Intent newIntent = new Intent(SBODisplayInvoice.this, SBOSeeOrders.class);
                         newIntent.putExtra("userID", userID);
+                        Intent intent = getIntent();
+                        newIntent.putExtra("userType", intent.getStringExtra("userType"));
                         startActivity(newIntent);
                     }
                 }, 200);
