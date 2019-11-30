@@ -2,7 +2,6 @@ package com.example.scotiabankpaymentsystem.driver.home;
 
 public interface DriverHomeView {
 
-    void navigateToActivitySettings();
 
     void navigateToActivitySeeDelivery();
 

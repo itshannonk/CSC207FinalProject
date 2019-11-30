@@ -10,7 +10,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.CocaColaSettings;
 import com.example.scotiabankpaymentsystem.cocacola.CCClickCustomers;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Supplier;
@@ -20,7 +19,6 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
     private CCHomePresenter presenter;
     private Button seeInvoicesButton;
-    private Button settingsButton;
     private Button logoutButton;
     private TextView welcomeText;
     private Supplier supplier;
@@ -31,11 +29,9 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cc_home);
 
-        settingsButton = findViewById(R.id.Setting);
         seeInvoicesButton = findViewById(R.id.see_all_customers);
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
-        findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
         findViewById(R.id.see_all_customers).setOnClickListener(v -> navigateToActivitySeeCustomer());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new CCHomePresenter(this, new CCHomeInteractor());
@@ -51,11 +47,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         super.onDestroy();
     }
 
-    @Override
-    public void navigateToActivitySettings() {
-        Intent intent = new Intent(CCHomeActivity.this, CocaColaSettings.class);
-        startActivity(intent);
-    }
+
 
     @Override
     public void navigateToActivitySeeCustomer() {

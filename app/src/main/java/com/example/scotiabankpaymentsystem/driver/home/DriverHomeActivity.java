@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.driver.DriverSeeDeliveries;
-import com.example.scotiabankpaymentsystem.driver.DriverSetting;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Distributer;
 //import com.google.firebase.auth.FirebaseAuth;
@@ -19,7 +18,6 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
 
     private DriverHomePresenter presenter;
     private Button seeDeliveryButton;
-    private Button settingsButton;
     private Button logoutButton;
     private TextView welcomeText;
     private Distributer distributer;
@@ -30,11 +28,9 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_driver_home);
 
-        settingsButton = findViewById(R.id.Setting);
         seeDeliveryButton = findViewById(R.id.SeeDelivery);
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
-        findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
         findViewById(R.id.SeeDelivery).setOnClickListener(v -> navigateToActivitySeeDelivery());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new DriverHomePresenter(this, new DriverHomeInteractor());
@@ -48,12 +44,6 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         super.onDestroy();
     }
 
-    @Override
-    public void navigateToActivitySettings() {
-        Intent intent = new Intent(DriverHomeActivity.this, DriverSetting.class);
-        intent.putExtra("userID", userID);
-        startActivity(intent);
-    }
 
     @Override
     public void navigateToActivitySeeDelivery() {
