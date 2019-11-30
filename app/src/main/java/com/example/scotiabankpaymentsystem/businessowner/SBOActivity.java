@@ -19,42 +19,15 @@ import com.google.firebase.database.DatabaseReference;
  */
 public class SBOActivity extends AppCompatActivity {
 
-    //FirebaseUser user;
-    DatabaseReference databaseReference;
     //userToken;
     String userName;
     String userEmail;
     String userID;
 
-    // TODO: get invoices!
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_home);
-        // Initialize the current user and database
-        // userToken = user.getIdToken();
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        userID = user.getUid();
-//        databaseReference = FirebaseDatabase.getInstance().getReference();
-//
-//        // Get the information of the current logged in user from database single time listener
-//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                userName = dataSnapshot.child("Business Owner").child(userID).child("Name").getValue(String.class);
-//                userEmail = dataSnapshot.child("Business Owner").child(userID).child("Email").getValue(String.class);
-//                //display the username after the data is retrieved since this is a single time listener.
-//                displayName(userName, userEmail);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                Toast.makeText(getApplicationContext(), "Network error, please check your connection", Toast.LENGTH_LONG);
-//            }
-//        });
 
         //Checking if the seeStatus in SBO page button has been pressed
         Button button = findViewById(R.id.SeeStatus);
@@ -74,7 +47,6 @@ public class SBOActivity extends AppCompatActivity {
         Button buttonLogOut = findViewById(R.id.LogOut);
         buttonLogOut.setOnClickListener(v -> {
             //clear session between app and FireBase database
-            //FirebaseAuth.getInstance().signOut();
             //go back to the original login page
             openActivityLogOut();
             //close the SBO page

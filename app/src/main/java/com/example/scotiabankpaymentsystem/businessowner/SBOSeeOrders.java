@@ -17,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
+import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceManipulationChoice;
 
 public class SBOSeeOrders extends AppCompatActivity {
     private String userID;
@@ -30,9 +31,17 @@ public class SBOSeeOrders extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(SBOSeeOrders.this, SBOHomeActivity.class);
-                        newIntent.putExtra("userID", userID);
-                        startActivity(newIntent);
+                        Intent intent = getIntent();
+                        if((intent.getStringExtra("userType")).equals("SBO")){
+                            Intent newIntent = new Intent(SBOSeeOrders.this, SBOHomeActivity.class);
+                            newIntent.putExtra("userID", userID);
+                            startActivity(newIntent);
+                        }
+                        else{
+                            Intent newIntent = new Intent(SBOSeeOrders.this, CCInvoiceManipulationChoice.class);
+                            newIntent.putExtra("userID", userID);
+                            startActivity(newIntent);
+                        }
                         finish();
                     }
                 }, 200);
@@ -88,6 +97,8 @@ public class SBOSeeOrders extends AppCompatActivity {
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
                     newIntent.putExtra("userID", userID);
                     newIntent.putExtra("invoiceID", finalID);
+                    Intent intent = getIntent();
+                    newIntent.putExtra("userType", intent.getStringExtra("userType"));
                     startActivity(newIntent);
                 }
             });
