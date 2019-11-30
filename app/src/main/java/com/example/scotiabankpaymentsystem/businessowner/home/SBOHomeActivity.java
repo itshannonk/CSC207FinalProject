@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrders;
 import com.example.scotiabankpaymentsystem.model.Customer;
-import com.example.scotiabankpaymentsystem.businessowner.SBOSettings;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 //import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +21,6 @@ import com.example.scotiabankpaymentsystem.login.LoginActivity;
 public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
 
-    private Button settingsButton;
     private Button seeStatusButton;
     private Button logoutButton;
     private TextView welcomeText;
@@ -35,11 +33,9 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_home);
 
-        settingsButton = findViewById(R.id.Setting);
         seeStatusButton = findViewById(R.id.SeeStatus);
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
-        findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
         findViewById(R.id.SeeStatus).setOnClickListener(v -> navigateToActivitySeeStatus());
         findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
         presenter = new SBOHomePresenter(this, new SBOHomeInteractor());
@@ -54,12 +50,6 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         super.onDestroy();
     }
 
-    @Override
-    public void navigateToActivitySettings() {
-        Intent newIntent = new Intent(SBOHomeActivity.this, SBOSettings.class);
-        newIntent.putExtra("userID", userID);
-        startActivity(newIntent);
-    }
 
     @Override
     public void navigateToActivitySeeStatus() {

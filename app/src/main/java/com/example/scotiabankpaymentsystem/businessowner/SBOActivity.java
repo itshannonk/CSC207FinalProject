@@ -63,12 +63,7 @@ public class SBOActivity extends AppCompatActivity {
             openActivitySeeStatus();
         });
 
-        //Checking if the settings in SBO page button has been pressed
-        Button buttonSettings = findViewById(R.id.Setting);
-        buttonSettings.setOnClickListener(v -> {
-            //open the next page for the SBO to change settings
-            openActivitySetting();
-        });
+
 
         //Checking if the logout in SBO page button has been pressed
         Button buttonLogOut = findViewById(R.id.LogOut);
@@ -94,10 +89,7 @@ public class SBOActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void openActivitySetting() {
-        Intent intent = new Intent(SBOActivity.this, SBOSettings.class);
-        startActivity(intent);
-    }
+
 
     private void openActivityLogOut() {
         Intent intent = new Intent(SBOActivity.this, LoginActivity.class);
