@@ -18,10 +18,6 @@ import com.example.scotiabankpaymentsystem.R;
 
 import android.os.Handler;
 import android.widget.Toast;
-//import com.google.firebase.auth.FirebaseAuth;
-
-
-// TODO: differentiate if SBO has orders or not
 
 /**
  * A page that contains SBO's orders
