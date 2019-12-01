@@ -24,7 +24,7 @@ package com.example.scotiabankpaymentsystem.businessowner.home;
  */
 public interface SBOHomeView {
 
-    void navigateToActivitySeeStatus();
+    void navigateToActivitySeeInvoices();
 
     void navigateToActivityLogOut();
 

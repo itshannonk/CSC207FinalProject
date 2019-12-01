@@ -8,7 +8,7 @@ import android.os.Handler;
 import android.view.MenuItem;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrders;
+import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
 
 public class CCInvoiceManipulationChoice extends AppCompatActivity {
     private String userID;
@@ -48,7 +48,7 @@ public class CCInvoiceManipulationChoice extends AppCompatActivity {
         startActivity(intent);
     }
     public void navigateToSeeInvoice(){
-        Intent intent = new Intent(CCInvoiceManipulationChoice.this, SBOSeeOrders.class);
+        Intent intent = new Intent(CCInvoiceManipulationChoice.this, SBOSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
         intent.putExtra("userType", "Coke");
         System.out.println("clicked the see invoices");

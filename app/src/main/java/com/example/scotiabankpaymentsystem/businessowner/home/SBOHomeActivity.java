@@ -10,10 +10,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.SBOSeeOrders;
-import com.example.scotiabankpaymentsystem.model.Customer;
+import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-//import com.google.firebase.auth.FirebaseAuth;
 
 /**
  * Frontend!!
@@ -21,11 +19,10 @@ import com.example.scotiabankpaymentsystem.login.LoginActivity;
 public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
 
-    private Button seeStatusButton;
+    private Button seeInvoicesButton;
     private Button logoutButton;
     private TextView welcomeText;
     private SBOHomePresenter presenter;
-    private Customer customer;
     private String userID;
 
     @Override
@@ -33,11 +30,13 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_home);
 
-        seeStatusButton = findViewById(R.id.SeeStatus);
+        seeInvoicesButton = findViewById(R.id.SeeInvoices);
         logoutButton = findViewById(R.id.LogOut);
         welcomeText = findViewById(R.id.welcome_name);
-        findViewById(R.id.SeeStatus).setOnClickListener(v -> navigateToActivitySeeStatus());
-        findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
+
+        seeInvoicesButton.setOnClickListener(v -> navigateToActivitySeeInvoices());
+        logoutButton.setOnClickListener(v -> navigateToActivityLogOut());
+
         presenter = new SBOHomePresenter(this, new SBOHomeInteractor());
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
@@ -52,13 +51,13 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
 
     @Override
-    public void navigateToActivitySeeStatus() {
+    public void navigateToActivitySeeInvoices() {
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 // Do something after 5s = 5000ms
-                Intent newIntent = new Intent(SBOHomeActivity.this, SBOSeeOrders.class);
+                Intent newIntent = new Intent(SBOHomeActivity.this, SBOSeeInvoicesActivity.class);
                 newIntent.putExtra("userID", userID);
                 newIntent.putExtra("userType", "SBO");
                 startActivity(newIntent);
@@ -88,9 +87,8 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
     @Override
     public void setDisplayName(String username) {
-        TextView welcomeText = findViewById(R.id.welcome_name);
+        welcomeText = findViewById(R.id.welcome_name);
         String welcome = "Welcome " + username;
         welcomeText.setText(welcome);
     }
-
 }

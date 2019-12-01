@@ -40,7 +40,7 @@
 //        logoutButton = findViewById(R.id.LogOut);
 //        welcomeText = findViewById(R.id.welcome_name);
 //        findViewById(R.id.Setting).setOnClickListener(v -> navigateToActivitySettings());
-//        findViewById(R.id.SeeStatus).setOnClickListener(v -> navigateToActivitySeeStatus());
+//        findViewById(R.id.SeeStatus).setOnClickListener(v -> navigateToActivitySeeInvoices());
 //        findViewById(R.id.LogOut).setOnClickListener(v -> navigateToActivityLogOut());
 //        presenter = new HomePresenter(this, new HomeInteractor());
 //
@@ -60,7 +60,7 @@
 //    }
 //
 //    @Override
-//    public void navigateToActivitySeeStatus() {
+//    public void navigateToActivitySeeInvoices() {
 //        Intent intent = new Intent(com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity.this, SBODisplayInvoice.class);
 //        startActivity(intent);
 //    }

@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
 
 import android.os.Handler;
 import android.widget.Toast;
@@ -125,7 +126,7 @@ public class SBODisplayInvoice extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(SBODisplayInvoice.this, SBOSeeOrders.class);
+                        Intent newIntent = new Intent(SBODisplayInvoice.this, SBOSeeInvoicesActivity.class);
                         newIntent.putExtra("userID", userID);
                         Intent intent = getIntent();
                         newIntent.putExtra("userType", intent.getStringExtra("userType"));
