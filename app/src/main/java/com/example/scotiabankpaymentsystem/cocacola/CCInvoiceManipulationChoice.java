@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
+import com.example.scotiabankpaymentsystem.cocacola.ccclickcustomers.CCClickActivity;
 
 public class CCInvoiceManipulationChoice extends AppCompatActivity {
     private String userID;
@@ -21,7 +22,7 @@ public class CCInvoiceManipulationChoice extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(CCInvoiceManipulationChoice.this, CCClickCustomers.class);
+                        Intent newIntent = new Intent(CCInvoiceManipulationChoice.this, CCClickActivity.class);
                         newIntent.putExtra("userID", userID);
                         System.out.println("ccClickCustomer" + userID);
                         startActivity(newIntent);

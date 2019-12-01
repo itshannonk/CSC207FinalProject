@@ -1,9 +1,6 @@
-package com.example.scotiabankpaymentsystem.cocacola.home;
-
+package com.example.scotiabankpaymentsystem.cocacola.ccclickcustomers;
 
 import android.content.Context;
-
-import androidx.annotation.NonNull;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -11,32 +8,22 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeInteractor;
-import com.example.scotiabankpaymentsystem.model.Supplier;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-
-public class CCHomeInteractor {
-
+public class CCClickInteractor {
     interface onDisplayDataFinishedListener {
         //successfully retrieves user information from database
-        void onHomePageSuccess(String username);
+        void setCustomers(String[] response);
     }
-
-
-    public void displayName(final CCHomeInteractor.onDisplayDataFinishedListener listener, final String userID, Context context){
+    public void displayCustomers(final onDisplayDataFinishedListener listener, Context context){
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
-        String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_display_name?userID="+userID;
-        System.out.println(url);
+        String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_customers";
         StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                listener.onHomePageSuccess(response);
+                //returns all the invoice ID's in a string so it now has to be parsed
+                String[] IDs = response.split(",");
+                //now we know how many invoices do we need to create the same number of buttons
+                listener.setCustomers(IDs);
             }
         }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
             @Override
@@ -47,4 +34,3 @@ public class CCHomeInteractor {
         ExampleRequestQueue.add(ExampleStringRequest);
     }
 }
-
