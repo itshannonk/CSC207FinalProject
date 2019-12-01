@@ -47,10 +47,6 @@
         <activity
             android:name=".cocacola.home.CCHomeActivity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".cocacola.CocaColaSeeInvoices"
-            android:parentActivityName=".cocacola.home.CCHomeActivity"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name=".driver.home.DriverHomeActivity"
