@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".cocacola.CCCreateInvoice"
-            android:parentActivityName=".cocacola.CCClickCustomers"/>
+            android:parentActivityName=".cocacola.ccclickcustomers.CCClickActivity"/>
         <activity android:name=".cocacola.CCInvoiceManipulationChoice"
-            android:parentActivityName=".cocacola.CCClickCustomers"/>
+            android:parentActivityName=".cocacola.ccclickcustomers.CCClickActivity"/>
         <activity
-            android:name=".cocacola.CCClickCustomers"
+            android:name=".cocacola.ccclickcustomers.CCClickActivity"
             android:parentActivityName=".cocacola.home.CCHomeActivity" />
         <activity
             android:name=".businessowner.seeinvoices.SBOSeeInvoicesActivity"
