@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
 
 public class DriverDisplayInvoice extends AppCompatActivity {
     private String userID;
@@ -136,7 +137,7 @@ public class DriverDisplayInvoice extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(DriverDisplayInvoice.this, DriverSeeDeliveries.class);
+                        Intent newIntent = new Intent(DriverDisplayInvoice.this, DriverSeeInvoicesActivity.class);
                         newIntent.putExtra("userID", userID);
                         startActivity(newIntent);
                         finish();

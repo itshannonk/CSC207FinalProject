@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.driver.DriverSeeDeliveries;
+import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Distributer;
 //import com.google.firebase.auth.FirebaseAuth;
@@ -47,7 +47,7 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
 
     @Override
     public void navigateToActivitySeeDelivery() {
-        Intent intent = new Intent(DriverHomeActivity.this, DriverSeeDeliveries.class);
+        Intent intent = new Intent(DriverHomeActivity.this, DriverSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
         startActivityForResult(intent, 1);
     }

@@ -1,21 +1,20 @@
 package com.example.scotiabankpaymentsystem.businessowner.seeinvoices;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.SBODisplayInvoice;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceManipulationChoice;
 
-public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeInvoicesView{
+public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeInvoicesView {
     private String userID;
     private SBOSeeInvoicesPresenter presenter;
 
@@ -24,13 +23,10 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_businessowner_seeinvoices);
-        //this is the go back button
+        presenter = new SBOSeeInvoicesPresenter(this, new SBOSeeInvoicesInteractor());
 
         // receiving the information that was sent from the previous page/activity
-        Intent intent = getIntent();
-        userID = intent.getStringExtra("userID");
-
-        presenter = new SBOSeeInvoicesPresenter(this, new SBOSeeInvoicesInteractor());
+        getUserID();
 
         retrieveInvoiceID(userID);
     }
@@ -39,6 +35,7 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
     public void retrieveInvoiceID(String userID) {
         presenter.retrieveInvoiceID(userID, this);
     }
+
     @Override
     protected void onDestroy() {
         presenter.onDestroy();
@@ -46,10 +43,10 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
     }
 
     @Override
-    public void createButtons(String[] response){
+    public void createButtons(String[] response) {
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
 
-        for(int i = 0; i < response.length ; i++){
+        for (int i = 0; i < response.length; i++) {
             //creating a new button
             Button btn = new Button(this);
             // setting both the text and tag
@@ -93,5 +90,10 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
                 return true;
         }
         return false;
+    }
+
+    private void getUserID() {
+        Intent intent = getIntent();
+        userID = intent.getStringExtra("userID");
     }
 }

@@ -2,20 +2,20 @@ package com.example.scotiabankpaymentsystem.businessowner.seeinvoices;
 
 import android.content.Context;
 
-public class SBOSeeInvoicesPresenter implements SBOSeeInvoicesInteractor.onDisplayDataFinishedListener{
+public class SBOSeeInvoicesPresenter implements SBOSeeInvoicesInteractor.onDisplayDataFinishedListener {
     private SBOSeeInvoicesView sboSeeInvoicesView;
     private SBOSeeInvoicesInteractor sboSeeInvoicesInteractor;
 
-    SBOSeeInvoicesPresenter(SBOSeeInvoicesView sboSeeInvoicesView, SBOSeeInvoicesInteractor sboSeeInvoicesInteractor){
+    SBOSeeInvoicesPresenter(SBOSeeInvoicesView sboSeeInvoicesView, SBOSeeInvoicesInteractor sboSeeInvoicesInteractor) {
         this.sboSeeInvoicesView = sboSeeInvoicesView;
         this.sboSeeInvoicesInteractor = sboSeeInvoicesInteractor;
     }
 
-    void onDestroy(){
+    void onDestroy() {
         sboSeeInvoicesView = null;
     }
 
-    void retrieveInvoiceID(String userID, Context context){
+    void retrieveInvoiceID(String userID, Context context) {
         sboSeeInvoicesInteractor.retrieveInvoiceID(this, userID, context);
     }
 

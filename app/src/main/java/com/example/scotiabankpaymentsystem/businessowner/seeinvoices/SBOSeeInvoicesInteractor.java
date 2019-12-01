@@ -14,10 +14,10 @@ class SBOSeeInvoicesInteractor {
         void onInvoicesRetrievalSuccess(String[] IDs);
     }
 
-    void retrieveInvoiceID(final onDisplayDataFinishedListener listener, final String userID, Context context){
+    void retrieveInvoiceID(final onDisplayDataFinishedListener listener, final String userID, Context context) {
         //now using the API
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
-        String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_list_of_invoice_ids?userID="+userID;
+        String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_list_of_invoice_ids?userID=" + userID;
         StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
