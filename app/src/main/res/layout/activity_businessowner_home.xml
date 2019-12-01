@@ -34,7 +34,7 @@
         android:typeface="monospace" />
 
     <Button
-        android:id="@+id/SeeStatus"
+        android:id="@+id/SeeInvoices"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/welcome_name"
@@ -48,7 +48,7 @@
         android:id="@+id/LogOut"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/SeeStatus"
+        android:layout_below="@+id/SeeInvoices"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="30dp"
