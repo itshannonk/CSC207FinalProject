@@ -56,11 +56,11 @@
             android:name=".driver.home.DriverHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".driver.DriverSeeDeliveries"
+            android:name=".driver.seeinvoices.DriverSeeInvoicesActivity"
             android:parentActivityName=".driver.home.DriverHomeActivity" />
         <activity
             android:name=".driver.DriverDisplayInvoice"
-            android:parentActivityName=".driver.DriverSeeDeliveries" />
+            android:parentActivityName=".driver.seeinvoices.DriverSeeInvoicesActivity" />
 
     </application>
 
