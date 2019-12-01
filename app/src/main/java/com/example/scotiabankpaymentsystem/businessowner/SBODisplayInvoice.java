@@ -60,6 +60,7 @@ public class SBODisplayInvoice extends AppCompatActivity {
                     String[] invoiceIDs = response.split(",");
                     String inputText = "";
                     // showing if it is delivered
+
                     TextView invoiceTextDeliever = findViewById(R.id.Delivered);
                     inputText ="Delivered: " + invoiceIDs[0];
                     invoiceTextDeliever.setText(inputText);
@@ -81,12 +82,31 @@ public class SBODisplayInvoice extends AppCompatActivity {
                     TextView invoiceTextPrice = findViewById(R.id.totalPrice);
                     inputText ="Total Price: " + invoiceIDs[3];
                     invoiceTextPrice.setText(inputText);
+
+                    //showing the item in order
+                    TextView invoiceTextItem = findViewById(R.id.Item);
+                    System.out.println(invoiceIDs[4] + "graceeeeeeeee");
+                    inputText ="Item: " + invoiceIDs[4];
+                    System.out.println(invoiceIDs[4] + "yuraaaaaaaa");
+                    invoiceTextItem.setText(inputText);
+
+                    //showing the individual price of item in order
+                    TextView invoiceTextIndividualPrice = findViewById(R.id.individual_price);
+                    System.out.println(invoiceIDs[5]);
+                    inputText ="Individual Price: " + invoiceIDs[5];
+                    invoiceTextIndividualPrice.setText(inputText);
+
+                    //showing the quantity of item in order
+                    TextView invoiceTextQuantity = findViewById(R.id.quantity);
+                    System.out.println(invoiceIDs[6]);
+                    inputText ="Quantity:" + invoiceIDs[6];
+                    invoiceTextQuantity.setText(inputText);
                 }
             }
         }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
             @Override
             public void onErrorResponse(VolleyError error) {
-                //This code is executed if there is an error.
+                System.out.println("error for response");
             }
         });
         ExampleRequestQueue.add(ExampleStringRequest);
