@@ -41,7 +41,7 @@
             android:name=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".businessowner.SBODisplayInvoice"
+            android:name=".businessowner.displayinvoice.SBODisplayInvoiceActivity"
             android:parentActivityName=".businessowner.seeinvoices.SBOSeeInvoicesActivity"
             android:screenOrientation="portrait" />
         <activity
