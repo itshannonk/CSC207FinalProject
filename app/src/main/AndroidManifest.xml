@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".cocacola.CCCreateInvoice"
             android:parentActivityName=".cocacola.ccclickcustomers.CCClickActivity"/>
-        <activity android:name=".cocacola.CCInvoiceManipulationChoice"
+        <activity android:name=".cocacola.CCInvoiceSeeOrCreate"
             android:parentActivityName=".cocacola.ccclickcustomers.CCClickActivity"/>
         <activity
             android:name=".cocacola.ccclickcustomers.CCClickActivity"
@@ -46,10 +46,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".cocacola.home.CCHomeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".cocacola.CocaColaSeeInvoices"
-            android:parentActivityName=".cocacola.home.CCHomeActivity"
             android:screenOrientation="portrait" />
 
         <activity

@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.ccclickcustomers.CCClickActivity;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.example.scotiabankpaymentsystem.model.Supplier;
 
 public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
@@ -20,7 +19,6 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     private Button seeInvoicesButton;
     private Button logoutButton;
     private TextView welcomeText;
-    private Supplier supplier;
     private String userID;
 
     @Override

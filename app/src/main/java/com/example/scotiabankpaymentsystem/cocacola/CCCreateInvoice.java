@@ -15,7 +15,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 
 public class CCCreateInvoice extends AppCompatActivity {
     private static int invoiceID = 0;
@@ -32,7 +31,7 @@ public class CCCreateInvoice extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(CCCreateInvoice.this, CCInvoiceManipulationChoice.class);
+                        Intent newIntent = new Intent(CCCreateInvoice.this, CCInvoiceSeeOrCreate.class);
                         newIntent.putExtra("userID", userID);
                         System.out.println("ccClickCustomer" + userID);
                         startActivity(newIntent);
