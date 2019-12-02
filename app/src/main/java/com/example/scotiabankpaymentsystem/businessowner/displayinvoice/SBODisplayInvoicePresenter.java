@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class SBODisplayInvoicePresenter implements com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceInteractor.onDisplayDataFinishedListener {
     private SBODisplayInvoiceView sboDiaplayInvoiceView;
-    private com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceInteractor sboDisplayInvoiceInteractor;
+    private SBODisplayInvoiceInteractor sboDisplayInvoiceInteractor;
 
     SBODisplayInvoicePresenter(SBODisplayInvoiceView sboDiaplayInvoiceView, com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceInteractor sboDisplayInvoiceInteractor) {
         this.sboDiaplayInvoiceView = sboDiaplayInvoiceView;

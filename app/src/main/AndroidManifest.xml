@@ -55,7 +55,7 @@
             android:name=".driver.seeinvoices.DriverSeeInvoicesActivity"
             android:parentActivityName=".driver.home.DriverHomeActivity" />
         <activity
-            android:name=".driver.DriverDisplayInvoice"
+            android:name=".driver.displayinvoice.DriverDisplayInvoiceActivity"
             android:parentActivityName=".driver.seeinvoices.DriverSeeInvoicesActivity" />
 
     </application>
