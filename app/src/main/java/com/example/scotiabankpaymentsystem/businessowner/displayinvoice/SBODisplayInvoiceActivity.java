@@ -80,6 +80,7 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         //checks if it has already been paid so it determines if the pay button should be there
         if((info[2]).toLowerCase().equals("true")){
             payButton.setVisibility(View.GONE);
+            System.out.println("the pay button is now invisible");
         }
         //showing the total price
         TextView invoiceTextPrice = findViewById(R.id.totalPrice);
