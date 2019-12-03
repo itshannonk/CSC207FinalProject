@@ -10,7 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.ccclickcustomers.CCClickActivity;
+import com.example.scotiabankpaymentsystem.cocacola.seecustomers.CCSeeCustomerActivity;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 import com.example.scotiabankpaymentsystem.model.Supplier;
 
@@ -51,7 +51,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     @Override
     public void navigateToActivitySeeCustomer() {
         final Handler handler = new Handler();
-        Intent newIntent = new Intent(CCHomeActivity.this, CCClickActivity.class);
+        Intent newIntent = new Intent(CCHomeActivity.this, CCSeeCustomerActivity.class);
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {

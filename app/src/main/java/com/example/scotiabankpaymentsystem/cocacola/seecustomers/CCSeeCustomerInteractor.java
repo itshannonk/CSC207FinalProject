@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.cocacola.ccclickcustomers;
+package com.example.scotiabankpaymentsystem.cocacola.seecustomers;
 
 import android.content.Context;
 
@@ -7,9 +7,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeInteractor;
 
-public class CCClickInteractor {
+public class CCSeeCustomerInteractor {
     interface onDisplayDataFinishedListener {
         //successfully retrieves user information from database
         void setCustomers(String[] response);

@@ -1,4 +1,4 @@
-package com.example.scotiabankpaymentsystem.cocacola.ccclickcustomers;
+package com.example.scotiabankpaymentsystem.cocacola.seecustomers;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +14,9 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceManipulationChoice;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 
-public class CCClickActivity extends AppCompatActivity implements CCClickView{
+public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCustomerView {
     String userID;
-    private CCClickPresenter presenter;
+    private CCSeeCustomerPresenter presenter;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -26,7 +26,7 @@ public class CCClickActivity extends AppCompatActivity implements CCClickView{
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(CCClickActivity.this, CCHomeActivity.class);
+                        Intent newIntent = new Intent(CCSeeCustomerActivity.this, CCHomeActivity.class);
                         newIntent.putExtra("userID", userID);
                         System.out.println("ccClickCustomer" + userID);
                         startActivity(newIntent);
@@ -40,10 +40,10 @@ public class CCClickActivity extends AppCompatActivity implements CCClickView{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cc_click_customers);
+        setContentView(R.layout.activity_cc_seecustomers);
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
-        presenter = new CCClickPresenter(this, new CCClickInteractor());
+        presenter = new CCSeeCustomerPresenter(this, new CCSeeCustomerInteractor());
         displayCustomers();
     }
 
@@ -67,7 +67,7 @@ public class CCClickActivity extends AppCompatActivity implements CCClickView{
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(CCClickActivity.this, CCInvoiceManipulationChoice.class);
+                    Intent newIntent = new Intent(CCSeeCustomerActivity.this, CCInvoiceManipulationChoice.class);
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
                     System.out.println(userID + "inside the click for clickCustomer");
                     newIntent.putExtra("userID", finalID);

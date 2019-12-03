@@ -1,13 +1,12 @@
-package com.example.scotiabankpaymentsystem.cocacola;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.scotiabankpaymentsystem.cocacola.createinvoice;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -15,9 +14,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
+import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceManipulationChoice;
 
-public class CCCreateInvoice extends AppCompatActivity {
+public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCreateInvoiceView {
     private static int invoiceID = 0;
     private String userID;
     private EditText item;
@@ -25,37 +24,33 @@ public class CCCreateInvoice extends AppCompatActivity {
     private EditText quantity;
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_cc_createinvoice);
+        findViewById(R.id.create_invoice).setOnClickListener(v -> createInvoice());
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent newIntent = new Intent(CCCreateInvoice.this, CCInvoiceManipulationChoice.class);
-                        newIntent.putExtra("userID", userID);
-                        System.out.println("ccClickCustomer" + userID);
-                        startActivity(newIntent);
-                        finish();
-                    }
-                }, 200);
+                Intent newIntent = new Intent(CCCreateInvoiceActivity.this, CCInvoiceManipulationChoice.class);
+                newIntent.putExtra("userID", userID);
+                System.out.println("ccClickCustomer" + userID);
+                startActivity(newIntent);
+                finish();
                 break;
         }
         return true;
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cc_create_invoice);
-        System.out.println("on create for create invoice");
-        findViewById(R.id.create_invoice).setOnClickListener(v -> createInvoiceButtonClicked());
 
-    }
-    private void inputError(){
+    private void inputError() {
         Toast.makeText(getApplicationContext(), "Enter all the inputs!", Toast.LENGTH_LONG).show();
     }
-    private void createInvoiceButtonClicked(){
+
+    private void createInvoice() {
         System.out.println("why wont it work");
         item = findViewById(R.id.input_item_name);
         price = findViewById(R.id.input_price);
@@ -64,11 +59,10 @@ public class CCCreateInvoice extends AppCompatActivity {
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(this);
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
-        invoiceID+=1;
-        if(item.equals("")||price.equals("")||quantity.equals("")) {
+        invoiceID += 1;
+        if (item.equals("") || price.equals("") || quantity.equals("")) {
             inputError();
-        }
-        else {
+        } else {
             String url = "https://us-central1-csc207-tli.cloudfunctions.net/create_invoice?userid=" + userID + "&invoiceid=invoice"
                     + String.valueOf(invoiceID) + "&item=" + item.getText() + "&quantity=" + quantity.getText() + "&price=" + price.getText();
             System.out.println(url);
