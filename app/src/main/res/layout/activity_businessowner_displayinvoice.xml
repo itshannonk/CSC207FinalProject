@@ -124,7 +124,7 @@
             android:layout_below="@+id/Invoice"
             android:layout_marginStart="125dp"
             android:layout_marginLeft="125dp"
-            android:layout_marginTop="-310dp"
+            android:layout_marginTop="260dp"
             android:text="Click to pay!" />
 
 

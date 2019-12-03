@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceManipulationChoice;
+import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 
 public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCustomerView {
@@ -67,7 +67,7 @@ public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCus
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(CCSeeCustomerActivity.this, CCInvoiceManipulationChoice.class);
+                    Intent newIntent = new Intent(CCSeeCustomerActivity.this, CCInvoiceSeeOrCreate.class);
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
                     System.out.println(userID + "inside the click for clickCustomer");
                     newIntent.putExtra("userID", finalID);

@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
-import com.example.scotiabankpaymentsystem.model.Distributer;
 //import com.google.firebase.auth.FirebaseAuth;
 
 public class DriverHomeActivity extends AppCompatActivity implements DriverHomeView {
@@ -20,7 +19,6 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     private Button seeDeliveryButton;
     private Button logoutButton;
     private TextView welcomeText;
-    private Distributer distributer;
     private String userID;
 
     @Override

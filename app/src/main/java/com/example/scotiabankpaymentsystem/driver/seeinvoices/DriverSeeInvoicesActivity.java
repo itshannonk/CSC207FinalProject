@@ -10,12 +10,14 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.driver.DriverDisplayInvoice;
+import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayInvoiceActivity;
 import com.example.scotiabankpaymentsystem.driver.home.DriverHomeActivity;
 
 
 public class DriverSeeInvoicesActivity extends AppCompatActivity implements DriverSeeInvoicesView {
     private String userID;
+    private String invoiceID;
+    private String customerID;
     private DriverSeeInvoicesPresenter presenter;
 
     @Override
@@ -25,6 +27,8 @@ public class DriverSeeInvoicesActivity extends AppCompatActivity implements Driv
         presenter = new DriverSeeInvoicesPresenter(this, new DriverSeeInvoicesInteractor());
 
         getUserID();
+        getInvoiceID();
+        getCustomerID();
         retrieveInvoiceID(userID);
     }
 
@@ -57,7 +61,7 @@ public class DriverSeeInvoicesActivity extends AppCompatActivity implements Driv
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(DriverSeeInvoicesActivity.this, DriverDisplayInvoice.class);
+                    Intent newIntent = new Intent(DriverSeeInvoicesActivity.this, DriverDisplayInvoiceActivity.class);
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
                     newIntent.putExtra("userID", userID);
                     newIntent.putExtra("invoiceID", invoiceID);
@@ -83,12 +87,18 @@ public class DriverSeeInvoicesActivity extends AppCompatActivity implements Driv
         return true;
     }
 
-    public void getUserID() {
+    public void getUserID(){
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
     }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
+    public void getInvoiceID(){
+        Intent intent = getIntent();
+        invoiceID = intent.getStringExtra("invoiceID");
+    }
+
+    public void getCustomerID(){
+        Intent intent = getIntent();
+        customerID = intent.getStringExtra("customerID");
     }
 }

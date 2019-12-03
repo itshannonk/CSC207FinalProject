@@ -13,7 +13,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".cocacola.createinvoice.CCCreateInvoiceActivity"
             android:parentActivityName=".cocacola.seecustomers.CCSeeCustomerActivity"/>
-        <activity android:name=".cocacola.CCInvoiceManipulationChoice"
+        <activity android:name=".cocacola.CCInvoiceSeeOrCreate"
             android:parentActivityName=".cocacola.seecustomers.CCSeeCustomerActivity"/>
         <activity
             android:name=".cocacola.seecustomers.CCSeeCustomerActivity"
@@ -41,7 +41,7 @@
             android:name=".businessowner.home.SBOHomeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".businessowner.SBODisplayInvoice"
+            android:name=".businessowner.displayinvoice.SBODisplayInvoiceActivity"
             android:parentActivityName=".businessowner.seeinvoices.SBOSeeInvoicesActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -55,7 +55,7 @@
             android:name=".driver.seeinvoices.DriverSeeInvoicesActivity"
             android:parentActivityName=".driver.home.DriverHomeActivity" />
         <activity
-            android:name=".driver.DriverDisplayInvoice"
+            android:name=".driver.displayinvoice.DriverDisplayInvoiceActivity"
             android:parentActivityName=".driver.seeinvoices.DriverSeeInvoicesActivity" />
 
     </application>

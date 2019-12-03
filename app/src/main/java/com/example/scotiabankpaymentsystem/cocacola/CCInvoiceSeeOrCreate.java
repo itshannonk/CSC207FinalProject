@@ -12,7 +12,7 @@ import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoi
 import com.example.scotiabankpaymentsystem.cocacola.createinvoice.CCCreateInvoiceActivity;
 import com.example.scotiabankpaymentsystem.cocacola.seecustomers.CCSeeCustomerActivity;
 
-public class CCInvoiceManipulationChoice extends AppCompatActivity {
+public class CCInvoiceSeeOrCreate extends AppCompatActivity {
     private String userID;
 
     @Override
@@ -23,7 +23,7 @@ public class CCInvoiceManipulationChoice extends AppCompatActivity {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        Intent newIntent = new Intent(CCInvoiceManipulationChoice.this, CCSeeCustomerActivity.class);
+                        Intent newIntent = new Intent(CCInvoiceSeeOrCreate.this, CCSeeCustomerActivity.class);
                         newIntent.putExtra("userID", userID);
                         System.out.println("ccClickCustomer" + userID);
                         startActivity(newIntent);
@@ -44,13 +44,13 @@ public class CCInvoiceManipulationChoice extends AppCompatActivity {
         userID = intent.getStringExtra("userID");
     }
     public void navigateToActivityCreateInvoice() {
-        Intent intent = new Intent(CCInvoiceManipulationChoice.this, CCCreateInvoiceActivity.class);
-        System.out.println(userID + "manipulationChoice");
+
+        Intent intent = new Intent(CCInvoiceSeeOrCreate.this, CCCreateInvoiceActivity.class);
         intent.putExtra("userID", userID);
         startActivity(intent);
     }
     public void navigateToSeeInvoice(){
-        Intent intent = new Intent(CCInvoiceManipulationChoice.this, SBOSeeInvoicesActivity.class);
+        Intent intent = new Intent(CCInvoiceSeeOrCreate.this, SBOSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
         intent.putExtra("userType", "Coke");
         System.out.println("clicked the see invoices");

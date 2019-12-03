@@ -10,9 +10,9 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.SBODisplayInvoice;
+import com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceActivity;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
-import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceManipulationChoice;
+import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
 
 public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeInvoicesView {
     private String userID;
@@ -56,7 +56,7 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent newIntent = new Intent(SBOSeeInvoicesActivity.this, SBODisplayInvoice.class);
+                    Intent newIntent = new Intent(SBOSeeInvoicesActivity.this, SBODisplayInvoiceActivity.class);
                     Intent intent = getIntent();
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
                     newIntent.putExtra("userID", userID);
@@ -81,7 +81,7 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
                     newIntent.putExtra("userID", userID);
                     startActivity(newIntent);
                 } else {
-                    Intent newIntent = new Intent(SBOSeeInvoicesActivity.this, CCInvoiceManipulationChoice.class);
+                    Intent newIntent = new Intent(SBOSeeInvoicesActivity.this, CCInvoiceSeeOrCreate.class);
                     newIntent.putExtra("userID", userID);
                     startActivity(newIntent);
                 }
