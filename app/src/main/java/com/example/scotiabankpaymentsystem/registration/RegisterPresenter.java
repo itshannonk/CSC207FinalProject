@@ -37,7 +37,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
         registerInteractor.register(firstName, lastName, password, email, address, role, this, context);
     }
 
-
+    /**
+     * Have error if there is no input for first name
+     */
     @Override
     public void onFirstNameError() {
         if (registerView != null) {
@@ -46,6 +48,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
         }
     }
 
+    /**
+     * Have error if there is no input for last name
+     */
     @Override
     public void onLastNameError() {
         if (registerView != null) {
@@ -55,6 +60,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
 
     }
 
+    /**
+     * Have error if the account has already exist
+     */
     @Override
     public void onAccountAlreadyExistsError() {
         if (registerView != null) {
@@ -64,6 +72,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
 
     }
 
+    /**
+     * Have error if there is no input for password
+     */
     @Override
     public void onPasswordError() {
         if (registerView != null) {
@@ -72,6 +83,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
         }
     }
 
+    /**
+     * Have error if there is no input for Email
+     */
     @Override
     public void onEmailError() {
         if (registerView != null) {
@@ -81,6 +95,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
 
     }
 
+    /**
+     * Have error if there is no input for Address
+     */
     @Override
     public void onAddressError() {
         if (registerView != null) {
@@ -90,6 +107,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
 
     }
 
+    /**
+     * Have error if you have not choose which role you want to be
+     */
     @Override
     public void onRoleError() {
         if (registerView != null) {
@@ -98,6 +118,9 @@ public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedL
         }
     }
 
+    /**
+     * Sign up success
+     */
     @Override
     public void onSuccess(String userID) {
         if (registerView != null) {

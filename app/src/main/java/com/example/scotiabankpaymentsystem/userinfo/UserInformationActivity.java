@@ -20,6 +20,7 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
     private String truckID;
     private String invoiceID;
     private UserInformationPresenter presenter;
+    private TextView welcomeText ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
