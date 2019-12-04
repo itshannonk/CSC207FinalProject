@@ -91,6 +91,7 @@ public class APIFacadeInvoice {
                 @Override
                 public void onResponse(String response) {
                     currentInvoiceID = response;
+                    System.out.println(currentInvoiceID);
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -98,10 +99,10 @@ public class APIFacadeInvoice {
                 }
             });
             CreateInvoiceRequestQueue.add(GetCurrentIDStringRequest);
-
+            System.out.println(currentInvoiceID);
             // Incrementing the current invoice ID by 1
 
-            String setcurrentID = "https://us-central1-csc207-tli.cloudfunctions.net/set_current_invoiceID";
+            String setcurrentID = "https://us-central1-csc207-tli.cloudfunctions.net/increment_current_invoiceID";
             StringRequest SetCurrentIDStringRequest = new StringRequest(Request.Method.POST, setcurrentID, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
