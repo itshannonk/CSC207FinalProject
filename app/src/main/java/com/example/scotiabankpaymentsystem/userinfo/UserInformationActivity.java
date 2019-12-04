@@ -9,11 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
-import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
-import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
 import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayInvoiceActivity;
-
-import java.sql.Driver;
 
 public class UserInformationActivity extends AppCompatActivity implements UserInformationView {
     private String userID;
@@ -65,11 +61,11 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
         inputText = "Address: " + user_info[0];
         addressText.setText(inputText);
 
-        TextView emailText = findViewById(R.id.email);
+        TextView emailText = findViewById(R.id.paid);
         inputText = "Email: " + user_info[1];
         emailText.setText(inputText);
 
-        TextView nameText = findViewById(R.id.name);
+        TextView nameText = findViewById(R.id.issued);
         inputText = "Name: " + user_info[2];
         nameText.setText(inputText);
     }
