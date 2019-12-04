@@ -9,6 +9,9 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.registration.RegisterInteractor;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 public class APIFacadeRegisterInteractor {
     public void register(final String firstName, final String lastName, final String password, final String email, final String address, final String role, final RegisterInteractor.OnRegisterFinishedListener listener, Context context) {
         boolean noProblems = true;
@@ -41,8 +44,15 @@ public class APIFacadeRegisterInteractor {
             com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
             String url;
             if (role.equals("a Business Owner")) {
-                url = "https://us-central1-csc207-tli.cloudfunctions.net/create_user?address=" + address + "&email=" + email +
-                        "&name=" + firstName + "%20" + lastName + "&password=" + password + "&role=" + "a%20Business%20Owner";
+                try {
+                    // Encode the address into a supported url format
+                    String encodedAddress = URLEncoder.encode(address, "UTF-8").replace("+", "%20");
+                    url = "https://us-central1-csc207-tli.cloudfunctions.net/create_user?address=" + encodedAddress + "&email=" + email +
+                            "&name=" + firstName + "%20" + lastName + "&password=" + password + "&role=" + "a%20Business%20Owner";
+                } catch (UnsupportedEncodingException e) {
+                    url = "https://us-central1-csc207-tli.cloudfunctions.net/create_user?address=" + "" + "&email=" + email +
+                            "&name=" + firstName + "%20" + lastName + "&password=" + password + "&role=" + "a%20Business%20Owner";;
+                }
             } else {
                 url = "https://us-central1-csc207-tli.cloudfunctions.net/create_user?address=" + "" + "&email=" + email +
                         "&name=" + firstName + "%20" + lastName + "&password=" + password + "&role=" + role;
