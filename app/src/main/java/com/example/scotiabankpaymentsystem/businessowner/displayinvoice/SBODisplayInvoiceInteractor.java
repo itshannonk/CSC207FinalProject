@@ -1,8 +1,8 @@
 package com.example.scotiabankpaymentsystem.businessowner.displayinvoice;
 
 import android.content.Context;
-
 import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeInvoice;
+
 
 public class SBODisplayInvoiceInteractor {
     private APIFacadeInvoice APIFacadeInvoice;
