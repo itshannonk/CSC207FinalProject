@@ -40,13 +40,15 @@ import com.google.android.material.textfield.TextInputEditText;
  */
 public class LoginActivity extends AppCompatActivity implements LoginView {
     private TextInputEditText email;
-    private TextInputEditText  password;
+    private TextInputEditText password;
     private ProgressBar progressBar;
     private LoginPresenter presenter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().hide();
 
         email = findViewById(R.id.email_edit_text);
         password = findViewById(R.id.password_edit_text);
@@ -151,7 +153,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
     }
 
-    private void switchTabs(){
+    private void switchTabs() {
         register();
     }
 }
