@@ -4,6 +4,4 @@ public interface UserInformationView {
     void setUserInfo(String info);
 
     void startSetUserInfo();
-
-    void displayContext();
 }

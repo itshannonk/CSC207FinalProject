@@ -27,7 +27,6 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
         userID = intent.getStringExtra("userID");
 
         startSetUserInfo();
-        displayContext();
     }
 
     @Override
@@ -39,13 +38,6 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
     @Override
     public void startSetUserInfo() {
         presenter.startSetUserInfo(userID, this);
-    }
-
-    @Override
-    public void displayContext() {
-        welcomeText = findViewById(R.id.welcome_name);
-        String welcome = "See Account Information Here";
-        welcomeText.setText(welcome);
     }
 
     @Override
