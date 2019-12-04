@@ -49,7 +49,6 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         super.onDestroy();
     }
 
-
     @Override
     public void navigateToPay() {
         presenter.onPay(userID, invoiceID, this);
@@ -60,6 +59,10 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         presenter.startSetInvoiceInfo(userID, invoiceID, this);
     }
 
+    /**
+     * @param menu is the Menu of what to add.
+     * @return Boolean of whether or not.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -68,6 +71,9 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
     }
 
     @Override
+    /**
+     * @param: Inserts the parameter of the info of the Delivered boolean, Issued boolean, Paid boolean, totalPrice boolean, Item String
+     */
     public void setInvoiceInfo(String[] info) {
         String inputText = "";
         // showing if it is delivered

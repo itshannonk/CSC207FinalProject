@@ -45,7 +45,9 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
     @Override
     public void createButtons(String[] response) {
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
-
+        if (response[0].equals("")){
+            return;
+        }
         for (int i = 0; i < response.length; i++) {
             //creating a new button
             Button btn = new Button(this);
