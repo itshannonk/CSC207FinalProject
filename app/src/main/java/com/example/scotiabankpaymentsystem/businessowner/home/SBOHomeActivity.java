@@ -80,6 +80,8 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
 
         // pass in userID to SeeInvoices page
         newIntent.putExtra("userID", userID);
+        newIntent.putExtra("userType", "SBO");
+
         startActivity(newIntent);
 
         // close SBO home page

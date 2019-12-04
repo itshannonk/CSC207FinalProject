@@ -13,13 +13,17 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
+import com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceActivity;
+import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
+import com.example.scotiabankpaymentsystem.userinfo.UserInformationActivity;
 
 public class DriverDisplayInvoiceActivity extends AppCompatActivity implements DriverDisplayInvoiceView{
     private String userID;
     private String invoiceID;
     private String customerID;
     private Button changeDeliveredButton;
+    private Button seeSBOInfoButton;
     private DriverDisplayInvoicePresenter presenter;
 
     @Override
@@ -29,6 +33,9 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         // this will initiate the delivered button
         changeDeliveredButton = findViewById(R.id.changeDeliveredStatus);
         changeDeliveredButton.setOnClickListener(v -> navigateToDelivery());
+
+        seeSBOInfoButton = findViewById(R.id.seeCustomerInfo);
+        seeSBOInfoButton.setOnClickListener(v -> navigateToSeeSBOInfo());
 
 
         presenter = new DriverDisplayInvoicePresenter(this, new DriverDisplayInvoiceInteractor());
@@ -61,6 +68,17 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
     }
 
     @Override
+    public void navigateToSeeSBOInfo(){
+        Intent newIntent = new Intent(DriverDisplayInvoiceActivity.this, UserInformationActivity.class);
+        newIntent.putExtra("userID", userID);
+        newIntent.putExtra("customerID", customerID);
+        newIntent.putExtra("invoiceID", invoiceID);
+        newIntent.putExtra("userType", "Driver");
+        startActivity(newIntent);
+        finish();
+    }
+
+    @Override
     public void startSetInvoiceInfo(){
         presenter.startSetInvoiceInfo(customerID, invoiceID, this);
     }
@@ -69,7 +87,8 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
     public void setInvoiceInfo(String[] info) {
         String inputText = "";
         // showing if it is delivered
-
+        System.out.println(info[0]);
+        System.out.println(info[1]);
         TextView invoiceTextDeliver = findViewById(R.id.Address);
         inputText = "Delivered: " + info[0];
         invoiceTextDeliver.setText(inputText);

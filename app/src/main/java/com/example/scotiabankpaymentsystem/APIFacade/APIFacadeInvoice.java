@@ -7,13 +7,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.scotiabankpaymentsystem.Listener;
 import com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceInteractor;
-import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeInteractor;
 import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesInteractor;
 import com.example.scotiabankpaymentsystem.cocacola.createinvoice.CCCreateInvoiceInteractor;
-import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeInteractor;
-import com.example.scotiabankpaymentsystem.cocacola.seecustomers.CCSeeCustomerInteractor;
 import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayInvoiceInteractor;
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesInteractor;
 
@@ -148,7 +144,8 @@ public class APIFacadeInvoice {
                     //returns all the invoice info in a string so it now has to be parsed
                     String[] info = response.split(",");
                     //now we know how many invoices do we need to create the same number of buttons
-                    listener.onInvoiceRetriveSuccess(info);
+                    System.out.println(info);
+                    listener.onInvoiceRetrievalSuccess(info);
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override

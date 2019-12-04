@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".userinfo.UserInformationActivity"></activity>
+        <activity
+            android:name=".userinfo.UserInformationActivity"
+            android:parentActivityName=".businessowner.home.SBOHomeActivity" />
         <activity
             android:name=".cocacola.createinvoice.CCCreateInvoiceActivity"
             android:parentActivityName=".cocacola.seecustomers.CCSeeCustomerActivity" />

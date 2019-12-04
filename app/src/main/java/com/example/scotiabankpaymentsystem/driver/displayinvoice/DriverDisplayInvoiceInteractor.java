@@ -14,7 +14,7 @@ public class DriverDisplayInvoiceInteractor {
         //successfully retrieves user information from database
         void onChangeDeliveredSuccess();
         void onChangeDeliveredError();
-        void onInvoiceRetriveSuccess(String[] info);
+        void onInvoiceRetrievalSuccess(String[] info);
         void onDelivered(String userID, String invoiceID, Context context);
     }
 

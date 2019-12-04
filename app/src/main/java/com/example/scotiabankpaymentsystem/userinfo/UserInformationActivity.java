@@ -10,9 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
+import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
+import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayInvoiceActivity;
+
+import java.sql.Driver;
 
 public class UserInformationActivity extends AppCompatActivity implements UserInformationView {
     private String userID;
+    private String truckID;
+    private String invoiceID;
     private UserInformationPresenter presenter;
 
     @Override
@@ -23,7 +29,14 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
         presenter = new UserInformationPresenter(this, new UserInformationInteractor());
         //retrieving the information passed on from the previous activity
         Intent intent = getIntent();
-        userID = intent.getStringExtra("userID");
+
+        if ((intent.getStringExtra("userType")).equals("SBO")){
+            userID = intent.getStringExtra("userID");
+        } else {
+            userID = intent.getStringExtra("customerID");
+            truckID = intent.getStringExtra("userID");
+            invoiceID = intent.getStringExtra("invoiceID");
+        }
 
         startSetUserInfo();
     }
@@ -65,12 +78,23 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-
-                Intent newIntent = new Intent(UserInformationActivity.this, SBOHomeActivity.class);
-                newIntent.putExtra("userID", userID);
-                startActivity(newIntent);
+                Intent intent = getIntent();
+                // See invoices activity of CocaCola and SBO are shared
+                // This allows us to go back the the correct page
+                if ((intent.getStringExtra("userType")).equals("SBO")) {
+                    Intent newIntent = new Intent(UserInformationActivity.this, SBOHomeActivity.class);
+                    newIntent.putExtra("userID", userID);
+                    startActivity(newIntent);
+                } else {
+                    Intent newIntent = new Intent(UserInformationActivity.this, DriverDisplayInvoiceActivity.class);
+                    newIntent.putExtra("customerID", userID);
+                    newIntent.putExtra("userID", truckID);
+                    newIntent.putExtra("invoiceID", invoiceID);
+                    System.out.println(invoiceID);
+                    startActivity(newIntent);
+                }
                 finish();
-                break;
+                return true;
 
         }
         return true;

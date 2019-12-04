@@ -26,7 +26,7 @@ public class DriverDisplayInvoicePresenter implements DriverDisplayInvoiceIntera
     }
 
     @Override
-    public void onInvoiceRetriveSuccess(String[] info) {
+    public void onInvoiceRetrievalSuccess(String[] info) {
         driverDisplayInvoiceView.setInvoiceInfo(info);
     }
 
