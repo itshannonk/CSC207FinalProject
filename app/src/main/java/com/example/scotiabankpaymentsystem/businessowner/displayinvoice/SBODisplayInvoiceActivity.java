@@ -141,6 +141,10 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
                 startActivity(newIntent);
                 finish();
                 break;
+
+            case R.id.refresh:
+                startSetInvoiceInfo();
+                break;
         }
         return true;
     }
