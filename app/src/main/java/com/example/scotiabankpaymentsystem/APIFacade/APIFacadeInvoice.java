@@ -86,12 +86,11 @@ public class APIFacadeInvoice {
             listener.onCreateInvoiceError();
         } else {
             // Retrieving current invoice ID
-            String getcurrentID = "https://us-central1-csc207-tli.cloudfunctions.net/get_current_invoiceID";
+            String getcurrentID = "https://us-central1-csc207-tli.cloudfunctions.net/increment_current_invoiceID";
             StringRequest GetCurrentIDStringRequest = new StringRequest(Request.Method.GET, getcurrentID, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    currentInvoiceID = response;
-                    System.out.println(currentInvoiceID);
+                    helperCreateInvoice(listener, item,  price, quantity, userID,  context, response);
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -99,36 +98,28 @@ public class APIFacadeInvoice {
                 }
             });
             CreateInvoiceRequestQueue.add(GetCurrentIDStringRequest);
-            System.out.println(currentInvoiceID);
-            // Incrementing the current invoice ID by 1
-
-            String setcurrentID = "https://us-central1-csc207-tli.cloudfunctions.net/increment_current_invoiceID";
-            StringRequest SetCurrentIDStringRequest = new StringRequest(Request.Method.POST, setcurrentID, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                }
-            });
-            CreateInvoiceRequestQueue.add(SetCurrentIDStringRequest);
 
             // Creating the new invoice
-            String url = "https://us-central1-csc207-tli.cloudfunctions.net/create_invoice?userid=" + userID + "&invoiceid=invoice"
-                    + currentInvoiceID + "&item=" + item + "&quantity=" + quantity + "&price=" + price;
-            StringRequest CreateInvoiceStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    listener.onCreateInvoiceSuccess();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                }
-            });
-            CreateInvoiceRequestQueue.add(CreateInvoiceStringRequest);
         }
+    }
+    public void helperCreateInvoice(final CCCreateInvoiceInteractor.onDisplayDataFinishedListener listener, String
+            item, String price, String quantity, String userID, Context context, String invoiceID){
+        com.android.volley.RequestQueue CreateInvoiceRequestQueue = Volley.newRequestQueue(context);
+        com.android.volley.RequestQueue GetCurrentIDRequestQueue = Volley.newRequestQueue(context);
+        String url = "https://us-central1-csc207-tli.cloudfunctions.net/create_invoice?userid=" + userID + "&invoiceid=invoice"
+                + invoiceID+ "&item=" + item + "&quantity=" + quantity + "&price=" + price;
+        StringRequest CreateInvoiceStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                listener.onCreateInvoiceSuccess();
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+            }
+        });
+        CreateInvoiceRequestQueue.add(CreateInvoiceStringRequest);
+
     }
     public void changeDeliveredBoolean(final DriverDisplayInvoiceInteractor.onDisplayDataFinishedListener listener, final String userID, final String invoiceID, Context context){
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
