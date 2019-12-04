@@ -14,6 +14,7 @@ import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoi
 public class UserInformationActivity extends AppCompatActivity implements UserInformationView {
     private String userID;
     private UserInformationPresenter presenter;
+    private TextView welcomeText ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
         userID = intent.getStringExtra("userID");
 
         startSetUserInfo();
+        displayContext();
     }
 
     @Override
@@ -37,6 +39,13 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
     @Override
     public void startSetUserInfo() {
         presenter.startSetUserInfo(userID, this);
+    }
+
+    @Override
+    public void displayContext() {
+        welcomeText = findViewById(R.id.welcome_name);
+        String welcome = "See Account Information Here";
+        welcomeText.setText(welcome);
     }
 
     @Override
