@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#F44336</color>
-    <color name="colorPrimaryDark">#00574B</color>
+    <color name="button">#d6d6d6</color>
     <color name="textColorPrimary">#FFFFFF</color>
-    <color name="colorAccent">#FA7EAB</color>
+    <color name="black">#000000</color>
     <color name="loginPageBackgroundColor">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
 

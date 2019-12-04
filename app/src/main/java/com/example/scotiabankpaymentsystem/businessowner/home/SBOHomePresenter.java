@@ -11,7 +11,7 @@ public class SBOHomePresenter implements SBOHomeInteractor.onDisplayDataFinished
         this.sboHomeInteractor = sboHomeInteractor;
     }
 
-    public void displayName(String userID, Context context) {
+    void displayName(String userID, Context context) {
         sboHomeInteractor.displayName(this, userID, context);
     }
 
@@ -20,7 +20,7 @@ public class SBOHomePresenter implements SBOHomeInteractor.onDisplayDataFinished
     }
 
     @Override
-    public void onHomePageSuccess(String username) {
+    public void onPageSuccess(String username) {
         sboHomeView.setDisplayName(username);
     }
 }

@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/Driver"
+            android:id="@+id/Coca"
             android:layout_width="match_parent"
             android:layout_height="320dp"
             android:layout_alignParentTop="true"
@@ -19,10 +19,10 @@
 
 
         <TextView
-            android:id="@+id/Issued"
+            android:id="@+id/name"
             android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Driver"
+            android:layout_below="@+id/Coca"
             android:layout_marginStart="100dp"
             android:layout_marginLeft="150dp"
             android:layout_marginTop="12dp"
@@ -33,10 +33,10 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/Paid"
+            android:id="@+id/email"
             android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Issued"
+            android:layout_below="@+id/name"
             android:layout_marginStart="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="15dp"
@@ -47,10 +47,10 @@
             tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/Delivered"
+            android:id="@+id/Address"
             android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Paid"
+            android:layout_below="@+id/email"
             android:layout_marginStart="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="15dp"
@@ -65,7 +65,7 @@
             android:id="@+id/totalPrice"
             android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/Delivered"
+            android:layout_below="@+id/Address"
             android:layout_marginStart="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="15dp"

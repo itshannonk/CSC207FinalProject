@@ -21,7 +21,7 @@ public class CCHomePresenter implements CCHomeInteractor.onDisplayDataFinishedLi
     }
 
     @Override
-    public void onHomePageSuccess(String username) {
+    public void onPageSuccess(String username) {
         ccHomeView.setDisplayName(username);
     }
 }

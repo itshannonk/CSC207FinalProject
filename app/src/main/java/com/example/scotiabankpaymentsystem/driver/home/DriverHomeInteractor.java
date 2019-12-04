@@ -15,7 +15,7 @@ public class DriverHomeInteractor {
     }
     interface onDisplayDataFinishedListener extends Listener {
         //successfully retrieves user information from database
-        void onHomePageSuccess(String username);
+        void onPageSuccess(String username);
     }
 
     public void displayName(final DriverHomeInteractor.onDisplayDataFinishedListener listener, final String userID, Context context) {

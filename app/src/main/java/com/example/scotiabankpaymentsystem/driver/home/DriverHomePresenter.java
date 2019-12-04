@@ -21,7 +21,7 @@ public class DriverHomePresenter implements DriverHomeInteractor.onDisplayDataFi
     }
 
     @Override
-    public void onHomePageSuccess(String username) {
+    public void onPageSuccess(String username) {
         driverHomeView.setDisplayName(username);
     }
 }

@@ -2,7 +2,6 @@ package com.example.scotiabankpaymentsystem.businessowner.displayinvoice;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -78,15 +77,15 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         String inputText = "";
         // showing if it is delivered
 
-        TextView invoiceTextDeliever = findViewById(R.id.Delivered);
+        TextView invoiceTextDeliever = findViewById(R.id.Address);
         inputText ="Delivered: " + info[0];
         invoiceTextDeliever.setText(inputText);
         //showing if it's issued
-        TextView invoiceTextIssued = findViewById(R.id.Issued);
+        TextView invoiceTextIssued = findViewById(R.id.name);
         inputText ="Issued: " + info[1];
         invoiceTextIssued.setText(inputText);
         //showing if it's paid
-        TextView invoiceTextPaid = findViewById(R.id.Paid);
+        TextView invoiceTextPaid = findViewById(R.id.email);
         inputText ="Paid: " + info[2];
         invoiceTextPaid.setText(inputText);
         //checks if it has already been paid so it determines if the pay button should be there
@@ -116,7 +115,7 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
 
     @Override
     public void changePayTrue() {
-        TextView invoiceTextPaid = findViewById(R.id.Paid);
+        TextView invoiceTextPaid = findViewById(R.id.email);
         invoiceTextPaid.setText("Paid: True");
         // makes the payment option invisible if it has been paid
         payButton.setVisibility(View.GONE);

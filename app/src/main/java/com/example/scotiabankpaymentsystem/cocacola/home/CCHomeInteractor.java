@@ -15,7 +15,7 @@ public class CCHomeInteractor {
     }
     public interface onDisplayDataFinishedListener extends Listener {
         //successfully retrieves user information from database
-        void onHomePageSuccess(String username);
+        void onPageSuccess(String username);
     }
 
 

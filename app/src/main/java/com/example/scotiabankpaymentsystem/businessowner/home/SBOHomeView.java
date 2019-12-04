@@ -20,11 +20,13 @@
 package com.example.scotiabankpaymentsystem.businessowner.home;
 
 /**
- * This is the View and it calls a presenter method every time there is a user action
+ * This is the HomeView and it calls a presenter method every time there is a user action
  */
-public interface SBOHomeView {
+interface SBOHomeView {
 
     void navigateToActivitySeeInvoices();
+
+    void navigateToActivitySeeUserInformation();
 
     void navigateToActivityLogOut();
 

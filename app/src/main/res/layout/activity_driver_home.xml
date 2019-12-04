@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/Driver"
+        android:id="@+id/Coca"
         android:layout_width="match_parent"
         android:layout_height="372dp"
         android:layout_alignParentTop="true"

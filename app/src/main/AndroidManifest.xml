@@ -11,10 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".cocacola.createinvoice.CCCreateInvoiceActivity"
-            android:parentActivityName=".cocacola.seecustomers.CCSeeCustomerActivity"/>
-        <activity android:name=".cocacola.CCInvoiceSeeOrCreate"
-            android:parentActivityName=".cocacola.seecustomers.CCSeeCustomerActivity"/>
+        <activity android:name=".userinfo.UserInformationActivity"></activity>
+        <activity
+            android:name=".cocacola.createinvoice.CCCreateInvoiceActivity"
+            android:parentActivityName=".cocacola.seecustomers.CCSeeCustomerActivity" />
+        <activity
+            android:name=".cocacola.CCInvoiceSeeOrCreate"
+            android:parentActivityName=".cocacola.seecustomers.CCSeeCustomerActivity" />
         <activity
             android:name=".cocacola.seecustomers.CCSeeCustomerActivity"
             android:parentActivityName=".cocacola.home.CCHomeActivity" />
@@ -28,6 +31,7 @@
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -46,7 +50,6 @@
         <activity
             android:name=".cocacola.home.CCHomeActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".driver.home.DriverHomeActivity"
             android:screenOrientation="portrait" />
@@ -56,7 +59,6 @@
         <activity
             android:name=".driver.displayinvoice.DriverDisplayInvoiceActivity"
             android:parentActivityName=".driver.seeinvoices.DriverSeeInvoicesActivity" />
-
     </application>
 
 </manifest>

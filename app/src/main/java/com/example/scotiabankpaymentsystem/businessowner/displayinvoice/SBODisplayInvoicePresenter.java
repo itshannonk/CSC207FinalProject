@@ -2,41 +2,42 @@ package com.example.scotiabankpaymentsystem.businessowner.displayinvoice;
 
 import android.content.Context;
 
-public class SBODisplayInvoicePresenter implements com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceInteractor.onDisplayDataFinishedListener {
-    private SBODisplayInvoiceView sboDiaplayInvoiceView;
-    private SBODisplayInvoiceInteractor sboDisplayInvoiceInteractor;
 
-    SBODisplayInvoicePresenter(SBODisplayInvoiceView sboDiaplayInvoiceView, com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceInteractor sboDisplayInvoiceInteractor) {
-        this.sboDiaplayInvoiceView = sboDiaplayInvoiceView;
-        this.sboDisplayInvoiceInteractor = sboDisplayInvoiceInteractor;
+public class SBODisplayInvoicePresenter implements SBODisplayInvoiceInteractor.onDisplayDataFinishedListener {
+    private SBODisplayInvoiceView view;
+    private SBODisplayInvoiceInteractor interactor;
+
+    SBODisplayInvoicePresenter(SBODisplayInvoiceView view, com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceInteractor interactor) {
+        this.view = view;
+        this.interactor = interactor;
     }
 
     void onDestroy() {
-        sboDiaplayInvoiceView = null;
+        view = null;
     }
 
     @Override
     public void onChangePaySuccess() {
-        sboDiaplayInvoiceView.changePayTrue();
+        view.changePayTrue();
     }
 
     @Override
     public void onChangePayError() {
-        sboDiaplayInvoiceView.changePayError();
+        view.changePayError();
     }
 
     @Override
     public void onInvoiceRetriveSuccess(String[] info) {
-        sboDiaplayInvoiceView.setInvoiceInfo(info);
+        view.setInvoiceInfo(info);
     }
 
     @Override
     public void onPay(String userID, String invoiceID, Context context) {
-        sboDisplayInvoiceInteractor.changePayBoolean(this, userID, invoiceID, context);
+        interactor.changePayBoolean(this, userID, invoiceID, context);
     }
 
     public void startSetInvoiceInfo(String userID, String invoiceID, Context context) {
-        sboDisplayInvoiceInteractor.retrieveInvoice(this, userID, invoiceID, context);
+        interactor.retrieveInvoice(this, userID, invoiceID, context);
     }
 
 }

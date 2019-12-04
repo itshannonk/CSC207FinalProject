@@ -12,16 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoicePresenter;
-import com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceView;
-import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
 
 public class DriverDisplayInvoiceActivity extends AppCompatActivity implements DriverDisplayInvoiceView{
@@ -79,7 +70,7 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         String inputText = "";
         // showing if it is delivered
 
-        TextView invoiceTextDeliver = findViewById(R.id.Delivered);
+        TextView invoiceTextDeliver = findViewById(R.id.Address);
         inputText = "Delivered: " + info[0];
         invoiceTextDeliver.setText(inputText);
         //checks if it has already been paid so it determines if the delivery button should be there
@@ -87,11 +78,11 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
             changeDeliveredButton.setVisibility(View.GONE);
         }
         //showing if it's issued
-        TextView invoiceTextIssued = findViewById(R.id.Issued);
+        TextView invoiceTextIssued = findViewById(R.id.name);
         inputText ="Issued: " + info[1];
         invoiceTextIssued.setText(inputText);
         //showing if it's paid
-        TextView invoiceTextPaid = findViewById(R.id.Paid);
+        TextView invoiceTextPaid = findViewById(R.id.email);
         inputText ="Paid: " + info[2];
         invoiceTextPaid.setText(inputText);
         //showing the total price
@@ -117,7 +108,7 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
 
     @Override
     public void changeDeliveredTrue() {
-        TextView invoiceTextPaid = findViewById(R.id.Delivered);
+        TextView invoiceTextPaid = findViewById(R.id.Address);
         invoiceTextPaid.setText("Delivered: True");
         // makes the payment option invisible if it has been paid
         changeDeliveredButton.setVisibility(View.GONE);

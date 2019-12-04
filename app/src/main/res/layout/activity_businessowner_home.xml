@@ -40,17 +40,28 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="-20dp"
-        android:text="See Status/invoice"
+        android:text="See Invoices"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/SeeInfo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/SeeInvoices"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:text="See User Information"
         tools:visibility="visible" />
 
     <Button
         android:id="@+id/LogOut"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/SeeInvoices"
+        android:layout_below="@+id/SeeInfo"
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="Logout"
         tools:visibility="visible" />
 

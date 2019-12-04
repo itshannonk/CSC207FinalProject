@@ -1,8 +1,6 @@
 package com.example.scotiabankpaymentsystem.businessowner.displayinvoice;
 
 
-import android.content.Context;
-
 /**
  * This is the View and it calls a presenter method every time
  */

@@ -3,21 +3,31 @@ package com.example.scotiabankpaymentsystem.businessowner.home;
 import android.content.Context;
 
 import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeDisplayName;
-import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeInvoice;
 import com.example.scotiabankpaymentsystem.Listener;
 
-
+/**
+ * SBO home page interactor (Backend)
+ */
 public class SBOHomeInteractor {
     private APIFacadeDisplayName APIFacade;
-    public SBOHomeInteractor(){
+
+    SBOHomeInteractor() {
         APIFacade = new APIFacadeDisplayName();
     }
-    public interface onDisplayDataFinishedListener extends Listener {
-        //successfully retrieves user information from database
-        void onHomePageSuccess(String username);
+
+    interface onDisplayDataFinishedListener extends Listener {
+        // successfully retrieves user information from database
+        void onPageSuccess(String username);
     }
 
-    public void displayName(final onDisplayDataFinishedListener listener, final String userID, Context context) {
+    /**
+     * Retrieves the name of the current logged in user from the database
+     *
+     * @param listener an instance of SBOHomePresenter
+     * @param userID   the userID of the current logged in user
+     * @param context  an instance of SBOHomeView
+     */
+    void displayName(final onDisplayDataFinishedListener listener, final String userID, Context context) {
         APIFacade.displayName(listener, userID, context);
     }
 
