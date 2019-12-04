@@ -15,8 +15,8 @@ class CCCreateInvoicePresenter implements CCCreateInvoiceInteractor.onDisplayDat
         ccCreateInvoiceView = null;
     }
 
-    void createInvoice(String item, String price, String quantity, String userID, int invoiceID, Context context) {
-        ccCreateInvoiceInteractor.createInvoice(this, item, price, quantity, userID, invoiceID, context);
+    void createInvoice(String item, String price, String quantity, String userID, Context context) {
+        ccCreateInvoiceInteractor.createInvoice(this, item, price, quantity, userID, context);
     }
 
     @Override

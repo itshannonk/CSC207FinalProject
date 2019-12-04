@@ -17,7 +17,7 @@ public class CCCreateInvoiceInteractor {
         void onCreateInvoiceError();
     }
 
-    void createInvoice(final onDisplayDataFinishedListener listener, String item, String price, String quantity, String userID, int invoiceID, Context context) {
-        APIFacadeInvoice.createInvoice(listener, item, price, quantity, userID, invoiceID, context);
+    void createInvoice(final onDisplayDataFinishedListener listener, String item, String price, String quantity, String userID, Context context) {
+        APIFacadeInvoice.createInvoice(listener, item, price, quantity, userID, context);
     }
 }

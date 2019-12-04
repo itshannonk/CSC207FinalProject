@@ -13,7 +13,6 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
 
 public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCreateInvoiceView {
-    private static int invoiceID = 0;
     private String userID;
     private EditText item;
     private EditText price;
@@ -32,7 +31,7 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
         getUserID();
 
         findViewById(R.id.create_invoice).setOnClickListener(v -> createInvoice(item.getText().toString(),
-                price.getText().toString(), quantity.getText().toString(), userID, invoiceID));
+                price.getText().toString(), quantity.getText().toString(), userID));
 
     }
 
@@ -71,19 +70,15 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
     }
 
     @Override
-    public void createInvoice(String item, String price, String quantity, String userID, int invoiceID) {
-        presenter.createInvoice(item, price, quantity, userID, invoiceID, this);
+    public void createInvoice(String item, String price, String quantity, String userID) {
+        presenter.createInvoice(item, price, quantity, userID, this);
     }
 
     @Override
     public void invoiceSuccess() {
-        setInvoiceID(invoiceID + 1);
         Toast.makeText(getApplicationContext(), "Successfully created!", Toast.LENGTH_LONG).show();
     }
 
-    public void setInvoiceID(int newID) {
-        invoiceID = newID;
-    }
 
     private void getUserID() {
         Intent intent = getIntent();

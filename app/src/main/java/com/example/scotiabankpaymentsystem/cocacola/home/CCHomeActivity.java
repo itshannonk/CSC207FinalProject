@@ -21,6 +21,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     private TextView welcomeText;
     private String userID;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +79,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         finish();
     }
 
+
     @Override
     public void displayName() {
         presenter.displayName(userID, this);
@@ -86,7 +88,7 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     @Override
     public void setDisplayName(String username) {
         TextView welcomeText = findViewById(R.id.welcome_name);
-        String welcome = "Welcome, Corporate Overlord";
+        String welcome = "Welcome CocaCola";
         welcomeText.setText(welcome);
     }
 }

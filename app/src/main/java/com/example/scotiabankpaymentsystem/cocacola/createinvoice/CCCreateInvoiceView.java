@@ -5,6 +5,6 @@ interface CCCreateInvoiceView {
 
     void invoiceSuccess();
 
-    void createInvoice(String item, String price, String quantity, String userID, int invoiceID);
+    void createInvoice(String item, String price, String quantity, String userID);
 
 }

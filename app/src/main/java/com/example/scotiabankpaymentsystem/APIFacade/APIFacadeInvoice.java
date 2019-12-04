@@ -18,6 +18,7 @@ import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayIn
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesInteractor;
 
 public class APIFacadeInvoice {
+    String currentInvoiceID;
 
     public void changePayBoolean(final SBODisplayInvoiceInteractor.onDisplayDataFinishedListener listener, final String userID, final String invoiceID, Context context){
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
@@ -76,14 +77,46 @@ public class APIFacadeInvoice {
         ExampleRequestQueue.add(ExampleStringRequest);
     }
 
-    public void createInvoice(final CCCreateInvoiceInteractor.onDisplayDataFinishedListener listener, String item, String price, String quantity, String userID, int invoiceID, Context context) {
-        com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
+    public void createInvoice(final CCCreateInvoiceInteractor.onDisplayDataFinishedListener listener, String
+            item, String price, String quantity, String userID, Context context) {
+
+        com.android.volley.RequestQueue CreateInvoiceRequestQueue = Volley.newRequestQueue(context);
+        com.android.volley.RequestQueue GetCurrentIDRequestQueue = Volley.newRequestQueue(context);
         if (item.equals("") || price.equals("") || quantity.equals("")) {
             listener.onCreateInvoiceError();
         } else {
+            // Retrieving current invoice ID
+            String getcurrentID = "https://us-central1-csc207-tli.cloudfunctions.net/get_current_invoiceID";
+            StringRequest GetCurrentIDStringRequest = new StringRequest(Request.Method.GET, getcurrentID, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    currentInvoiceID = response;
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            });
+            CreateInvoiceRequestQueue.add(GetCurrentIDStringRequest);
+
+            // Incrementing the current invoice ID by 1
+
+            String setcurrentID = "https://us-central1-csc207-tli.cloudfunctions.net/set_current_invoiceID";
+            StringRequest SetCurrentIDStringRequest = new StringRequest(Request.Method.POST, setcurrentID, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                }
+            });
+            CreateInvoiceRequestQueue.add(SetCurrentIDStringRequest);
+
+            // Creating the new invoice
             String url = "https://us-central1-csc207-tli.cloudfunctions.net/create_invoice?userid=" + userID + "&invoiceid=invoice"
-                    + String.valueOf(invoiceID + 1) + "&item=" + item + "&quantity=" + quantity + "&price=" + price;
-            StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                    + currentInvoiceID + "&item=" + item + "&quantity=" + quantity + "&price=" + price;
+            StringRequest CreateInvoiceStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     listener.onCreateInvoiceSuccess();
@@ -93,7 +126,7 @@ public class APIFacadeInvoice {
                 public void onErrorResponse(VolleyError error) {
                 }
             });
-            ExampleRequestQueue.add(ExampleStringRequest);
+            CreateInvoiceRequestQueue.add(CreateInvoiceStringRequest);
         }
     }
     public void changeDeliveredBoolean(final DriverDisplayInvoiceInteractor.onDisplayDataFinishedListener listener, final String userID, final String invoiceID, Context context){
