@@ -29,4 +29,5 @@ class CCCreateInvoicePresenter implements CCCreateInvoiceInteractor.onDisplayDat
     public void onCreateInvoiceError() {
         ccCreateInvoiceView.inputError();
     }
+
 }

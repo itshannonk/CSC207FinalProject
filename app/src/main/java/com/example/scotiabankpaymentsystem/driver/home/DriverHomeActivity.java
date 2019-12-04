@@ -85,14 +85,4 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     public void setUserID(String userID){
         this.userID = userID;
     }
-
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1) {
-//            if(resultCode == RESULT_OK) {
-//                String userID = data.getStringExtra("userID");
-//                setUserID(userID);
-//            }
-//        }
-//    }
 }

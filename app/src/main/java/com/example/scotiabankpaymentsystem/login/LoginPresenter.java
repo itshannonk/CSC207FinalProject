@@ -85,7 +85,6 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
             loginView.navigateToTruckDriverHome(userID);
         }
     }
-
     @Override
     public void onCocaColaSuccess(String userID) {
         if (loginView != null) {

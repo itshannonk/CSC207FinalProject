@@ -35,6 +35,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeLogin;
+import com.example.scotiabankpaymentsystem.Listener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,8 +52,12 @@ public class LoginInteractor{
     private RequestQueue mQueue;
 
     //private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private APIFacadeLogin APIFacade;
+    public LoginInteractor(){
+        APIFacade = new APIFacadeLogin();
+    }
 
-    interface OnLoginFinishedListener {
+    public interface OnLoginFinishedListener {
         void onUsernameError();
         void onPasswordError();
         void onLoginError();
@@ -67,47 +73,7 @@ public class LoginInteractor{
             //  || password.trim().length() < 5
             listener.onPasswordError();
         } else {
-            com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
-            String url = "https://us-central1-csc207-tli.cloudfunctions.net/login_page_get?email="+username+"&password" + "=" + password;
-            StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    //This code is executed if the server responds, whether or not the response contains data.
-                    //The String 'response' contains the server's response.
-                    //You can test it by printing response.substring(0,500) to the screen.
-                    try{
-                        String[] HTTPresponse = response.split(",");
-                        if(HTTPresponse[0].equals("Business Owner")){
-                            listener.onSBOSuccess(HTTPresponse[1]);
-                        }
-                        else if(HTTPresponse[0].equals("CocaCola")){
-                            listener.onCocaColaSuccess(HTTPresponse[1]);
-                        }
-                        else if(HTTPresponse[0].equals("Truck Driver")){
-                            listener.onTruckDriverSuccess(HTTPresponse[1]);
-                        }
-                        else{
-                            Toast.makeText(loginActivity, "Login error",
-                                    Toast.LENGTH_LONG).show();
-                            listener.onLoginError();
-                        }
-                    }
-                    catch(Exception e){
-                        Toast.makeText(loginActivity, "Login Error",
-                                Toast.LENGTH_LONG).show();
-                        listener.onLoginError();
-                    }
-                }
-            }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    //This code is executed if there is an error.
-                    Toast.makeText(loginActivity, "Login error",
-                            Toast.LENGTH_LONG).show();
-                    listener.onLoginError();
-                }
-            });
-            ExampleRequestQueue.add(ExampleStringRequest);
+            APIFacade.login(loginActivity, username, password, listener, context);
         }
     }
 

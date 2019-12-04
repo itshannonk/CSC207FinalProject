@@ -38,4 +38,5 @@ public class DriverDisplayInvoicePresenter implements DriverDisplayInvoiceIntera
     public void startSetInvoiceInfo(String userID, String invoiceID, Context context) {
         driverDisplayInvoiceInteractor.retrieveInvoice(this, userID, invoiceID, context);
     }
+
 }
