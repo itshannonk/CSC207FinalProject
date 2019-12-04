@@ -86,5 +86,4 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     public void setUserID(String userID){
         this.userID = userID;
     }
-
 }

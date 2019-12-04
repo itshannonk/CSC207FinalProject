@@ -39,5 +39,4 @@ public class SBODisplayInvoicePresenter implements com.example.scotiabankpayment
         sboDisplayInvoiceInteractor.retrieveInvoice(this, userID, invoiceID, context);
     }
 
-
 }

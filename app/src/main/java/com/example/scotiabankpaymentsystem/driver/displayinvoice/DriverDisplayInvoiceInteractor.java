@@ -2,14 +2,15 @@ package com.example.scotiabankpaymentsystem.driver.displayinvoice;
 
 import android.content.Context;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeInvoice;
+import com.example.scotiabankpaymentsystem.Listener;
 
 public class DriverDisplayInvoiceInteractor {
-    interface onDisplayDataFinishedListener {
+    private APIFacadeInvoice APIFacadeInvoice;
+    public DriverDisplayInvoiceInteractor(){
+        APIFacadeInvoice = new APIFacadeInvoice();
+    }
+    public interface onDisplayDataFinishedListener {
         //successfully retrieves user information from database
         void onChangeDeliveredSuccess();
         void onChangeDeliveredError();
@@ -18,43 +19,11 @@ public class DriverDisplayInvoiceInteractor {
     }
 
     public void changeDeliveredBoolean(final onDisplayDataFinishedListener listener, final String userID, final String invoiceID, Context context){
-        com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
-        String url = "https://us-central1-csc207-tli.cloudfunctions.net/set_invoice_status?userid=" + userID + "&invoiceid=" + invoiceID + "&statustype=" + "delivered" + "&newvalue=" + true;
-        StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                listener.onChangeDeliveredSuccess();
-            }
-        }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                //This code is executed if there is an error.
-                listener.onChangeDeliveredError();
-            }
-        });
-        ExampleRequestQueue.add(ExampleStringRequest);
-
+        APIFacadeInvoice.changeDeliveredBoolean(listener, userID, invoiceID, context);
     }
 
     public void retrieveInvoice(final onDisplayDataFinishedListener listener, final String userID, final String invoiceID, Context context){
-        { com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
-            String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_invoice_information?userID="+userID+"&invoiceID="+invoiceID;
-            StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    //returns all the invoice info in a string so it now has to be parsed
-                    String[] info = response.split(",");
-                    //now we know how many invoices do we need to create the same number of buttons
-                    listener.onInvoiceRetriveSuccess(info);
-                }
-            }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                }
-            });
-            ExampleRequestQueue.add(ExampleStringRequest);
-        }
-
+        APIFacadeInvoice.retrieveInvoice(listener, userID, invoiceID, context);
     }
 
 

@@ -23,4 +23,5 @@ public class SBOSeeInvoicesPresenter implements SBOSeeInvoicesInteractor.onDispl
     public void onInvoicesRetrievalSuccess(String[] IDs) {
         sboSeeInvoicesView.createButtons(IDs);
     }
+
 }
