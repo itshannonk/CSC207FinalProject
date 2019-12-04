@@ -90,6 +90,7 @@ public class APIFacadeInvoice {
             StringRequest GetCurrentIDStringRequest = new StringRequest(Request.Method.GET, getcurrentID, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
+                    System.out.println(response);
                     helperCreateInvoice(listener, item,  price, quantity, userID,  context, response);
                 }
             }, new Response.ErrorListener() {
