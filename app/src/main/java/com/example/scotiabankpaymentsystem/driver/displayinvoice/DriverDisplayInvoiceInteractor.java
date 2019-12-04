@@ -30,7 +30,6 @@ public class DriverDisplayInvoiceInteractor {
             public void onErrorResponse(VolleyError error) {
                 //This code is executed if there is an error.
                 listener.onChangeDeliveredError();
-                System.out.println("there is pay error");
             }
         });
         ExampleRequestQueue.add(ExampleStringRequest);
@@ -51,7 +50,6 @@ public class DriverDisplayInvoiceInteractor {
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    System.out.println("error for response");
                 }
             });
             ExampleRequestQueue.add(ExampleStringRequest);

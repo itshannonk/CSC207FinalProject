@@ -83,12 +83,9 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         TextView invoiceTextPaid = findViewById(R.id.Paid);
         inputText ="Paid: " + info[2];
         invoiceTextPaid.setText(inputText);
-        System.out.println(info[2]+"prinout");
-        System.out.println(info[2].getClass()+"classsssss");
         //checks if it has already been paid so it determines if the pay button should be there
         if((info[2]).toLowerCase().equals("true")){
             payButton.setVisibility(View.GONE);
-            System.out.println("the pay button is now invisible");
         }
         //showing the total price
         TextView invoiceTextPrice = findViewById(R.id.totalPrice);
@@ -97,20 +94,16 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
 
         //showing the item in order
         TextView invoiceTextItem = findViewById(R.id.Item);
-        System.out.println(info[4] + "graceeeeeeeee");
         inputText ="Item: " + info[4];
-        System.out.println(info[4] + "yuraaaaaaaa");
         invoiceTextItem.setText(inputText);
 
         //showing the individual price of item in order
         TextView invoiceTextIndividualPrice = findViewById(R.id.individual_price);
-        System.out.println(info[5]);
         inputText ="Individual Price: " + info[5];
         invoiceTextIndividualPrice.setText(inputText);
 
         //showing the quantity of item in order
         TextView invoiceTextQuantity = findViewById(R.id.quantity);
-        System.out.println(info[6]);
         inputText ="Quantity:" + info[6];
         invoiceTextQuantity.setText(inputText);
     }

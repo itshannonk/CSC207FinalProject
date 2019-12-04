@@ -38,7 +38,6 @@ public class SBODisplayInvoiceInteractor {
             public void onErrorResponse(VolleyError error) {
                 //This code is executed if there is an error.
                 listener.onChangePayError();
-                System.out.println("there is pay error");
             }
         });
         ExampleRequestQueue.add(ExampleStringRequest);
@@ -51,7 +50,6 @@ public class SBODisplayInvoiceInteractor {
             StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    System.out.println("did it come here22222222" + response);
                     //returns all the invoice info in a string so it now has to be parsed
                     String[] info = response.split(",");
                     //now we know how many invoices do we need to create the same number of buttons
@@ -60,7 +58,6 @@ public class SBODisplayInvoiceInteractor {
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    System.out.println("error for response");
                 }
             });
             ExampleRequestQueue.add(ExampleStringRequest);

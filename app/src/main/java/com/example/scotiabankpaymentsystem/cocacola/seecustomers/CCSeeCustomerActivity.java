@@ -28,7 +28,6 @@ public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCus
                     public void run() {
                         Intent newIntent = new Intent(CCSeeCustomerActivity.this, CCHomeActivity.class);
                         newIntent.putExtra("userID", userID);
-                        System.out.println("ccClickCustomer" + userID);
                         startActivity(newIntent);
                         finish();
                     }
@@ -69,7 +68,6 @@ public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCus
                 public void onClick(View v) {
                     Intent newIntent = new Intent(CCSeeCustomerActivity.this, CCInvoiceSeeOrCreate.class);
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
-                    System.out.println(userID + "inside the click for clickCustomer");
                     newIntent.putExtra("userID", finalID);
                     startActivity(newIntent);
                 }

@@ -78,7 +78,6 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
     public void setInvoiceInfo(String[] info) {
         String inputText = "";
         // showing if it is delivered
-        System.out.println(info[1]);
 
         TextView invoiceTextDeliver = findViewById(R.id.Delivered);
         inputText = "Delivered: " + info[0];
@@ -107,13 +106,11 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
 
         //showing the individual price of item in order
         TextView invoiceTextIndividualPrice = findViewById(R.id.individual_price);
-        System.out.println(info[5]);
         inputText ="Individual Price: " + info[5];
         invoiceTextIndividualPrice.setText(inputText);
 
         //showing the quantity of item in order
         TextView invoiceTextQuantity = findViewById(R.id.quantity);
-        System.out.println(info[6]);
         inputText ="Quantity: " + info[6];
         invoiceTextQuantity.setText(inputText);
     }

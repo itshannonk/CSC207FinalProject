@@ -25,7 +25,6 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
                     public void run() {
                         Intent newIntent = new Intent(CCInvoiceSeeOrCreate.this, CCSeeCustomerActivity.class);
                         newIntent.putExtra("userID", userID);
-                        System.out.println("ccClickCustomer" + userID);
                         startActivity(newIntent);
                         finish();
                     }
@@ -53,7 +52,6 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
         Intent intent = new Intent(CCInvoiceSeeOrCreate.this, SBOSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
         intent.putExtra("userType", "Coke");
-        System.out.println("clicked the see invoices");
         startActivity(intent);
     }
 }

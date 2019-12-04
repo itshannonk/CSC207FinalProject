@@ -111,7 +111,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 // Do something after 5s = 5000ms
 
                 newIntent.putExtra("userID", userID);
-                System.out.println(userID + "login");
                 startActivity(newIntent);
                 Toast.makeText(LoginActivity.this, "Welcome! :)",
                         Toast.LENGTH_LONG).show();
@@ -130,7 +129,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 // Do something after 5s = 5000ms
 
                 newIntent.putExtra("userID", userID);
-                System.out.println(userID + "login");
                 startActivity(newIntent);
                 Toast.makeText(LoginActivity.this, "Welcome! :)",
                         Toast.LENGTH_LONG).show();

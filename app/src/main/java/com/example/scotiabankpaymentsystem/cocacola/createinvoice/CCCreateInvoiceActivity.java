@@ -41,7 +41,6 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
             case android.R.id.home:
                 Intent newIntent = new Intent(CCCreateInvoiceActivity.this, CCInvoiceSeeOrCreate.class);
                 newIntent.putExtra("userID", userID);
-                System.out.println("ccClickCustomer" + userID);
                 startActivity(newIntent);
                 finish();
                 break;

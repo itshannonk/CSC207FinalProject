@@ -18,7 +18,6 @@ public class SBOHomeInteractor {
     public void displayName(final onDisplayDataFinishedListener listener, final String userID, Context context) {
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
         String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_display_name?userID=" + userID;
-        System.out.println(url);
         StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
