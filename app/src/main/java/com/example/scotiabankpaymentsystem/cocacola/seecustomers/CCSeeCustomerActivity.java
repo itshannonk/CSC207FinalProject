@@ -70,6 +70,7 @@ public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCus
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
                     newIntent.putExtra("userID", finalID);
                     startActivity(newIntent);
+                    finish();
                 }
             });
 

@@ -30,6 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
@@ -70,7 +71,6 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
 
 
         registerButton = findViewById(R.id.next_button);
-//        findViewById(R.id.signin_tab).setOnClickListener(v -> switchTabs());
 
         // now it is setting the role to the associated selected role. It has to detect when the user changes the selected drop down item.
         roleSelectionSpinner = findViewById(R.id.role);
@@ -95,7 +95,6 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
                     findViewById(R.id.address_layout).setVisibility(View.INVISIBLE);
                 }
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 role = "";
@@ -119,8 +118,27 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         presenter = new RegisterPresenter(this, new RegisterInteractor());
     }
 
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        firstName.setText(savedInstanceState.get("firstName").toString());
+        lastName.setText(savedInstanceState.get("lastName").toString());
+        password.setText(savedInstanceState.get("password").toString());
+        email.setText(savedInstanceState.get("email").toString());
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("email", email.getText().toString().trim());
+        outState.putString("password", password.getText().toString());
+        outState.putString("firstName", firstName.getText().toString().trim());
+        outState.putString("lastName", lastName.getText().toString().trim());
+        super.onSaveInstanceState(outState);
+    }
+
     private void register() {
         presenter.registerUser(firstName.getText().toString(), lastName.getText().toString(), password.getText().toString(), email.getText().toString(), role, address.getText().toString(),  this);
+        finish();
     }
 
     @Override
@@ -181,6 +199,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
             Intent newIntent = new Intent(this, CCHomeActivity.class);
             newIntent.putExtra("userID", userID);
             startActivity(newIntent);
+
         } else {
             Intent newIntent = new Intent(this, DriverHomeActivity.class);
             newIntent.putExtra("userID", userID);

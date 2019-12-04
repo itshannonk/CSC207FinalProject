@@ -67,6 +67,7 @@ public class DriverSeeInvoicesActivity extends AppCompatActivity implements Driv
                     newIntent.putExtra("invoiceID", invoiceID);
                     newIntent.putExtra("customerID", customerID);
                     startActivityForResult(newIntent, 1);
+                    finish();
                 }
             });
             linearLayout.addView(btn);

@@ -65,6 +65,7 @@ public class SBOSeeInvoicesActivity extends AppCompatActivity implements SBOSeeI
                     newIntent.putExtra("invoiceID", finalID);
                     newIntent.putExtra("userType", intent.getStringExtra("userType"));
                     startActivity(newIntent);
+                    finish();
                 }
             });
             linearLayout.addView(btn);

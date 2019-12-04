@@ -48,6 +48,7 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         Intent intent = new Intent(DriverHomeActivity.this, DriverSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
         startActivityForResult(intent, 1);
+        finish();
     }
 
     @Override

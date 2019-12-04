@@ -23,9 +23,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
@@ -39,8 +42,8 @@ import com.google.android.material.textfield.TextInputEditText;
  * This is the Activity and it implements the View methods
  */
 public class LoginActivity extends AppCompatActivity implements LoginView {
-    private TextInputEditText email;
-    private TextInputEditText password;
+    private EditText email;
+    private EditText password;
     private ProgressBar progressBar;
     private LoginPresenter presenter;
 
@@ -64,6 +67,20 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onDestroy() {
         presenter.onDestroy();
         super.onDestroy();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        email.setText(savedInstanceState.get("email").toString());
+        password.setText(savedInstanceState.get("password").toString());
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("email", email.getText().toString().trim());
+        outState.putString("password", password.getText().toString());
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -151,6 +168,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private void register() {
 //        showProgress();
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+        finish();
     }
 
     private void switchTabs() {

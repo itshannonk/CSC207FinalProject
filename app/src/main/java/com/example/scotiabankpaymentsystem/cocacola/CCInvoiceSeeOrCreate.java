@@ -36,7 +36,7 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ccinvoice_manipulation_choice);
+        setContentView(R.layout.activity_ccinvoice_seeorcreate);
         findViewById(R.id.see_invoice).setOnClickListener(v -> navigateToSeeInvoice());
         findViewById(R.id.create_invoice).setOnClickListener(v -> navigateToActivityCreateInvoice());
         Intent intent = getIntent();
