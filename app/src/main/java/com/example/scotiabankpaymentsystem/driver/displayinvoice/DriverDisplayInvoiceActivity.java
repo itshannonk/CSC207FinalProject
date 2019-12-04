@@ -3,6 +3,7 @@ package com.example.scotiabankpaymentsystem.driver.displayinvoice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         changeDeliveredButton = findViewById(R.id.changeDeliveredStatus);
         changeDeliveredButton.setOnClickListener(v -> navigateToDelivery());
 
+
         presenter = new DriverDisplayInvoicePresenter(this, new DriverDisplayInvoiceInteractor());
 
         //retrieving the information passed on from the previous activity
@@ -47,6 +49,13 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         invoiceID = intent.getStringExtra("invoiceID");
 
         startSetInvoiceInfo();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
@@ -69,10 +78,11 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
     public void setInvoiceInfo(String[] info) {
         String inputText = "";
         // showing if it is delivered
+        System.out.println(info[1]);
 
-        TextView invoiceTextDeliever = findViewById(R.id.Delivered);
-        inputText ="Delivered: " + info[0];
-        invoiceTextDeliever.setText(inputText);
+        TextView invoiceTextDeliver = findViewById(R.id.Delivered);
+        inputText = "Delivered: " + info[0];
+        invoiceTextDeliver.setText(inputText);
         //checks if it has already been paid so it determines if the delivery button should be there
         if((info[0]).toLowerCase().equals("true")){
             changeDeliveredButton.setVisibility(View.GONE);
@@ -104,7 +114,7 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         //showing the quantity of item in order
         TextView invoiceTextQuantity = findViewById(R.id.quantity);
         System.out.println(info[6]);
-        inputText ="Quantity:" + info[6];
+        inputText ="Quantity: " + info[6];
         invoiceTextQuantity.setText(inputText);
     }
 
@@ -137,6 +147,9 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
                         finish();
                     }
                 }, 200);
+                break;
+            case R.id.refresh:
+                startSetInvoiceInfo();
                 break;
         }
         return true;

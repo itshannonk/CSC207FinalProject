@@ -3,6 +3,7 @@ package com.example.scotiabankpaymentsystem.businessowner.displayinvoice;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -57,6 +58,13 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
     @Override
     public void startSetInvoiceInfo(){
         presenter.startSetInvoiceInfo(userID, invoiceID, this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
     @Override
@@ -127,17 +135,16 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent newIntent = new Intent(com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceActivity.this, SBOSeeInvoicesActivity.class);
-                        newIntent.putExtra("userID", userID);
-                        Intent intent = getIntent();
-                        newIntent.putExtra("userType", intent.getStringExtra("userType"));
-                        startActivity(newIntent);
-                    }
-                }, 200);
+
+                Intent newIntent = new Intent(com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceActivity.this, SBOSeeInvoicesActivity.class);
+                newIntent.putExtra("userID", userID);
+                Intent intent = getIntent();
+                newIntent.putExtra("userType", intent.getStringExtra("userType"));
+                startActivity(newIntent);
+
+                break;
+            case R.id.refresh:
+                startSetInvoiceInfo();
                 break;
         }
         return true;

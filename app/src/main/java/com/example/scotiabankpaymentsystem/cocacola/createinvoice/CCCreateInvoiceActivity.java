@@ -62,7 +62,6 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
     @Override
     public void invoiceSuccess() {
         setInvoiceID(invoiceID + 1);
-        System.out.println("Reached here!");
         Toast.makeText(getApplicationContext(), "Successfully created!", Toast.LENGTH_LONG).show();
     }
 
