@@ -61,6 +61,7 @@ public class SBOHomeActivity extends AppCompatActivity implements SBOHomeView {
                 newIntent.putExtra("userID", userID);
                 newIntent.putExtra("userType", "SBO");
                 startActivity(newIntent);
+                finish();
             }
         }, 200);
     }

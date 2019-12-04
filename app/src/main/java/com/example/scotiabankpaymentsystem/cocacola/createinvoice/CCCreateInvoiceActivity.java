@@ -6,6 +6,7 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
@@ -33,6 +34,22 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
         findViewById(R.id.create_invoice).setOnClickListener(v -> createInvoice(item.getText().toString(),
                 price.getText().toString(), quantity.getText().toString(), userID, invoiceID));
 
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        item.setText(savedInstanceState.get("item").toString());
+        price.setText(savedInstanceState.get("price").toString());
+        quantity.setText(savedInstanceState.get("quantity").toString());
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("item", item.getText().toString().trim());
+        outState.putString("price", price.getText().toString().trim());
+        outState.putString("quantity", quantity.getText().toString().trim());
+        super.onSaveInstanceState(outState);
     }
 
     @Override

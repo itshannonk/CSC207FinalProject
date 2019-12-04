@@ -48,6 +48,7 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         Intent intent = new Intent(DriverHomeActivity.this, DriverSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
         startActivityForResult(intent, 1);
+        finish();
     }
 
     @Override
@@ -86,13 +87,4 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         this.userID = userID;
     }
 
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 1) {
-//            if(resultCode == RESULT_OK) {
-//                String userID = data.getStringExtra("userID");
-//                setUserID(userID);
-//            }
-//        }
-//    }
 }
