@@ -27,13 +27,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.firebase.database.FirebaseDatabase;
 
-//import com.google.firebase.auth.AuthResult;
-//import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterInteractor {
-    //private final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private final FirebaseDatabase database = FirebaseDatabase.getInstance("https://csc207-tli.firebaseio.com");
-    private boolean testing2 = false;
 
     interface OnRegisterFinishedListener {
         void onFirstNameError();
@@ -93,130 +88,16 @@ public class RegisterInteractor {
             StringRequest stringRequest = new StringRequest(Request.Method.PUT, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-                    System.out.println(response);
 
                     listener.onSuccess(response);
-//                    Handler handler = new Handler();
-//                    handler.postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//
-//                        }
-//                    }, 5000);
                 }
             }, new Response.ErrorListener() { //Create an error listener to handle errors appropriately.
                 @Override
                 public void onErrorResponse(VolleyError error) {
-                    System.out.println("registration doesn't work");
                 }
             });
             ExampleRequestQueue.add(stringRequest);
         }
-
-        //authenticating the user into firebase
-//            firebaseAuth.createUserWithEmailAndPassword(email, password)
-//                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            // authenticated new user so this will so this will now be added to the firebase database
-//                            if (task.isSuccessful() & !testing2) {
-//                                DatabaseReference roleDatabaseReference = database.getReference(role);
-//
-//                                // this can be used to Observer design pattern since it will
-//                                // check for changes and then take a snapshot
-//                                //database.getReference(role).addValueEventListener(new ValueEventListener() {
-//
-//                                    /**
-//                                     * This method will be invoked any time the data on the database changes.
-//                                     * Additionally, it will be invoked as soon as we connect the listener, so that we can get an initial snapshot of the data on the database.
-//                                     * @param dataSnapshot
-//                                     */
-//                                 //   @Override
-//                                 //   public void onDataChange(DataSnapshot dataSnapshot) {
-//                                        // get all of the children at this level.
-//                                   //     Iterable<DataSnapshot> children = dataSnapshot.getChildren();
-//
-//                                  //      for (DataSnapshot child : children) {
-//                                  //          System.out.println(child.getValue() + "this is the work");
-//                                   //     }
-//                                  //  }
-//
-//                                  //  @Override
-//                                   // public void onCancelled(DatabaseError databaseError) {
-//
-//                                  //  }
-//                                //});
-//
-//
-//                                // Sign in success, update UI with the signed-in user's information
-//                                Toast.makeText(registerActivity, "Welcome " + firstName + " " + lastName, Toast.LENGTH_LONG).show();
-//                                DatabaseReference myRef = roleDatabaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
-//                                HashMap<String, Object> thisUserInfo = new HashMap<String, Object>();
-//                                thisUserInfo.put("Name", firstName + " " + lastName);
-//                                thisUserInfo.put("Address", address);
-//                                thisUserInfo.put("Password", password);
-//                                thisUserInfo.put("Email", email);
-//                                Gson gson = new Gson();
-//
-//                                // this is converting the invoice to a json format
-//                                // which will make it a string and then it can be inputed
-//                                if(role.equals("Business Owner")) {
-//                                    Invoice invoice = new Invoice();
-//                                    String myJSON = gson.toJson(invoice);
-//
-//                                    // get second invoice
-//                                    Invoice invoice2 = new Invoice();
-//                                    String myJSON2 = gson.toJson(invoice);
-//
-//                                    // third invoice mock
-//                                    Invoice invoice3 = new Invoice();
-//                                    String myJSON3 = gson.toJson(invoice);
-//
-//                                    // fourth invoice mock
-//                                    Invoice invoice4 = new Invoice();
-//                                    String myJSON4 = gson.toJson(invoice);
-//                                    //
-//                                    HashMap<String, String> invoiceList = new HashMap<String, String>();
-//                                    invoiceList.put(Integer.toString(invoice.getId()), myJSON);
-//                                    invoiceList.put(Integer.toString(invoice2.getId()), myJSON2);
-//                                    invoiceList.put(Integer.toString(invoice3.getId()), myJSON3);
-//                                    invoiceList.put(Integer.toString(invoice4.getId()), myJSON4);
-//                                    thisUserInfo.put("Invoices", invoiceList);
-//                                    database.getReference("Invoices").setValue(invoiceList);
-//                                }
-//                                else{
-//
-//                                    Customer customer = new Customer();
-//                                    String myJSON = gson.toJson(customer);
-//
-//
-//                                    Customer customer2 = new Customer();
-//                                    String myJSON2 = gson.toJson(customer);
-//
-//                                    Customer customer3 = new Customer();
-//                                    String myJSON3 = gson.toJson(customer);
-//
-//                                    Customer customer4 = new Customer();
-//                                    String myJSON4 = gson.toJson(customer);
-//
-//                                    HashMap<String, String> invoiceList = new HashMap<String, String>();
-//                                    invoiceList.put(Integer.toString(customer.getId()), myJSON);
-//                                    invoiceList.put(Integer.toString(customer2.getId()), myJSON2);
-//                                    invoiceList.put(Integer.toString(customer3.getId()), myJSON3);
-//                                    invoiceList.put(Integer.toString(customer4.getId()), myJSON4);
-//                                    thisUserInfo.put("Customers", invoiceList);
-//                                }
-//                                //thisUserInfo.put("Role", role);
-//                                myRef.updateChildren(thisUserInfo);
-//                                testing2 = true;
-//                                listener.onSuccess();
-//                            } else {
-//                                // If sign in fails, display a message to the user. This includes if the user already has an email.
-//                                Toast.makeText(registerActivity, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-//                                listener.onAccountAlreadyExistsError();
-//                            }
-//                        }
-//                    });
     }
 }
 

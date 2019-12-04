@@ -69,27 +69,22 @@ public class LoginInteractor{
         } else {
             com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
             String url = "https://us-central1-csc207-tli.cloudfunctions.net/login_page_get?email="+username+"&password" + "=" + password;
-            System.out.println(url);
             StringRequest ExampleStringRequest = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
                     //This code is executed if the server responds, whether or not the response contains data.
                     //The String 'response' contains the server's response.
                     //You can test it by printing response.substring(0,500) to the screen.
-                    System.out.println(response);
                     try{
                         String[] HTTPresponse = response.split(",");
                         if(HTTPresponse[0].equals("Business Owner")){
                             listener.onSBOSuccess(HTTPresponse[1]);
-                            System.out.println("SBO");
                         }
                         else if(HTTPresponse[0].equals("CocaCola")){
                             listener.onCocaColaSuccess(HTTPresponse[1]);
-                            System.out.println("coke");
                         }
                         else if(HTTPresponse[0].equals("Truck Driver")){
                             listener.onTruckDriverSuccess(HTTPresponse[1]);
-                            System.out.println("driver");
                         }
                         else{
                             Toast.makeText(loginActivity, "Login error",
