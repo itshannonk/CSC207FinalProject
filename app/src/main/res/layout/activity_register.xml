@@ -110,18 +110,21 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/address">
+            android:id="@+id/address_layout"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/address">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/Address"
             android:textColorHint="@color/common_google_signin_btn_text_light_disabled"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:enabled="false"/>
+            android:enabled="false"
+            />
 
         </com.google.android.material.textfield.TextInputLayout>
 

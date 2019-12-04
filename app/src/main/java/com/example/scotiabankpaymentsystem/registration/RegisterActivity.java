@@ -58,6 +58,7 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().hide();
 
         // it is setting the inputs to a variable for easier access
         progressBar = findViewById(R.id.loading);
@@ -88,10 +89,10 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
                 role = roleSelectionSpinner.getSelectedItem().toString();
                 if (role.equals("a Business Owner")){
                     address.setEnabled(true);
-                    address.setHintTextColor(getResources().getColor(R.color.common_google_signin_btn_text_dark_default));
+                    findViewById(R.id.address_layout).setVisibility(View.VISIBLE);
                 } else {
                     address.setEnabled(false);
-                    address.setHintTextColor(getResources().getColor(R.color.common_google_signin_btn_text_light_disabled));
+                    findViewById(R.id.address_layout).setVisibility(View.INVISIBLE);
                 }
             }
 
