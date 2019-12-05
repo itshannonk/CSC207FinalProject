@@ -18,24 +18,59 @@
  */
 package com.example.scotiabankpaymentsystem.registration;
 
+/**
+ * The interface Registration view.
+ */
 public interface RegistrationView {
+    /**
+     * Show progress.
+     */
     void showProgress();
 
+    /**
+     * Hide progress.
+     */
     void hideProgress();
 
+    /**
+     * Sets firstname error.
+     */
     void setFirstnameError();
 
+    /**
+     * Sets role error.
+     */
     void setRoleError();
 
+    /**
+     * Sets lastname error.
+     */
     void setLastnameError();
 
+    /**
+     * Sets account already exists error.
+     */
     void setAccountAlreadyExistsError();
 
+    /**
+     * Sets password error.
+     */
     void setPasswordError();
 
+    /**
+     * Sets email error.
+     */
     void setEmailError();
 
+    /**
+     * Sets address error.
+     */
     void setAddressError();
 
+    /**
+     * Navigate to home.
+     *
+     * @param userID the user id
+     */
     void navigateToHome(String userID);
 }

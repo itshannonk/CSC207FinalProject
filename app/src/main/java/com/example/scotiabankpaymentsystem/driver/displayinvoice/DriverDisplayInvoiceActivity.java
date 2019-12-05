@@ -16,6 +16,9 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.userinfo.UserInformationActivity;
 
+/**
+ * The type Driver display invoice activity.
+ */
 public class DriverDisplayInvoiceActivity extends AppCompatActivity implements DriverDisplayInvoiceView{
     private String userID;
     private String invoiceID;
@@ -47,6 +50,11 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         startSetInvoiceInfo();
     }
 
+    /**
+     * refresh button on the bar
+     * @param menu an instance of the actionbar
+     * @return if a refresh button was created or not
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -60,11 +68,17 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         super.onDestroy();
     }
 
+    /**
+     * after cliking delivered Button we execute navigate to delivery
+     */
     @Override
     public void navigateToDelivery() {
         presenter.onDelivered(customerID, invoiceID, this);
     }
 
+    /**
+     * after clicking teh see info button, to next xml we want
+     */
     @Override
     public void navigateToSeeSBOInfo(){
         Intent newIntent = new Intent(DriverDisplayInvoiceActivity.this, UserInformationActivity.class);
@@ -76,11 +90,21 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         finish();
     }
 
+    /**
+     * sent a signal to to presenter for starting set invoice information
+     */
     @Override
     public void startSetInvoiceInfo(){
         presenter.startSetInvoiceInfo(customerID, invoiceID, this);
     }
 
+    /**
+     * Inserts the parameter of the info of the Delivered boolean, Issued boolean,
+     * Paid boolean, totalPrice boolean, Item String, individule price, quantity
+     *
+     * @param info the retrive invoice in "delivered, issued, paid,
+     *     total price, item, price, quantity" format
+     */
     @Override
     public void setInvoiceInfo(String[] info) {
         String inputText = "";
@@ -123,6 +147,9 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         invoiceTextQuantity.setText(inputText);
     }
 
+    /**
+     * change delivered boolean in xml
+     */
     @Override
     public void changeDeliveredTrue() {
         TextView invoiceTextPaid = findViewById(R.id.delivered);
@@ -132,12 +159,19 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         Toast.makeText(getApplicationContext(), "Your order has been delivered.", Toast.LENGTH_LONG).show();
     }
 
+    /**
+     * if there is error in change delivered, display the error message
+     */
     @Override
     public void changeDeliveredError() {
         Toast.makeText(getApplicationContext(), "Oops, there has been an error in the delivery", Toast.LENGTH_LONG).show();
     }
 
-    // this override is to override the action bar back button so that it passes around the userID
+    /**
+     * to override the action bar back button so that it passes around the userID
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

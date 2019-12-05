@@ -13,6 +13,9 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.seecustomers.CCSeeCustomerActivity;
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 
+/**
+ * This is the CocaCola's home
+ */
 public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
     private CCHomePresenter presenter;
@@ -45,9 +48,11 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
         super.onDestroy();
     }
 
-
-
     @Override
+    /**
+     * Navigate the intents to CCSeeCustomer while being able to pass on the necessary information
+     * such as UserID.
+     */
     public void navigateToActivitySeeCustomer() {
         final Handler handler = new Handler();
         Intent newIntent = new Intent(CCHomeActivity.this, CCSeeCustomerActivity.class);
@@ -65,6 +70,9 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
     }
 
     @Override
+    /**
+     * This is the ability to LogOut for the user.
+     */
     public void navigateToActivityLogOut() {
         //clear session between app and FireBase database
         //FirebaseAuth.getInstance().signOut();
@@ -81,11 +89,17 @@ public class CCHomeActivity extends AppCompatActivity implements CCHomeView {
 
 
     @Override
+    /**
+     * This retrieves name of the user that is logged in.
+     */
     public void displayName() {
         presenter.displayName(userID, this);
     }
 
     @Override
+    /**
+     * This sets the name of the user that is logged in and puts it on display on the home page.
+     */
     public void setDisplayName(String username) {
         TextView welcomeText = findViewById(R.id.welcome_name);
         String welcome = "Welcome CocaCola";

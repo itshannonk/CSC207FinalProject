@@ -1,5 +1,8 @@
 package com.example.scotiabankpaymentsystem.cocacola.home;
 
+/**
+ * The View for CocaCola.
+ */
 public interface CCHomeView {
 
 

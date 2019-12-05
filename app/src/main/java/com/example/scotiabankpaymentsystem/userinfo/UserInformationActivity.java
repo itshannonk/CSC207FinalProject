@@ -12,9 +12,14 @@ import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
 import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayInvoiceActivity;
 
+<<<<<<< HEAD
 
 /**
  * Displays the User's information (email, name, address)
+=======
+/**
+ * The type User information activity.
+>>>>>>> f4058c89e177be83dc920b2901f76b0ab3ed118e
  */
 public class UserInformationActivity extends AppCompatActivity implements UserInformationView {
     private String userID;
@@ -52,7 +57,11 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
     }
 
     /**
+<<<<<<< HEAD
      * Retrieves user information using presenter
+=======
+     * Start set
+>>>>>>> f4058c89e177be83dc920b2901f76b0ab3ed118e
      */
     @Override
     public void startSetUserInfo() {

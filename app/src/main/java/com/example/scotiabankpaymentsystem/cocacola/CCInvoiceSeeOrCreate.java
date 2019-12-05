@@ -16,7 +16,31 @@ import com.example.scotiabankpaymentsystem.userinfo.UserInformationActivity;
 public class CCInvoiceSeeOrCreate extends AppCompatActivity {
     private String userID;
 
+<<<<<<< HEAD
 
+=======
+    @Override
+    /**
+     * This is the actionbar for the CocaColaSeeOrCreate.
+     */
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent newIntent = new Intent(CCInvoiceSeeOrCreate.this, CCSeeCustomerActivity.class);
+                        newIntent.putExtra("userID", userID);
+                        startActivity(newIntent);
+                        finish();
+                    }
+                }, 200);
+                break;
+        }
+        return true;
+    }
+>>>>>>> f4058c89e177be83dc920b2901f76b0ab3ed118e
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +52,13 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
         userID = intent.getStringExtra("userID");
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Navigate to CCCreateInvoiceActivity and puts in the UserID that was originally passed on from
+     * the login or registration.
+     */
+>>>>>>> f4058c89e177be83dc920b2901f76b0ab3ed118e
     public void navigateToActivityCreateInvoice() {
 
         Intent intent = new Intent(CCInvoiceSeeOrCreate.this, CCCreateInvoiceActivity.class);
@@ -35,6 +66,7 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
         startActivity(intent);
     }
 
+<<<<<<< HEAD
     public void navigateToActivityCustomerInfo() {
 
         Intent intent = new Intent(CCInvoiceSeeOrCreate.this, UserInformationActivity.class);
@@ -44,6 +76,13 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
     }
 
     public void navigateToSeeInvoice() {
+=======
+    /**
+     * Navigate to SBOSeeInvoiceActivity and puts in the UserID that was originally passed on from
+     * the login or registration.
+     */
+    public void navigateToSeeInvoice(){
+>>>>>>> f4058c89e177be83dc920b2901f76b0ab3ed118e
         Intent intent = new Intent(CCInvoiceSeeOrCreate.this, SBOSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
         intent.putExtra("userType", "Coke");

@@ -15,9 +15,10 @@ import com.example.scotiabankpaymentsystem.cocacola.seecustomers.CCSeeCustomerIn
  */
 public class APIFacadeCustomers {
     /**
+     * This is what displays the list of buttons with the corresonding number of customers that are present in Firebase.
      *
-     * @param listener The Listener that is used for the Customer User
-     * @param context The Context in which the API is associated with
+     * @param listener The Listener that is used for the Customer User.
+     * @param context The Context in which the API is associated with.
      */
     public void displayCustomers(final CCSeeCustomerInteractor.onDisplayDataFinishedListener listener, Context context){
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);

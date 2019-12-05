@@ -21,15 +21,35 @@ package com.example.scotiabankpaymentsystem.registration;
 import android.app.Activity;
 import android.content.Context;
 
+/**
+ * The type Register presenter.
+ */
 public class RegisterPresenter implements RegisterInteractor.OnRegisterFinishedListener {
     private RegistrationView registerView;
     private RegisterInteractor registerInteractor;
 
+    /**
+     * Instantiates a new Register presenter.
+     *
+     * @param registerView       the register view
+     * @param registerInteractor the register interactor
+     */
     RegisterPresenter(RegistrationView registerView, RegisterInteractor registerInteractor) {
         this.registerView = registerView;
         this.registerInteractor = registerInteractor;
     }
 
+    /**
+     * Register user.
+     *
+     * @param firstName the first name
+     * @param lastName  the last name
+     * @param password  the password
+     * @param email     the email
+     * @param role      the role
+     * @param address   the address
+     * @param context   the context
+     */
     void registerUser(String firstName, String lastName, String password, String email, String role, String address, Context context) {
         if (registerView != null) {
             registerView.showProgress();

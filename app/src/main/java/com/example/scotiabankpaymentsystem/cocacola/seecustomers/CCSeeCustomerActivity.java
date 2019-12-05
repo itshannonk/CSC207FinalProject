@@ -14,11 +14,17 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
 import com.example.scotiabankpaymentsystem.cocacola.home.CCHomeActivity;
 
+/**
+ * This is the Activity class for the CocaColaSee Customer.
+ */
 public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCustomerView {
     String userID;
     private CCSeeCustomerPresenter presenter;
 
     @Override
+    /**
+     * This is the actionbar for the CCSeeCustomerActivity.
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -47,11 +53,18 @@ public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCus
     }
 
     @Override
+    /**
+     * This displays the customers.
+     */
     public void displayCustomers() {
         presenter.displayCustomers(this);
     }
 
     @Override
+    /**
+     * This create the corresponding number of buttons for how many customers that are required
+     * according to how many Customers are present so that CocaCola can select who they wish to see.
+     */
     public void createButtons(String[] response) {
         LinearLayout ll = (LinearLayout) findViewById(R.id.linearlayout);
 

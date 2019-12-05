@@ -13,6 +13,9 @@ import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesA
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 //import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * The type Driver home activity.
+ */
 public class DriverHomeActivity extends AppCompatActivity implements DriverHomeView {
 
     private DriverHomePresenter presenter;
@@ -42,7 +45,9 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         super.onDestroy();
     }
 
-
+    /**
+     * Navigate to SeeDelivery
+     */
     @Override
     public void navigateToActivitySeeDelivery() {
         Intent intent = new Intent(DriverHomeActivity.this, DriverSeeInvoicesActivity.class);
@@ -51,6 +56,9 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         finish();
     }
 
+    /**
+     * Navigate the the Login page
+     */
     @Override
     public void navigateToActivityLogOut() {
         //clear session between app and FireBase database
@@ -66,11 +74,19 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         finish();
     }
 
+    /**
+     * Queries firebase for the name of the current user
+     */
     @Override
     public void displayName() {
         presenter.displayName(userID, this);
     }
 
+    /**
+     * Displays the name of the current user
+     *
+     * @param username the first name and last name of the current user
+     */
     @Override
     public void setDisplayName(String username) {
         TextView welcomeText = findViewById(R.id.welcome_name);
@@ -78,11 +94,19 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
         welcomeText.setText(welcome);
     }
 
+    /**
+     * Retrieves the userID from the previous activity
+     */
     public void getUserID(){
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
     }
 
+    /**
+     * set the attribute to the parameter
+     *
+     * @param userID the user id
+     */
     public void setUserID(String userID){
         this.userID = userID;
     }
