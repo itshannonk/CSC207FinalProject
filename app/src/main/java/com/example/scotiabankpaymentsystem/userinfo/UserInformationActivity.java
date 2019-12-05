@@ -44,6 +44,9 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
         super.onDestroy();
     }
 
+    /**
+     * Start set
+     */
     @Override
     public void startSetUserInfo() {
         presenter.startSetUserInfo(userID, this);
