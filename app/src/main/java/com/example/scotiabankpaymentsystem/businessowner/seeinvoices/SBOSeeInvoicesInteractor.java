@@ -16,6 +16,12 @@ public class SBOSeeInvoicesInteractor {
         void onInvoicesRetrievalSuccess(String[] IDs);
     }
 
+    /**
+     * retrieve invoice id from from backend
+     * @param listener interface inside interactor
+     * @param userID id of current user
+     * @param context
+     */
     void retrieveInvoiceID(final onDisplayDataFinishedListener listener, final String userID, Context context) {
         APIFacadeInvoice.retrieveInvoiceID(listener, userID, context);
     }

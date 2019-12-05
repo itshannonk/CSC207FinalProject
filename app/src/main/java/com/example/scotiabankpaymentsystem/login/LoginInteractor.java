@@ -103,7 +103,7 @@ public class LoginInteractor{
     }
 
     /**
-     * Login.
+     * This is when the user wants to login.
      *
      * @param loginActivity the login activity
      * @param username      the username

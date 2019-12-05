@@ -66,6 +66,9 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
     }
 
     @Override
+    /**
+     * When the username causes an error when it doesn't exist in firebase or when it is empty.
+     */
     public void onUsernameError() {
         if (loginView != null) {
             loginView.setUsernameError();
@@ -74,6 +77,10 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
     }
 
     @Override
+    /**
+     * This when there is a password error if the username exists in firebase or when the password
+     * is empty.
+     */
     public void onPasswordError() {
         if (loginView != null) {
             loginView.setPasswordError();
@@ -82,6 +89,9 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
     }
 
     @Override
+    /**
+     * This gives the default error when something is wrong.
+     */
     public void onLoginError() {
         if (loginView != null) {
             loginView.setPasswordError();
