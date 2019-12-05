@@ -11,6 +11,7 @@ import com.example.scotiabankpaymentsystem.Listener;
 
 public class APIFacadeDisplayName {
     /**
+     * This is used to display the name of the user that has logged in and is presented in the home page.
      *
      * @param listener This is a Listener that is implemented in SBO and the Truck Driver.
      * @param userID This is the userID that is implemented in the Firebase Auth, which is the identifier of who is using the app.
@@ -34,6 +35,7 @@ public class APIFacadeDisplayName {
     }
 
     /**
+     * Retrieve the logged in user basic information in the order of: Address, Email and Name
      *
      * @param listener This is a Listener that is implemented in SBO and the Truck Driver.
      * @param userID This is the userID that is implemented in the Firebase Auth, which is the identifier of who is using the app.

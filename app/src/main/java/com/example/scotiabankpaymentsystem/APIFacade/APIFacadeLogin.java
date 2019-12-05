@@ -17,6 +17,10 @@ import com.example.scotiabankpaymentsystem.login.LoginInteractor;
 
 public class APIFacadeLogin {
     /**
+     * This method checks if the passed in email and password are true according to the Firebase
+     * authentication. If it is true, then it will then login the user otherwise, they will be
+     * unable to login.
+     *
      * @param loginActivity This is the Activity that is being used.
      * @param username This is the username that the user has inputed.
      * @param password This is the password that the user has inputed.
