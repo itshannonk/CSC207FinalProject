@@ -118,6 +118,10 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         presenter = new RegisterPresenter(this, new RegisterInteractor());
     }
 
+    /**
+     * restore instance state
+     * @param savedInstanceState bundle
+     */
     @Override
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -127,6 +131,10 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         email.setText(savedInstanceState.get("email").toString());
     }
 
+    /**
+     * save instance state
+     * @param outState bundle
+     */
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString("email", email.getText().toString().trim());
@@ -136,57 +144,90 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         super.onSaveInstanceState(outState);
     }
 
+    /**
+     * register
+     */
     private void register() {
         presenter.registerUser(firstName.getText().toString(), lastName.getText().toString(), password.getText().toString(), email.getText().toString(), role, address.getText().toString(),  this);
         finish();
     }
 
+    /**
+     * progress for show
+     */
     @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
+    /**
+     * progress for hide
+     */
     @Override
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
     }
 
+    /**
+     * error for no input for first name
+     */
     @Override
     public void setFirstnameError() {
         firstName.setError(getString(R.string.first_name_error));
     }
 
+    /**
+     * error for no choice of role
+     */
     @Override
     public void setRoleError() {
         ((TextView) roleSelectionSpinner.getSelectedView()).setError("Select a role");
     }
 
+    /**
+     * error for no input for last name
+     */
     @Override
     public void setLastnameError() {
         lastName.setError(getString(R.string.last_name_error));
     }
 
+    /**
+     * error for password
+     */
     @Override
     public void setPasswordError() {
         password.setError(getString(R.string.password_error));
     }
 
+    /**
+     * error for account has exist
+     */
     @Override
     public void setAccountAlreadyExistsError() {
         email.setError(getString(R.string.email_exists));
     }
 
-
+    /**
+     * email error
+     */
     @Override
     public void setEmailError() {
         email.setError(getString(R.string.email_error));
     }
 
+    /**
+     * address error
+     */
     @Override
     public void setAddressError() {
         address.setError(getString(R.string.address_error));
     }
 
+    /**
+     * navigate to activity home
+     * @param userID the user id
+     */
     @Override
     public void navigateToHome(String userID) {
 
@@ -210,10 +251,16 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         finish();
     }
 
+    /**
+     * switch tab
+     */
     private void switchTabs(){
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 
+    /**
+     * clear Text Fields
+     */
     private void clearTextFields() {
         firstName.getText().clear();
         lastName.getText().clear();
