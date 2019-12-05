@@ -1,5 +1,8 @@
 package com.example.scotiabankpaymentsystem.cocacola.createinvoice;
 
+/**
+ * This is the View interface for the creation of invoices for CocaCola.
+ */
 interface CCCreateInvoiceView {
     void inputError();
 

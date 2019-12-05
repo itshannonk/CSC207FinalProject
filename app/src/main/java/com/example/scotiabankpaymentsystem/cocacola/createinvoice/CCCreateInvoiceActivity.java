@@ -36,6 +36,9 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
     }
 
     @Override
+    /**
+     * This retrieves the previously saved instant states of item, price and quantity.
+     */
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         item.setText(savedInstanceState.get("item").toString());
@@ -44,6 +47,9 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
     }
 
     @Override
+    /**
+     * This saves the current item, price and quantity for retrieval the next time it is required.
+     */
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString("item", item.getText().toString().trim());
         outState.putString("price", price.getText().toString().trim());
@@ -52,6 +58,9 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
     }
 
     @Override
+    /**
+     * This is the actionbar that is needed to go back a page.
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -65,22 +74,36 @@ public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCrea
     }
 
     @Override
+    /**
+     * This is the input error for create invoice when the user inputs nothing into any of the
+     * invoice tabs.
+     */
     public void inputError() {
         Toast.makeText(getApplicationContext(), "Enter all the inputs!", Toast.LENGTH_LONG).show();
     }
 
     @Override
+    /**
+     * This is the ability to createa n invoice.
+     */
     public void createInvoice(String item, String price, String quantity, String userID) {
         presenter.createInvoice(item, price, quantity, userID, this);
     }
 
     @Override
+    /**
+     * This is called when the creation of an invoice has been a success and creates a Toast text.
+     */
     public void invoiceSuccess() {
         Toast.makeText(getApplicationContext(), "Successfully created!", Toast.LENGTH_LONG).show();
     }
 
 
     private void getUserID() {
+        /**
+         * This is the ability to get the UserID that has been passed on when the user first logged
+         * in or when they registered.
+         */
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
     }
