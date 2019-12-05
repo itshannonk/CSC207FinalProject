@@ -66,8 +66,8 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
         firstName = findViewById(R.id.firstName);
         lastName = findViewById(R.id.lastName);
         password = findViewById(R.id.password);
-        address = findViewById(R.id.Address);
-        email = findViewById(R.id.email);
+        address = findViewById(R.id.delivered);
+        email = findViewById(R.id.paid);
 
 
         registerButton = findViewById(R.id.next_button);

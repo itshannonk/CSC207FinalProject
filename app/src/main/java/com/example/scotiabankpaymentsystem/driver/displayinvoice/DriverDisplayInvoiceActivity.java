@@ -13,8 +13,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.scotiabankpaymentsystem.R;
-import com.example.scotiabankpaymentsystem.businessowner.displayinvoice.SBODisplayInvoiceActivity;
-import com.example.scotiabankpaymentsystem.businessowner.seeinvoices.SBOSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.userinfo.UserInformationActivity;
 
@@ -89,7 +87,7 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
         // showing if it is delivered
         System.out.println(info[0]);
         System.out.println(info[1]);
-        TextView invoiceTextDeliver = findViewById(R.id.Address);
+        TextView invoiceTextDeliver = findViewById(R.id.delivered);
         inputText = "Delivered: " + info[0];
         invoiceTextDeliver.setText(inputText);
         //checks if it has already been paid so it determines if the delivery button should be there
@@ -97,11 +95,11 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
             changeDeliveredButton.setVisibility(View.GONE);
         }
         //showing if it's issued
-        TextView invoiceTextIssued = findViewById(R.id.name);
+        TextView invoiceTextIssued = findViewById(R.id.issued);
         inputText ="Issued: " + info[1];
         invoiceTextIssued.setText(inputText);
         //showing if it's paid
-        TextView invoiceTextPaid = findViewById(R.id.email);
+        TextView invoiceTextPaid = findViewById(R.id.paid);
         inputText ="Paid: " + info[2];
         invoiceTextPaid.setText(inputText);
         //showing the total price
@@ -127,7 +125,7 @@ public class DriverDisplayInvoiceActivity extends AppCompatActivity implements D
 
     @Override
     public void changeDeliveredTrue() {
-        TextView invoiceTextPaid = findViewById(R.id.Address);
+        TextView invoiceTextPaid = findViewById(R.id.delivered);
         invoiceTextPaid.setText("Delivered: True");
         // makes the payment option invisible if it has been paid
         changeDeliveredButton.setVisibility(View.GONE);

@@ -77,15 +77,15 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         String inputText = "";
         // showing if it is delivered
 
-        TextView invoiceTextDeliever = findViewById(R.id.Address);
+        TextView invoiceTextDeliever = findViewById(R.id.delivered);
         inputText ="Delivered: " + info[0];
         invoiceTextDeliever.setText(inputText);
         //showing if it's issued
-        TextView invoiceTextIssued = findViewById(R.id.name);
+        TextView invoiceTextIssued = findViewById(R.id.issued);
         inputText ="Issued: " + info[1];
         invoiceTextIssued.setText(inputText);
         //showing if it's paid
-        TextView invoiceTextPaid = findViewById(R.id.email);
+        TextView invoiceTextPaid = findViewById(R.id.paid);
         inputText ="Paid: " + info[2];
         invoiceTextPaid.setText(inputText);
         //checks if it has already been paid so it determines if the pay button should be there
@@ -118,7 +118,7 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
      */
     @Override
     public void changePayTrue() {
-        TextView invoiceTextPaid = findViewById(R.id.email);
+        TextView invoiceTextPaid = findViewById(R.id.paid);
         invoiceTextPaid.setText("Paid: True");
         // makes the payment option invisible if it has been paid
         payButton.setVisibility(View.GONE);
@@ -150,6 +150,10 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
                 newIntent.putExtra("userType", intent.getStringExtra("userType"));
                 startActivity(newIntent);
                 finish();
+                break;
+
+            case R.id.refresh:
+                startSetInvoiceInfo();
                 break;
         }
         return true;
