@@ -38,6 +38,10 @@ public class DriverHomePresenter implements DriverHomeInteractor.onDisplayDataFi
         driverHomeView = null;
     }
 
+    /**
+     * after the page success
+     * @param username name of current user
+     */
     @Override
     public void onPageSuccess(String username) {
         driverHomeView.setDisplayName(username);
