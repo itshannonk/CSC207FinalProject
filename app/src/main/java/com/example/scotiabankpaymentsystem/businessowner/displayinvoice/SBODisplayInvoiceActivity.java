@@ -48,11 +48,17 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         super.onDestroy();
     }
 
+    /**
+     * after cliking pay Button we execute navigate to pay
+     */
     @Override
     public void navigateToPay() {
         presenter.onPay(userID, invoiceID, this);
     }
 
+    /**
+     * sent a signal to to presenter for starting set invoice information
+     */
     @Override
     public void startSetInvoiceInfo(){
         presenter.startSetInvoiceInfo(userID, invoiceID, this);
