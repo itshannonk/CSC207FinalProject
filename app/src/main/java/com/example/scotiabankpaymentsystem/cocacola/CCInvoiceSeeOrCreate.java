@@ -16,6 +16,9 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
     private String userID;
 
     @Override
+    /**
+     * This is the actionbar for the CocaColaSeeOrCreate.
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
@@ -42,12 +45,22 @@ public class CCInvoiceSeeOrCreate extends AppCompatActivity {
         Intent intent = getIntent();
         userID = intent.getStringExtra("userID");
     }
+
+    /**
+     * Navigate to CCCreateInvoiceActivity and puts in the UserID that was originally passed on from
+     * the login or registration.
+     */
     public void navigateToActivityCreateInvoice() {
 
         Intent intent = new Intent(CCInvoiceSeeOrCreate.this, CCCreateInvoiceActivity.class);
         intent.putExtra("userID", userID);
         startActivity(intent);
     }
+
+    /**
+     * Navigate to SBOSeeInvoiceActivity and puts in the UserID that was originally passed on from
+     * the login or registration.
+     */
     public void navigateToSeeInvoice(){
         Intent intent = new Intent(CCInvoiceSeeOrCreate.this, SBOSeeInvoicesActivity.class);
         intent.putExtra("userID", userID);
