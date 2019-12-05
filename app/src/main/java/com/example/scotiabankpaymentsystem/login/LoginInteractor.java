@@ -53,19 +53,64 @@ public class LoginInteractor{
 
     //private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private APIFacadeLogin APIFacade;
+
+    /**
+     * Instantiates a new Login interactor.
+     */
     public LoginInteractor(){
         APIFacade = new APIFacadeLogin();
     }
 
+    /**
+     * The interface On login finished listener.
+     */
     public interface OnLoginFinishedListener {
+        /**
+         * On username error.
+         */
         void onUsernameError();
+
+        /**
+         * On password error.
+         */
         void onPasswordError();
+
+        /**
+         * On login error.
+         */
         void onLoginError();
+
+        /**
+         * On sbo success.
+         *
+         * @param userID the user id
+         */
         void onSBOSuccess(String userID);
+
+        /**
+         * On truck driver success.
+         *
+         * @param userID the user id
+         */
         void onTruckDriverSuccess(String userID);
+
+        /**
+         * On coca cola success.
+         *
+         * @param userID the user id
+         */
         void onCocaColaSuccess(String userID);
     }
 
+    /**
+     * Login.
+     *
+     * @param loginActivity the login activity
+     * @param username      the username
+     * @param password      the password
+     * @param listener      the listener
+     * @param context       the context
+     */
     public void login(Activity loginActivity, final String username, final String password, final OnLoginFinishedListener listener, final Context context) {
         if (TextUtils.isEmpty(username) || username.trim().isEmpty() || (username.contains("@") && !Patterns.EMAIL_ADDRESS.matcher(username).matches())) {
             listener.onUsernameError();

@@ -30,32 +30,79 @@ import com.example.scotiabankpaymentsystem.Listener;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+/**
+ * The type Register interactor.
+ */
 public class RegisterInteractor {
 
     private APIFacadeRegisterInteractor APIFacade;
 
+    /**
+     * Instantiates a new Register interactor.
+     */
     public RegisterInteractor(){
         APIFacade = new APIFacadeRegisterInteractor();
     }
 
+    /**
+     * The interface On register finished listener.
+     */
     public interface OnRegisterFinishedListener {
+        /**
+         * On first name error.
+         */
         void onFirstNameError();
 
+        /**
+         * On last name error.
+         */
         void onLastNameError();
 
+        /**
+         * On password error.
+         */
         void onPasswordError();
 
+        /**
+         * On email error.
+         */
         void onEmailError();
 
+        /**
+         * On address error.
+         */
         void onAddressError();
 
+        /**
+         * On role error.
+         */
         void onRoleError();
 
+        /**
+         * On account already exists error.
+         */
         void onAccountAlreadyExistsError();
 
+        /**
+         * On success.
+         *
+         * @param userID the user id
+         */
         void onSuccess(String userID);
     }
 
+    /**
+     * Register.
+     *
+     * @param firstName the first name
+     * @param lastName  the last name
+     * @param password  the password
+     * @param email     the email
+     * @param address   the address
+     * @param role      the role
+     * @param listener  the listener
+     * @param context   the context
+     */
     public void register(final String firstName, final String lastName, final String password, final String email, final String address, final String role, final OnRegisterFinishedListener listener, Context context) {
         APIFacade.register(firstName, lastName, password, email, address, role, listener, context);
     }

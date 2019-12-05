@@ -31,11 +31,25 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
     private LoginView loginView;
     private LoginInteractor loginInteractor;
 
+    /**
+     * Instantiates a new Login presenter.
+     *
+     * @param loginView       the login view
+     * @param loginInteractor the login interactor
+     */
     LoginPresenter(LoginView loginView, LoginInteractor loginInteractor) {
         this.loginView = loginView;
         this.loginInteractor = loginInteractor;
     }
 
+    /**
+     * Validate credentials.
+     *
+     * @param loginActivity the login activity
+     * @param username      the username
+     * @param password      the password
+     * @param context       the context
+     */
     void validateCredentials(Activity loginActivity, String username, String password, Context context) {
         if (loginView != null) {
             loginView.showProgress();
@@ -44,6 +58,9 @@ public class LoginPresenter implements LoginInteractor.OnLoginFinishedListener{
         loginInteractor.login(loginActivity, username, password, this, context);
     }
 
+    /**
+     * On destroy.
+     */
     void onDestroy() {
         loginView = null;
     }
