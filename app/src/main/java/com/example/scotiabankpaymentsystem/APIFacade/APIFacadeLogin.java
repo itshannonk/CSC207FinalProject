@@ -16,6 +16,13 @@ import com.example.scotiabankpaymentsystem.Listener;
 import com.example.scotiabankpaymentsystem.login.LoginInteractor;
 
 public class APIFacadeLogin {
+    /**
+     * @param loginActivity This is the Activity that is being used.
+     * @param username This is the username that the user has inputed.
+     * @param password This is the password that the user has inputed.
+     * @param listener This is the Listener when the User completes the login.
+     * @param context This is the Context in which the Activity will occur in.
+     */
     public void login(Activity loginActivity, final String username, final String password, final LoginInteractor.OnLoginFinishedListener listener, final Context context) {
         if (TextUtils.isEmpty(username) || username.trim().isEmpty() || (username.contains("@") && !Patterns.EMAIL_ADDRESS.matcher(username).matches())) {
             listener.onUsernameError();

@@ -13,6 +13,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 public class APIFacadeRegisterInteractor {
+    /**
+     * @param firstName This is the first name that the user has inputed upon registration.
+     * @param lastName This is the last name that the user has inputed upon registration.
+     * @param password This is the password that the user has inputed upon registration.
+     * @param email This is the email the user has inputed upon registration.
+     * @param address This is the address the user has inputed upon registration.
+     * @param role This is the role the user has chosen upon registration.
+     * @param listener This is the listener that is associated with this method and will be used upon completion of the method.
+     * @param context This is the Context in which the activity should occur in.
+     */
     public void register(final String firstName, final String lastName, final String password, final String email, final String address, final String role, final RegisterInteractor.OnRegisterFinishedListener listener, Context context) {
         boolean noProblems = true;
         if (firstName.trim().isEmpty() || (firstName.contains("@"))) {

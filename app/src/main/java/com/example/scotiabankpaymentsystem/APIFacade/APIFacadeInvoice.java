@@ -14,8 +14,13 @@ import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayIn
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesInteractor;
 
 public class APIFacadeInvoice {
-    String currentInvoiceID;
-
+    /**
+     *
+     * @param listener This is the Listener that is used in SBO.
+     * @param userID This is the userID that is implemented in the Firebase Auth, which is the identifier of who is using the app.
+     * @param invoiceID This is the invoiceID that is currently being viewed by the user.
+     * @param context This is the Context of what the API should be associated with.
+     */
     public void changePayBoolean(final SBODisplayInvoiceInteractor.onDisplayDataFinishedListener listener, final String userID, final String invoiceID, Context context){
         com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
         String url = "https://us-central1-csc207-tli.cloudfunctions.net/set_invoice_status?userid="+userID+"&invoiceid="+invoiceID+"&statustype="+"paid"+"&newvalue="+true;
@@ -33,6 +38,13 @@ public class APIFacadeInvoice {
         });
         ExampleRequestQueue.add(ExampleStringRequest);
     }
+
+    /**
+     * @param listener This is the Listener that is used in SBO.
+     * @param userID This is the userID that is implemented in the Firebase Auth, which is the identifier of who is using the app.
+     * @param invoiceID This is the invoiceID that is currently being viewed by the user.
+     * @param context This is the Context of what the API should be associated with.
+     */
     public void retrieveInvoice(final SBODisplayInvoiceInteractor.onDisplayDataFinishedListener listener, final String userID, final String invoiceID, Context context){
         { com.android.volley.RequestQueue ExampleRequestQueue = Volley.newRequestQueue(context);
             String url = "https://us-central1-csc207-tli.cloudfunctions.net/get_invoice_information?userID="+userID+"&invoiceID="+invoiceID;
