@@ -14,6 +14,9 @@ import java.net.URLEncoder;
 
 public class APIFacadeRegisterInteractor {
     /**
+     *  This is the method that registers the user into the Firebase authentication and also logs
+     *  them in once they are Firebase is completed with the authentication.
+     *
      * @param firstName This is the first name that the user has inputed upon registration.
      * @param lastName This is the last name that the user has inputed upon registration.
      * @param password This is the password that the user has inputed upon registration.
