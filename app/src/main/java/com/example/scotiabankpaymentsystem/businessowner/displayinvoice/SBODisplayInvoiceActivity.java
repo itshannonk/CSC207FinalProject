@@ -48,11 +48,17 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         super.onDestroy();
     }
 
+    /**
+     * after cliking pay Button we execute navigate to pay
+     */
     @Override
     public void navigateToPay() {
         presenter.onPay(userID, invoiceID, this);
     }
 
+    /**
+     * sent a signal to to presenter for starting set invoice information
+     */
     @Override
     public void startSetInvoiceInfo(){
         presenter.startSetInvoiceInfo(userID, invoiceID, this);
@@ -113,6 +119,9 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         invoiceTextQuantity.setText(inputText);
     }
 
+    /**
+     * Change the boolean from False to True after click the button "Pay"
+     */
     @Override
     public void changePayTrue() {
         TextView invoiceTextPaid = findViewById(R.id.paid);
@@ -123,12 +132,19 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
 
     }
 
+    /**
+     * Display a Toast message if there is Pay Error
+     */
     @Override
     public void changePayError(){
         Toast.makeText(getApplicationContext(), "Oops, there has been an error in the payment", Toast.LENGTH_LONG).show();
     }
 
-    // for the back button
+    /**
+     * Override buttons on the action bar to pass information
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -140,6 +156,10 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
                 newIntent.putExtra("userType", intent.getStringExtra("userType"));
                 startActivity(newIntent);
                 finish();
+                break;
+
+            case R.id.refresh:
+                startSetInvoiceInfo();
                 break;
         }
         return true;
