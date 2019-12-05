@@ -25,13 +25,13 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signin_tab"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:textColor="@color/common_google_signin_btn_text_light_default"
                 android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
+                android:text="@string/action_sign_in_short"
 
-                android:text="@string/action_sign_in_short" />
+                android:textColor="@color/common_google_signin_btn_text_light_default" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signup_tab"
@@ -47,59 +47,57 @@
         <View
             android:layout_width="175dp"
             android:layout_height="5dp"
-            android:background="#EF0B0B"
-            android:layout_gravity="end"/>
-
+            android:layout_gravity="end"
+            android:background="#EF0B0B" />
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="@string/first_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/firstName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="@string/last_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/lastName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="@string/email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/paid"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id = "@+id/layoutPassword"
-            android:layout_marginTop="10dp"
+            android:id="@+id/layoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:hint="@string/prompt_password"
-            app:endIconMode="password_toggle"
-            >
+            app:endIconMode="password_toggle">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/password"
@@ -111,20 +109,19 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/address_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:visibility="invisible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/address">
+            android:hint="@string/address"
+            android:visibility="invisible">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/delivered"
-            android:textColorHint="@color/common_google_signin_btn_text_light_disabled"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:enabled="false"
-            />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/delivered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:textColorHint="@color/common_google_signin_btn_text_light_disabled" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -147,12 +144,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
+
             <ProgressBar
                 android:id="@+id/loading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:visibility="invisible" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/next_button"
                 android:layout_width="wrap_content"

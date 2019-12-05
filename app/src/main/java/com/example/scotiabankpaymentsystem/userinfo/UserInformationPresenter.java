@@ -3,7 +3,7 @@ package com.example.scotiabankpaymentsystem.userinfo;
 import android.content.Context;
 
 /**
- * The type User information presenter.
+ * The middleman between UserInformationView and UserInformationInteractor
  */
 public class UserInformationPresenter implements UserInformationInteractor.onDisplayDataFinishedListener {
     private UserInformationView view;
@@ -27,16 +27,21 @@ public class UserInformationPresenter implements UserInformationInteractor.onDis
         view = null;
     }
 
+    /**
+     * Sets the user information on the page once the information has been retrieved
+     *
+     * @param info the user's profile
+     */
     @Override
     public void onPageSuccess(String info) {
         view.setUserInfo(info);
     }
 
     /**
-     * Start set user info.
+     * Starts the process for making a call to the backend
      *
-     * @param userID  the user id
-     * @param context the context
+     * @param userID  the userID of the user we want to retrieve information of
+     * @param context an instance of UserInformationView
      */
     public void startSetUserInfo(String userID, Context context) {
         interactor.retrieveUserInformation(this, userID, context);

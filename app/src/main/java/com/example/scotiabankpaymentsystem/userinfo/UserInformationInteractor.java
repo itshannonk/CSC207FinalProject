@@ -3,37 +3,32 @@ package com.example.scotiabankpaymentsystem.userinfo;
 import android.content.Context;
 
 import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeDisplayName;
-import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeInvoice;
 import com.example.scotiabankpaymentsystem.Listener;
 
 /**
- * The type User information interactor.
+ * A class that allows the user to retrieve information from the backend
  */
-public class UserInformationInteractor {
+class UserInformationInteractor {
 
     private APIFacadeDisplayName APIFacadeDisplayName;
 
     /**
-     * Instantiates a new User information interactor.
+     * The interface On display data finished listener.
      */
+    interface onDisplayDataFinishedListener extends Listener {
+        void onPageSuccess(String info);
+    }
+
     UserInformationInteractor() {
         APIFacadeDisplayName = new APIFacadeDisplayName();
     }
 
     /**
-     * The interface On display data finished listener.
-     */
-    public interface onDisplayDataFinishedListener extends Listener {
-        //successfully retrieves user information from database
-        void onPageSuccess(String info);
-    }
-
-    /**
-     * Retrieve user information.
+     * Retrieves the information from backend
      *
-     * @param listener the listener
-     * @param userID   the user id
-     * @param context  the context
+     * @param listener an instance of UserInformationPresenter
+     * @param userID   the userID of the user we're retrieving information from
+     * @param context  an instance of UserInformationView
      */
     void retrieveUserInformation(final onDisplayDataFinishedListener listener, final String userID, Context context) {
         APIFacadeDisplayName.retrieveUserInformation(listener, userID, context);
