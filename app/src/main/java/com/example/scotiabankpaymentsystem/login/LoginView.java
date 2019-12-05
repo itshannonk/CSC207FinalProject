@@ -23,17 +23,44 @@ package com.example.scotiabankpaymentsystem.login;
  * This is the View and it calls a presenter method every time there is a user action
  */
 public interface LoginView {
+    /**
+     * Show progress.
+     */
     void showProgress();
 
+    /**
+     * Hide progress.
+     */
     void hideProgress();
 
+    /**
+     * Sets username error.
+     */
     void setUsernameError();
 
+    /**
+     * Sets password error.
+     */
     void setPasswordError();
 
+    /**
+     * Navigate to sbo home.
+     *
+     * @param userID the user id
+     */
     void navigateToSBOHome(String userID);
 
+    /**
+     * Navigate to truck driver home.
+     *
+     * @param userID the user id
+     */
     void navigateToTruckDriverHome(String userID);
 
+    /**
+     * Navigate to coca cola home.
+     *
+     * @param userID the user id
+     */
     void navigateToCocaColaHome(String userID);
 }

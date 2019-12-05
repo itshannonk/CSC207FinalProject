@@ -11,6 +11,9 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.businessowner.home.SBOHomeActivity;
 import com.example.scotiabankpaymentsystem.driver.displayinvoice.DriverDisplayInvoiceActivity;
 
+/**
+ * The type User information activity.
+ */
 public class UserInformationActivity extends AppCompatActivity implements UserInformationView {
     private String userID;
     private String truckID;

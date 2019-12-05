@@ -1,5 +1,8 @@
 package com.example.scotiabankpaymentsystem.driver.displayinvoice;
 
+/**
+ * The interface Driver display invoice view.
+ */
 public interface DriverDisplayInvoiceView {
     /**
      * Start to change delivered boolean
@@ -19,8 +22,7 @@ public interface DriverDisplayInvoiceView {
     /**
      * Start display the retrieve invoice in the format we want
      *
-     * @param info the invoice we retrieve, which in the format "delivered, issued, paid,
-     *     total price, item, price, quantity"
+     * @param info the invoice we retrieve, which in the format "delivered, issued, paid,     total price, item, price, quantity"
      */
     void setInvoiceInfo(String[] info);
 

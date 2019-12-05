@@ -16,6 +16,9 @@ import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesActivity;
 import com.example.scotiabankpaymentsystem.userinfo.UserInformationActivity;
 
+/**
+ * The type Driver display invoice activity.
+ */
 public class DriverDisplayInvoiceActivity extends AppCompatActivity implements DriverDisplayInvoiceView{
     private String userID;
     private String invoiceID;

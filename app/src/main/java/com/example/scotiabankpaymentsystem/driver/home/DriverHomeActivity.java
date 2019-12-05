@@ -13,6 +13,9 @@ import com.example.scotiabankpaymentsystem.driver.seeinvoices.DriverSeeInvoicesA
 import com.example.scotiabankpaymentsystem.login.LoginActivity;
 //import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * The type Driver home activity.
+ */
 public class DriverHomeActivity extends AppCompatActivity implements DriverHomeView {
 
     private DriverHomePresenter presenter;
@@ -102,7 +105,7 @@ public class DriverHomeActivity extends AppCompatActivity implements DriverHomeV
     /**
      * set the attribute to the parameter
      *
-     * @param userID
+     * @param userID the user id
      */
     public void setUserID(String userID){
         this.userID = userID;
