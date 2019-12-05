@@ -15,14 +15,10 @@ public class SBODisplayInvoicePresenter implements SBODisplayInvoiceInteractor.o
     void onDestroy() {
         view = null;
     }
-<<<<<<< HEAD
-    
-=======
 
     /**
      * After the backend Change Pay boolean success, change front end pay boolean
      */
->>>>>>> f4058c89e177be83dc920b2901f76b0ab3ed118e
     @Override
     public void onChangePaySuccess() {
         view.changePayTrue();
