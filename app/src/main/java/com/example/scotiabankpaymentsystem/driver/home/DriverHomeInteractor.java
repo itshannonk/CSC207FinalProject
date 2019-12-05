@@ -32,11 +32,19 @@ public class DriverHomeInteractor {
     }
 
     /**
+<<<<<<< HEAD
+     * Retrieves the name of the current logged in user from the database
+     *
+     * @param listener an instance of SBOHomePresenter
+     * @param userID   the userID of the current logged in user
+     * @param context  an instance of SBOHomeView
+=======
      * Display name.
      *
      * @param listener the listener
      * @param userID   the user id
      * @param context  the context
+>>>>>>> e6816833580e7ae14f61730be69fa507da7b8f94
      */
     public void displayName(final DriverHomeInteractor.onDisplayDataFinishedListener listener, final String userID, Context context) {
         APIFacade.displayName(listener, userID, context);
