@@ -77,7 +77,8 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
 
     @Override
     /**
-     * @param: Inserts the parameter of the info of the Delivered boolean, Issued boolean, Paid boolean, totalPrice boolean, Item String
+     * @param: Inserts the parameter of the info of the Delivered boolean, Issued boolean,
+     * Paid boolean, totalPrice boolean, Item String, individule price, quantity
      */
     public void setInvoiceInfo(String[] info) {
         String inputText = "";
