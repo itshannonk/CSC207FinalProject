@@ -2,6 +2,9 @@ package com.example.scotiabankpaymentsystem.cocacola.createinvoice;
 
 import android.content.Context;
 
+/**
+ * This is the presenter for the creation of the invoices for CocaCola.
+ */
 class CCCreateInvoicePresenter implements CCCreateInvoiceInteractor.onDisplayDataFinishedListener {
     private CCCreateInvoiceView ccCreateInvoiceView;
     private CCCreateInvoiceInteractor ccCreateInvoiceInteractor;

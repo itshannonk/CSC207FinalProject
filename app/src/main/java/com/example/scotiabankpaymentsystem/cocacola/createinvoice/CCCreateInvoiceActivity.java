@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.scotiabankpaymentsystem.R;
 import com.example.scotiabankpaymentsystem.cocacola.CCInvoiceSeeOrCreate;
 
+/**
+ * This is the Activity for the creation of Invoices for CocaCola.
+ */
 public class CCCreateInvoiceActivity extends AppCompatActivity implements CCCreateInvoiceView {
     private String userID;
     private EditText item;

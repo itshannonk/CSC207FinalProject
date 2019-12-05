@@ -5,6 +5,9 @@ import android.content.Context;
 import com.example.scotiabankpaymentsystem.APIFacade.APIFacadeInvoice;
 import com.example.scotiabankpaymentsystem.Listener;
 
+/**
+ * This is the Interactor for the CocaCola's creation of the invoice.
+ */
 public class CCCreateInvoiceInteractor {
     private APIFacadeInvoice APIFacadeInvoice;
     public CCCreateInvoiceInteractor(){
