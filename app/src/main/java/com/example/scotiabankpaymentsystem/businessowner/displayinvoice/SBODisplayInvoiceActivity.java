@@ -113,6 +113,9 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
         invoiceTextQuantity.setText(inputText);
     }
 
+    /**
+     * Change the boolean from False to True after click the button "Pay"
+     */
     @Override
     public void changePayTrue() {
         TextView invoiceTextPaid = findViewById(R.id.email);
@@ -123,12 +126,19 @@ public class SBODisplayInvoiceActivity extends AppCompatActivity implements SBOD
 
     }
 
+    /**
+     * Display a Toast message if there is Pay Error
+     */
     @Override
     public void changePayError(){
         Toast.makeText(getApplicationContext(), "Oops, there has been an error in the payment", Toast.LENGTH_LONG).show();
     }
 
-    // for the back button
+    /**
+     * Override buttons on the action bar to pass information
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
