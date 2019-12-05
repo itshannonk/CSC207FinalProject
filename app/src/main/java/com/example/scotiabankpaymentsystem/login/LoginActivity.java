@@ -70,6 +70,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
+    /**
+     * This restores the saved state that was previous saved.
+     */
     protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         email.setText(savedInstanceState.get("email").toString());
@@ -77,6 +80,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
+    /**
+     * This saves the instance state.
+     */
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         outState.putString("email", email.getText().toString().trim());
         outState.putString("password", password.getText().toString());
@@ -84,26 +90,41 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
+    /**
+     * This shows the progress bar.
+     */
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
+    /**
+     * This hides the progress bar.
+     */
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
     }
 
     @Override
+    /**
+     * This causes the userName Error when the username is not complete or not in firebase.
+     */
     public void setUsernameError() {
         email.setError(getString(R.string.username_error));
     }
 
     @Override
+    /**
+     * This is the password error when the username exists in firebase but the password is wrong.
+     */
     public void setPasswordError() {
         password.setError(getString(R.string.password_error));
     }
 
     @Override
+    /**
+     * This navigates to SBOHomeActivity.
+     */
     public void navigateToSBOHome(String userID) {
         final Handler handler = new Handler();
         Intent newIntent = new Intent(this, SBOHomeActivity.class);
@@ -121,6 +142,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
+    /**
+     * This navigates to DriverHomeActivity.
+     */
     public void navigateToTruckDriverHome(String userID) {
         final Handler handler = new Handler();
         Intent newIntent = new Intent(this, DriverHomeActivity.class);
@@ -139,6 +163,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
+    /**
+     * This navigates to CCHomeActivity.
+     */
     public void navigateToCocaColaHome(String userID) {
         final Handler handler = new Handler();
         Intent newIntent = new Intent(this, CCHomeActivity.class);
@@ -165,12 +192,17 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         password.getText().clear();
     }
 
+    /**
+     * This is where you register and where the method is called when you register.
+     */
     private void register() {
 //        showProgress();
         startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
         finish();
     }
-
+    /**
+     * This is when you want to switchTabs.
+     */
     private void switchTabs() {
         register();
     }
