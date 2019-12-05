@@ -15,12 +15,13 @@
         android:clipToPadding="false"
         android:orientation="vertical"
         android:padding="24dp"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+    >
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="1dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/signin_tab"
@@ -29,7 +30,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
-
                 android:text="@string/action_sign_in_short" />
 
             <com.google.android.material.button.MaterialButton
@@ -56,15 +56,6 @@
             android:layout_marginTop="100dp"
             android:layout_marginBottom="16dp"
             app:srcCompat="@drawable/scotiabank" />
-
-        <!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="center_horizontal"-->
-<!--            android:layout_marginBottom="30dp"-->
-<!--            android:text="Request to pay :)"-->
-<!--            android:textAllCaps="true"-->
-<!--            android:textSize="16sp" />-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_text_input"
