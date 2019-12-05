@@ -24,14 +24,31 @@ package com.example.scotiabankpaymentsystem.businessowner.home;
  */
 interface SBOHomeView {
 
+    /**
+     * Navigate to activity see invoices
+     */
     void navigateToActivitySeeInvoices();
 
+    /**
+     * Navigate to activity see user info
+     */
     void navigateToActivitySeeUserInformation();
 
+    /**
+     * Navigate to activity log out.
+     */
     void navigateToActivityLogOut();
 
+    /**
+     * Display name.
+     */
     void displayName();
 
+    /**
+     * Sets display name.
+     *
+     * @param username the username
+     */
     void setDisplayName(String username);
 
 }
