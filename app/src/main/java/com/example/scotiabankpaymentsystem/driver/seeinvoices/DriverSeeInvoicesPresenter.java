@@ -39,6 +39,9 @@ public class DriverSeeInvoicesPresenter implements DriverSeeInvoicesInteractor.o
     }
 
     @Override
+    /**
+     * When the invoices have been succesfully retrieved, this method will be called.
+     */
     public void onInvoicesRetrievalSuccess(String[] IDs) {
         driverSeeInvoicesView.createButtons(IDs);
     }

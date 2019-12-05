@@ -49,8 +49,9 @@ public class DriverSeeInvoicesActivity extends AppCompatActivity implements Driv
     }
 
     /**
-     * This creates the buttons for the
-     * @param response
+     * This creates the buttons for the Invoices that are present that the Driver needs to see
+     * such that the number of buttons corresponds with this.
+     * @param response The list of strings that corresponds with the Invoices that are present.
      */
     public void createButtons(String[] response) {
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.linearlayout);
@@ -85,6 +86,9 @@ public class DriverSeeInvoicesActivity extends AppCompatActivity implements Driv
 
     // this override is to override the action bar back button so that it passes around the userID
     @Override
+    /**
+     * The actionbar for DriverSeeInvoicesActivity
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
