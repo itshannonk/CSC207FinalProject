@@ -83,7 +83,9 @@ public class UserInformationActivity extends AppCompatActivity implements UserIn
         nameText.setText(inputText);
     }
 
-    // for the back button
+    /**
+     * for the back button
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

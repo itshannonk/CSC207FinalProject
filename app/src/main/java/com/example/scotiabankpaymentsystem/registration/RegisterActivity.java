@@ -211,7 +211,6 @@ public class RegisterActivity extends AppCompatActivity implements RegistrationV
     }
 
     private void switchTabs(){
-//        showProgress();
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
     }
 
