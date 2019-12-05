@@ -15,7 +15,7 @@ public class SBODisplayInvoicePresenter implements SBODisplayInvoiceInteractor.o
     void onDestroy() {
         view = null;
     }
-
+    
     @Override
     public void onChangePaySuccess() {
         view.changePayTrue();

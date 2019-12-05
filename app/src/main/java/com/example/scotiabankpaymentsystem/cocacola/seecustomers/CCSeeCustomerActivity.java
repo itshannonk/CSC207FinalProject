@@ -62,13 +62,13 @@ public class CCSeeCustomerActivity extends AppCompatActivity implements CCSeeCus
             String buttonText = "Customer UserID: " + response[i];
             btn.setText(buttonText);
             btn.setTag(buttonText);
-            String finalID = response[i];
+            String customerID = response[i];
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent newIntent = new Intent(CCSeeCustomerActivity.this, CCInvoiceSeeOrCreate.class);
                     // when we switch to the SBODisplayInvoice, it will pass in both the userID and invoiceID
-                    newIntent.putExtra("userID", finalID);
+                    newIntent.putExtra("userID", customerID);
                     startActivity(newIntent);
                     finish();
                 }
