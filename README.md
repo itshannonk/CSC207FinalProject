@@ -1,4 +1,4 @@
-# CSC207FinalProject
+# Scotiabank payment app
 ## Firebase:
  For database, we used firebase's realtime database:
  https://console.firebase.google.com/project/csc207-tli/database/csc207-tli/data
